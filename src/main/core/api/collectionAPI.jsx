@@ -42,8 +42,20 @@ export async function getCatalog() {
     return Promise.reject();
 }
 
+export async function getCollection(path) {
+    const res = await fetch(`${COLLECTION_URL_API}/get/${path}/`, {
+        method: 'GET',
+        credentials: 'include',
+        headers: getHeaders(),
+    })
+    if (res.ok) {
+        return await res.json();
+    }
+    return Promise.reject();
+}
+
 // ADD and POP collections
-export async function addCollections(path) {
+export async function addCollection(path) {
     const res = await fetch(`${COLLECTION_URL_API}/add/${path}/`, {
         method: 'POST',
         credentials: 'include',
@@ -55,7 +67,7 @@ export async function addCollections(path) {
     return Promise.reject();
 }
 
-export async function popCollections(path) {
+export async function popCollection(path) {
     const res = await fetch(`${COLLECTION_URL_API}/pop/${path}/`, {
         method: 'DELETE',
         credentials: 'include',

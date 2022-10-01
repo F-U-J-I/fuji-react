@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import cl from './_Catalog.module.scss'
 
-import MainPageWrapper from "../core/components/main_page_wrapper/MainPageWrapper";
-import CollectionBig from "../../core/components/collection/big/CollectionBig";
-import {getCatalog, getCollectionProfile} from "../core/api/collectionAPI";
+// import MainPageWrapper from "../core/components/main_page_wrapper/MainPageWrapper";
+import CollectionBigDefault from "../../core/components/collection/big/default/CollectionBigDefault";
+import {getCatalog} from "../core/api/collectionAPI";
+import {MainPageWrapperContext} from "../core/context/Context";
 
 class Catalog extends Component {
     constructor(props) {
@@ -16,19 +17,17 @@ class Catalog extends Component {
     }
 
     componentDidMount() {
-        this.setProfile()
         this.setCatalog()
     }
 
-    setProfile() {
-        getCollectionProfile()
-            .then((result) => {
-                this._setAddedCollectionList(result.results)
-            }, () => {
-                this.setState({
-                    error: true
-                })
+    static contextType = MainPageWrapperContext;
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.context.addedCollectionList.length !== this.state.addedCollectionList.length) {
+            this.setState({
+                addedCollectionList: this.context.addedCollectionList
             })
+        }
     }
 
     setCatalog() {
@@ -44,28 +43,24 @@ class Catalog extends Component {
             })
     }
 
-    _setAddedCollectionList = (list) => {
-        this.setState({
-            addedCollectionList: list,
-        })
-    }
-
     render() {
+        // console.log(context)
+        const {setAddedCollectionList} = this.context
         const {error, collectionList, addedCollectionList} = this.state;
         let collectionListHTML = [];
         if (!error) {
             collectionListHTML = collectionList.map(item => (
-                <CollectionBig key={item.path}
-                               collection={item}
-                               addedCollectionList={addedCollectionList}
-                               setAddedCollectionList={this._setAddedCollectionList} />
+                <CollectionBigDefault key={item.path}
+                                      collection={item}
+                                      addedCollectionList={addedCollectionList}
+                                      setAddedCollectionList={setAddedCollectionList} />
             ));
         }
 
         return (
-            <MainPageWrapper className={cl.block} collectionList={addedCollectionList} setCollectionList={this._setAddedCollectionList} >
+            <div className={cl.block}>
                 {collectionListHTML}
-            </MainPageWrapper>
+            </div>
         );
     }
 }

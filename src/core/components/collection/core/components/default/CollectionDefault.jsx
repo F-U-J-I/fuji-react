@@ -6,7 +6,7 @@ import H1 from "../../../../../ui/title/H1/H1";
 import Author from "../../../../author/Author";
 import Rating from "../rating/Rating";
 import AddCollection from "../add_collection/AddCollection";
-import {addCollections, popCollections} from "../../../../../../main/core/api/collectionAPI";
+import {addCollection, popCollection} from "../../../../../../main/core/api/collectionAPI";
 import {COLLECTION_URL} from "../../../../../service/urls";
 
 const CollectionDefault = ({collection, addedCollectionList, setAddedCollectionList, className, ...props}) => {
@@ -22,11 +22,11 @@ const CollectionDefault = ({collection, addedCollectionList, setAddedCollectionL
         }
     }
 
-    const addCollection = () => {
+    const _addCollection = () => {
         setAddedCollectionList([getCollection(), ...addedCollectionList])
     }
 
-    const removeCollection = () => {
+    const _removeCollection = () => {
         const array = [...addedCollectionList]
         for (let i = 0; i !== array.length; i++) {
             if (array[i].path === collection.path) {
@@ -39,13 +39,13 @@ const CollectionDefault = ({collection, addedCollectionList, setAddedCollectionL
 
     const handleClickAdd = () => {
         if (collectionIsAdded) {
-            popCollections(collection.path).then(() => {
-                removeCollection()
+            popCollection(collection.path).then(() => {
+                _removeCollection()
                 setCollectionIsAdded(false)
             })
         } else {
-            addCollections(collection.path).then(() => {
-                addCollection()
+            addCollection(collection.path).then(() => {
+                _addCollection()
                 setCollectionIsAdded(true)
             })
         }

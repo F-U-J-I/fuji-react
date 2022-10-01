@@ -1,0 +1,30 @@
+@import "../../../../../scss/vars";
+
+.progressBar {
+  height: 7px;
+  width: 250px;
+  position: relative;
+  margin: 14px auto auto;
+
+  &All,
+  &Complete {
+    height: 100%;
+    border-radius: 100px;
+  }
+
+  &All {
+    width: 100%;
+    background-color: $gray-1;
+  }
+  &Complete {
+    position: absolute;
+    top: 0;
+    background-color: $purple-2;
+  }
+}
+
+.progressBarText {
+  display: flex;
+  justify-content: center;
+  margin-top: 2px;
+}

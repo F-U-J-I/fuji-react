@@ -1,17 +1,8 @@
-@import "../../../scss/vars";
+@import "../../../../scss/vars";
 
 .block {
   &:nth-child(n+2) {
     margin-top: 45px;
-  }
-
-  .collection {
-    width: 100%;
-    display: flex;
-
-    .link {
-      margin: 16px 0 auto auto;
-    }
   }
 
   .courses {

@@ -14,6 +14,7 @@ import Text14 from "../../../../../../ui/text/14/Text14";
 import Text16Book from "../../../../../../ui/text/16/book/Text16Book";
 import MainInfoItem from "../main-info-item/MainInfoItem";
 import PriceCourse from "../../../../core/components/price/PriceCourse";
+import ProgressCourse from "../../../../core/components/progress/ProgressCourse";
 
 
 const CourseMiniActive = ({course, className, ...props}) => {
@@ -56,7 +57,7 @@ const CourseMiniActive = ({course, className, ...props}) => {
             <div className={[clCommon.otherInfo, cl.otherInfo].join(" ")}>
                 {course.status_progress === null
                     ? <PriceCourse price={course.price} className={clCommon.price}/>
-                    : <p>{course.status_progress}</p>
+                    : <ProgressCourse progress={course.progress.progress} maxProgress={course.progress.max_progress}/>
                 }
             </div>
         </Link>

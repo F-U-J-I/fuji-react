@@ -14,8 +14,7 @@ import {COURSE_URL} from "../../../../../../service/urls";
 import starSVG from "../../../../../../static/img/star-fill-yellow.svg";
 import userSVG from "../../../../../../static/img/user-outline-white.svg";
 import watchSVG from "../../../../../../static/img/watch-outline-white.svg";
-
-
+import ProgressCourse from "../../../../core/components/progress/ProgressCourse";
 
 const CourseMiniPreview = ({course, className, ...props}) => {
     const image = getImage(course.image_url)
@@ -61,7 +60,7 @@ const CourseMiniPreview = ({course, className, ...props}) => {
                 <div className={clCommon.otherInfo}>
                     {course.status_progress === null
                         ? <PriceCourse price={course.price} className={clCommon.price}/>
-                        : <p>{course.status_progress}</p>
+                        : <ProgressCourse progress={course.progress.progress} maxProgress={course.progress.max_progress}/>
                     }
                 </div>
             </div>
