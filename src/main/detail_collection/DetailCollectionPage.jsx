@@ -20,13 +20,19 @@ class DetailCollectionPage extends Component {
     }
 
     componentDidMount() {
-        const {path} = this.props.params;
-        this.setCollection(path)
+        this.setCollection(this.props.params.path)
     }
+
+    // componentWillReceiveProps(nextProps, nextContext) {
+    //     this.setCollection(nextProps.params.path)
+    // }
 
     static contextType = MainPageWrapperContext;
 
     componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.params.path !== this.props.params.path) {
+            this.setCollection(this.props.params.path)
+        }
         if (this.context.addedCollectionList.length !== this.state.addedCollectionList.length) {
             this.setState({
                 addedCollectionList: this.context.addedCollectionList
@@ -39,6 +45,7 @@ class DetailCollectionPage extends Component {
             .then((result) => {
                 this.setState({
                     collection: result,
+                    // isMyCollection: result.author.path === sessionStorage.getItem('path'),
                     isLoaded: true
                 })
             }, () => {
@@ -50,15 +57,12 @@ class DetailCollectionPage extends Component {
     }
 
     render() {
-        const {isLoaded, collection} = this.state;
+        const {isLoaded, collection, addedCollectionList} = this.state;
 
-        // let collectionHTML = null
         if (isLoaded)
-            return <CollectionBigDetail collection={collection} />
-
-        // return (
-        //     {collectionHTML}
-        // );
+            return <CollectionBigDetail collection={collection}
+                                        addedCollectionList={addedCollectionList}
+                                        setAddedCollectionList={this.context.setAddedCollectionList}/>
     }
 }
 

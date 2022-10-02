@@ -14,6 +14,11 @@
   font-display: swap;
 }
 @font-face {
+  font-family: "Gotham-MediumItalic";
+  src: url("core/static/font/Gotham/Gotham-MediumItalic.ttf");
+  font-display: swap;
+}
+@font-face {
   font-family: "Gotham-Book";
   src: url("core/static/font/Gotham/Gotham-Book.ttf");
   font-display: swap;
@@ -38,7 +43,17 @@ a {
   color: #969696 !important;
 }
 
+/* ВЫДЕЛЕНИЕ ТЕКСТА */
+::selection {
+  background: #7B61FF; /* Safari */
+  color: #FFF;
+}
+::-moz-selection {
+  background: #7B61FF; /* Firefox */
+  color: #FFF;
+}
 
+/* SCROLL BAR */
 ::-webkit-scrollbar {
   width: 10px;
   background-color: #f9f9fd;

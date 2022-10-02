@@ -9,10 +9,16 @@ import AddCollection from "../add_collection/AddCollection";
 import {addCollection, popCollection} from "../../../../../../main/core/api/collectionAPI";
 import {COLLECTION_URL} from "../../../../../service/urls";
 
+function isMyCollection(collection) {
+    return collection.author.path === sessionStorage.getItem('path')
+}
+
 const CollectionDefault = ({collection, addedCollectionList, setAddedCollectionList, className, ...props}) => {
     const ratingUpdate = collection.rating.toFixed(1)
     const linkCollection = `${COLLECTION_URL}/${collection.path}`;
-    const [collectionIsAdded, setCollectionIsAdded] = useState(false)
+    const _isMyCollection = isMyCollection(collection)
+
+    const [collectionIsAdded, setCollectionIsAdded] = useState(collection.is_added)
 
     const getCollection = () => {
         return {
@@ -58,14 +64,17 @@ const CollectionDefault = ({collection, addedCollectionList, setAddedCollectionL
                 <Link to={linkCollection}>
                     <H1 className={cl.title}>{collection.title}</H1>
                 </Link>
-                <Author image={collection.author.avatar_url} name={collection.author.username} path={collection.author.path}/>
+                <Author image={collection.author.avatar_url} name={collection.author.username}
+                        path={collection.author.path}/>
             </div>
             <div className={cl.info}>
                 <Rating rating={ratingUpdate} className={cl.rating}/>
-                <AddCollection className={cl.addCollection}
-                               path={collection.path}
-                               onClick={handleClickAdd}
-                               collectionIsAdded={collectionIsAdded}/>
+                {!_isMyCollection &&
+                    <AddCollection className={cl.addCollection}
+                                   path={collection.path}
+                                   onClick={handleClickAdd}
+                                   collectionIsAdded={collectionIsAdded}/>
+                }
             </div>
         </div>
     );

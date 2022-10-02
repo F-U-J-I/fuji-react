@@ -1,8 +1,28 @@
-
+@import "../../../../scss/vars";
 
 .wallpaper {
   width: 100%;
   height: 340px;
   object-fit: cover;
   border-radius: 35px 0 0 0;
+}
+
+.wrapper {
+  padding: 45px 45px 100px;
+
+  .description {
+    width: 100%;
+    background-color: $black-light-3;
+    text-align: center;
+    padding: 22px 40px;
+    border-radius: 30px;
+  }
+
+  .collectionHead {
+    margin-top: 20px;
+  }
+
+  .courses {
+    margin-top: 45px;
+  }
 }

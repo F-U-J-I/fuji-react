@@ -1,0 +1,22 @@
+@import "../../../../../../scss/vars";
+
+.options {
+  display: flex;
+  margin-left: auto;
+  align-items: center;
+
+  .rating {
+    .members {
+      display: flex;
+      justify-content: center;
+
+      &Text {
+        color: $gray-2;
+      }
+    }
+
+    &Button {
+      margin-top: 5px;
+    }
+  }
+}

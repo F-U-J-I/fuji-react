@@ -12,6 +12,7 @@ class MainPageWrapper extends Component {
         super(props);
         this.state = {
             error: false,
+            isLoad: false,
             addedCollectionList: []
         }
     }
@@ -24,9 +25,13 @@ class MainPageWrapper extends Component {
         getCollectionProfile()
             .then((result) => {
                 this._setAddedCollectionList(result.results)
+                this.setState({
+                    isLoad: true
+                })
             }, () => {
                 this.setState({
-                    error: true
+                    error: true,
+                    isLoad: true
                 })
             })
     }
@@ -43,21 +48,30 @@ class MainPageWrapper extends Component {
             return <Navigate to='/signin' replace/>
         }
 
+        let content = null;
+        if (this.state.isLoad) {
+            content = (
+                <MainPageWrapperContext.Provider value={{
+                    addedCollectionList: this.state.addedCollectionList,
+                    setAddedCollectionList: this._setAddedCollectionList,
+                }}>
+                    {this.props.children}
+                </MainPageWrapperContext.Provider>
+            )
+            // this.setState({
+            //     isLoad: false
+            // })
+        }
+
         return (
             <div className={cl.page}>
-                {/*<SideBar activeId='catalog' {...propsSideBar}/>*/}
                 <SideBar activeId='catalog' setCollectionList={this._setAddedCollectionList}
                          collectionList={this.state.addedCollectionList}/>
                 <div className={cl.main}>
                     <div className={cl.mainWrapper}>
                         <TopBar/>
                         <div className={[cl.mainContent, this.props.className].join(" ")}>
-                            <MainPageWrapperContext.Provider value={{
-                                addedCollectionList: this.state.addedCollectionList,
-                                setAddedCollectionList: this._setAddedCollectionList,
-                            }}>
-                                {this.props.children}
-                            </MainPageWrapperContext.Provider>
+                            {content}
                         </div>
                     </div>
                 </div>

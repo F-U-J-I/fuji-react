@@ -1,7 +1,7 @@
 import React from 'react';
 import cl from './_CourseMini.module.scss'
-import CourseMiniPreview from "./core/components/preview/CourseMiniPreview";
-import CourseMiniActive from "./core/components/active/CourseMiniActive";
+import CourseMiniPreview from "../core/components/preview/CourseMiniPreview";
+import CourseMiniActive from "../core/components/active/CourseMiniActive";
 
 
 const CourseMini = ({course, className, ...props}) => {

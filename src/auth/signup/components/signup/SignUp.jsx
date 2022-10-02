@@ -6,7 +6,7 @@ import userSVG from "../../../../core/static/img/user.svg";
 import emailSVG from "../../../../core/static/img/email.svg";
 import lockSVG from "../../../../core/static/img/lock.svg";
 import LinkPurple from "../../../../core/ui/link/purple/LinkPurple";
-import ButtonFillRadiusPurple from "../../../../core/ui/button/fill-radius-purple/ButtonFillRadiusPurple";
+import ButtonPurpleFR from "../../../../core/ui/button/fill-radius-purple/ButtonPurpleFR";
 import Text14 from "../../../../core/ui/text/14/Text14";
 import {useNavigate} from "react-router";
 import {logout, register} from "../../../api/authAPI";
@@ -84,7 +84,7 @@ const SignUp = ({className}) => {
             </div>
 
             <a className={clAuth.submit} href='/'>
-                <ButtonFillRadiusPurple type="submit">Зарегистрироваться</ButtonFillRadiusPurple>
+                <ButtonPurpleFR type="submit">Зарегистрироваться</ButtonPurpleFR>
             </a>
 
             <Text14 className={clAuth.navDescription}>

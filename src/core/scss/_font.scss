@@ -9,5 +9,8 @@
 // font-family: 'Gotham-Medium', sans-serif
 @include font('Gotham-Medium', '../static/font/Gotham/Gotham-Medium.ttf');
 
+// font-family: 'Gotham-MediumItalic', sans-serif
+@include font('Gotham-Medium', '../static/font/Gotham/Gotham-MediumItalic.ttf');
+
 // font-family: 'Gotham-Book', sans-serif
 @include font('Gotham-Book', '../static/font/Gotham/Gotham-Book.ttf');

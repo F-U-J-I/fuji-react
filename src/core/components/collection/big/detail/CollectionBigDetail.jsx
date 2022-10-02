@@ -1,8 +1,9 @@
 import React from 'react';
 import cl from "./_CollectionBigDetail.module.scss";
 import {getImage} from "../../../../api/mainAPI";
-import CourseMini from "../../../course/mini/CourseMini";
 import CollectionHeadDetail from "../../core/components/collection_head/detail/CollectionHeadDetail";
+import CourseMiniList from "../../../course/mini/list/CourseMiniList";
+import CollectionDescription from "../../core/components/description/CollectionDescription";
 
 const CollectionBigDetail = ({collection, addedCollectionList, setAddedCollectionList, className, ...props}) => {
     return (
@@ -10,13 +11,15 @@ const CollectionBigDetail = ({collection, addedCollectionList, setAddedCollectio
             {collection.wallpaper !== null &&
                 <img className={cl.wallpaper} src={getImage(collection.wallpaper)} alt="wallpaper"/>
             }
-            <CollectionHeadDetail collection={collection}
-                                   addedCollectionList={addedCollectionList}
-                                   setAddedCollectionList={setAddedCollectionList}/>
-            <div className={cl.courses}>
-                {collection.courses.map(item =>
-                    <CourseMini key={item.path} course={item}/>
-                )}
+            <div className={cl.wrapper}>
+                {collection.description &&
+                    <CollectionDescription description={collection.description} />
+                }
+                <CollectionHeadDetail className={cl.collectionHead}
+                                      collection={collection}
+                                      addedCollectionList={addedCollectionList}
+                                      setAddedCollectionList={setAddedCollectionList}/>
+                <CourseMiniList className={cl.courses} courses={collection.courses}/>
             </div>
         </div>
     );

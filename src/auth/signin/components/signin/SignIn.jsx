@@ -6,7 +6,7 @@ import clSignIn from "./_SignIn.module.scss"
 
 import H2 from "../../../../core/ui/title/H2/H2";
 import LinkPurple from "../../../../core/ui/link/purple/LinkPurple";
-import ButtonFillRadiusPurple from "../../../../core/ui/button/fill-radius-purple/ButtonFillRadiusPurple";
+import ButtonPurpleFR from "../../../../core/ui/button/fill-radius-purple/ButtonPurpleFR";
 import Text14 from "../../../../core/ui/text/14/Text14";
 
 import emailSVG from "../../../../core/static/img/email.svg"
@@ -69,7 +69,7 @@ const SignIn = ({className}) => {
             <LinkPurple to="#" className={clSignIn.navHelp}>Забыли пароль?</LinkPurple>
 
             <a className={clAuth.submit} href='/'>
-                <ButtonFillRadiusPurple type="submit">Войти</ButtonFillRadiusPurple>
+                <ButtonPurpleFR type="submit">Войти</ButtonPurpleFR>
             </a>
 
             <Text14 className={clAuth.navDescription}>
