@@ -3,5 +3,6 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/src/core/static/font/Gotham/Gotham-Black.ttf" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/core/static/font/Gotham/Gotham-Book.ttf" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/src/core/static/font/Gotham/Gotham-MediumItalic.ttf" charset="ISO-8859-1" />
   </component>
 </project>
