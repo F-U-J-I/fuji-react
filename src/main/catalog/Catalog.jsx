@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import cl from './_Catalog.module.scss'
-
-// import MainPageWrapper from "../core/components/main_page_wrapper/MainPageWrapper";
 import CollectionBigDefault from "../../core/components/collection/big/default/CollectionBigDefault";
 import {getCatalog} from "../core/api/collectionAPI";
 import {MainPageWrapperContext} from "../core/context/Context";

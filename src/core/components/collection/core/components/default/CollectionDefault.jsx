@@ -9,22 +9,21 @@ import AddCollection from "../add_collection/AddCollection";
 import {addCollection, popCollection} from "../../../../../../main/core/api/collectionAPI";
 import {COLLECTION_URL} from "../../../../../service/urls";
 
-function isMyCollection(collection) {
-    return collection.author.path === sessionStorage.getItem('path')
+function isMyCollection(authorPath) {
+    return authorPath === sessionStorage.getItem('path')
 }
 
-const CollectionDefault = ({collection, addedCollectionList, setAddedCollectionList, className, ...props}) => {
-    const ratingUpdate = collection.rating.toFixed(1)
-    const linkCollection = `${COLLECTION_URL}/${collection.path}`;
-    const _isMyCollection = isMyCollection(collection)
+const CollectionDefault = ({path, title, image_url, author, rating, is_added, count_ratings, addedCollectionList, setAddedCollectionList, className, ...props}) => {
+    const linkCollection = `${COLLECTION_URL}/${path}`;
+    const _isMyCollection = isMyCollection(author.path)
 
-    const [collectionIsAdded, setCollectionIsAdded] = useState(collection.is_added)
+    const [collectionIsAdded, setCollectionIsAdded] = useState(is_added)
 
     const getCollection = () => {
         return {
-            title: collection.title,
-            path: collection.path,
-            image_url: collection.image_url
+            title: title,
+            path: path,
+            image_url: image_url
         }
     }
 
@@ -35,7 +34,7 @@ const CollectionDefault = ({collection, addedCollectionList, setAddedCollectionL
     const _removeCollection = () => {
         const array = [...addedCollectionList]
         for (let i = 0; i !== array.length; i++) {
-            if (array[i].path === collection.path) {
+            if (array[i].path === path) {
                 array.splice(i, 1)
                 setAddedCollectionList(array)
                 break
@@ -45,33 +44,34 @@ const CollectionDefault = ({collection, addedCollectionList, setAddedCollectionL
 
     const handleClickAdd = () => {
         if (collectionIsAdded) {
-            popCollection(collection.path).then(() => {
+            popCollection(path).then(() => {
                 _removeCollection()
                 setCollectionIsAdded(false)
             })
         } else {
-            addCollection(collection.path).then(() => {
+            addCollection(path).then(() => {
                 _addCollection()
                 setCollectionIsAdded(true)
             })
         }
     }
+    console.log(rating)
 
     return (
         <div className={cl.collection} {...props}>
-            <img src={getImage(collection.image_url)} alt="icon" className={cl.image}/>
+            <img src={getImage(image_url)} alt="icon" className={cl.image}/>
             <div className={cl.text}>
                 <Link to={linkCollection}>
-                    <H1 className={cl.title}>{collection.title}</H1>
+                    <H1 className={cl.title}>{title}</H1>
                 </Link>
-                <Author image={collection.author.avatar_url} name={collection.author.username}
-                        path={collection.author.path}/>
+                <Author image={author.avatar_url} name={author.username}
+                        path={author.path}/>
             </div>
             <div className={cl.info}>
-                <Rating rating={ratingUpdate} className={cl.rating}/>
+                <Rating rating={rating.toFixed(1)} className={cl.rating} countRatings={count_ratings}/>
                 {!_isMyCollection &&
                     <AddCollection className={cl.addCollection}
-                                   path={collection.path}
+                                   path={path}
                                    onClick={handleClickAdd}
                                    collectionIsAdded={collectionIsAdded}/>
                 }

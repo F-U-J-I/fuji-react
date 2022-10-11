@@ -1,0 +1,44 @@
+@import "../../../../../../../../scss/vars";
+
+.block {
+  position: relative;
+
+  &Title {
+    border-radius: 50px;
+    background-color: $black-light-3;
+    display: flex;
+    justify-content: center;
+    border: 0;
+    align-items: center;
+    padding: 6px 17px 6px 20px;
+    cursor: pointer;
+    transition: all .15s !important;
+
+    &:hover {
+      background-color: $black-light-4;
+    }
+  }
+
+  .text {
+    white-space: nowrap;
+    margin-right: 5px;
+  }
+}
+
+.menu {
+  position: absolute;
+  right: 0;
+  top: 48px;
+  opacity: 0;
+  z-index: -1;
+  transition: all .15s !important;
+
+  &.active {
+    z-index: 1;
+    opacity: 1;
+  }
+
+  &Item {
+    white-space: nowrap;
+  }
+}

@@ -9,7 +9,13 @@ const CollectionHeadDefault = ({collection, addedCollectionList, setAddedCollect
     const linkCollection = `${COLLECTION_URL}/${collection.path}`;
     return (
         <div className={[clCommon.collectionHead, className].join(" ")} {...props}>
-            <CollectionDefault collection={collection}
+            <CollectionDefault path={collection.path}
+                               title={collection.title}
+                               image_url={collection.image_url}
+                               author={collection.author}
+                               rating={collection.rating}
+                               is_added={collection.is_added}
+                               count_ratings={collection.count_ratings}
                                addedCollectionList={addedCollectionList}
                                setAddedCollectionList={setAddedCollectionList}/>
             <LinkGray to={linkCollection} className={cl.link} title='Открыть всё'/>

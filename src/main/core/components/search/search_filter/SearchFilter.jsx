@@ -25,6 +25,8 @@ const SearchFilter = ({className, ...props}) => {
     ]
     const [filter, setFilter] = useState(filterList[0])
 
+
+
     return (
         <div className={[cl.search, className].join(" ")} {...props}>
             <Filter list={filterList} defaultValue={filter} setDefaultValue={setFilter} className={cl.filter} />

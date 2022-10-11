@@ -28,3 +28,20 @@ export function save(key, value) {
 export function getImage(src) {
     return `${BASE_URL}${src}`
 }
+
+export function requestGET(url) {
+    return request('GET', url)
+}
+
+export async function request(method, url, body) {
+    const res = await fetch(url, {
+        method: method,
+        credentials: 'include',
+        headers: getHeaders(),
+        body: body
+    })
+    if (res.ok) {
+        return await res.json();
+    }
+    return Promise.reject();
+}

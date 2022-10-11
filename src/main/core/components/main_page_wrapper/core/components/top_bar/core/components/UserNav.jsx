@@ -2,7 +2,7 @@ import React, {useRef, useState} from 'react';
 import {getImage} from "../../../../../../../../../core/api/mainAPI";
 import cl from './_UserNav.module.scss'
 import List from "../../../../../../../../../core/components/list/list/List";
-import LinkListItem from "../../../../../../../../../core/components/list/list_item/list_item_link/LinkListItem";
+import LinkListItem from "../../../../../../../../../core/components/list/list_item/link/LinkListItem";
 import Text16B from "../../../../../../../../../core/ui/text/16/bold/Text16B";
 import useOutsideAlerter from "../../../../../../../../../core/service/outsideOnClick";
 import {logout} from "../../../../../../../../../auth/api/authAPI";

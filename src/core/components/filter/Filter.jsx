@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react';
 import cl from './_Filter.module.scss';
-import SelectListItem from "../list/list_item/list_item_select/SelectListItem";
+import SelectListItem from "../list/list_item/select/SelectListItem";
 import ListTitle from "../list/list_title/ListTitle";
 import List from "../list/list/List";
 import useOutsideAlerter from "../../service/outsideOnClick";

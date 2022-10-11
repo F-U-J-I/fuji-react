@@ -1,0 +1,30 @@
+@import "../../../../../../../../../scss/vars";
+
+.item {
+  display: flex;
+  max-width: 27px;
+  min-width: 27px;
+  height: 31px;
+  align-items: center;
+  border-radius: 20px;
+  cursor: pointer;
+
+  transition: all .15s;
+
+  .title {
+    text-align: center;
+    transition: all .15s;
+  }
+
+  &:nth-child(n+2) {
+    margin-left: 6px;
+  }
+}
+
+//.default {
+//  background-color: $black-light-3;
+//
+//  .title {
+//    color: $white;
+//  }
+//}
