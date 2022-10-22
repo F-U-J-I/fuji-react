@@ -1,7 +1,7 @@
 import React from 'react';
 import cl from "./_CollectionBigDetail.module.scss";
 import {getImage} from "../../../../api/mainAPI";
-import CollectionHeadDetail from "../../core/components/collection_head/detail/CollectionHeadDetail";
+import CollectionHeadDetail from "../../core/components/collection_head/collection_head/detail/CollectionHeadDetail";
 import CourseMiniList from "../../../course/mini/list/CourseMiniList";
 import CollectionDescription from "../../core/components/description/CollectionDescription";
 

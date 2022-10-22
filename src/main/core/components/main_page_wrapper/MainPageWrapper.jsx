@@ -58,9 +58,6 @@ class MainPageWrapper extends Component {
                     {this.props.children}
                 </MainPageWrapperContext.Provider>
             )
-            // this.setState({
-            //     isLoad: false
-            // })
         }
 
         return (

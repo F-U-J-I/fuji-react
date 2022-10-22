@@ -1,0 +1,64 @@
+@import "../../../../../../scss/vars";
+
+
+.block {
+  display: flex;
+  position: relative;
+
+  .image {
+    width: 25px;
+    height: 25px;
+    background-image: url("../../../../../../static/img/add-collection-fill-white.svg");
+    background-size: cover;
+    transition: all .15s;
+
+    &:hover {
+      & + .title {
+        z-index: 1;
+        //display: block;
+        opacity: 1;
+      }
+    }
+  }
+
+  .title {
+    position: absolute;
+    z-index: -1;
+    left: 35px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: all .15s;
+
+    &:after {
+      content: 'Сохранить подборку';
+    }
+  }
+}
+
+.isAdded {
+  .image {
+    background-image: url("../../../../../../static/img/check-mark-fill-green.svg");
+
+    &:hover {
+      background-image: url("../../../../../../static/img/cross-fill-red.svg");
+
+      & + .title {
+        color: $red !important;
+
+        &:after {
+          content: 'Удалить';
+        }
+      }
+    }
+  }
+
+  .title {
+    color: $green !important;
+    z-index: 1;
+    opacity: 1;
+
+    &:after {
+      content: 'Сохранено';
+    }
+  }
+}

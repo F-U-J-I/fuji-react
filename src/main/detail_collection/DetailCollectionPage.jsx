@@ -45,7 +45,6 @@ class DetailCollectionPage extends Component {
             .then((result) => {
                 this.setState({
                     collection: result,
-                    // isMyCollection: result.author.path === sessionStorage.getItem('path'),
                     isLoaded: true
                 })
             }, () => {
@@ -58,11 +57,11 @@ class DetailCollectionPage extends Component {
 
     render() {
         const {isLoaded, collection, addedCollectionList} = this.state;
-
-        if (isLoaded)
+        if (isLoaded) {
             return <CollectionBigDetail collection={collection}
                                         addedCollectionList={addedCollectionList}
                                         setAddedCollectionList={this.context.setAddedCollectionList}/>
+        }
     }
 }
 

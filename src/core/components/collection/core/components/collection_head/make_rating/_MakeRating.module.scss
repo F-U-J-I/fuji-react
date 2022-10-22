@@ -1,0 +1,23 @@
+@import "../../../../../../scss/vars";
+
+.rating {
+  position: relative;
+
+  .list, .rated {
+    position: absolute;
+    right: 0;
+    opacity: 0;
+    z-index: -1;
+    transition: all .3s;
+
+    &.active {
+      opacity: 1;
+      z-index: 1;
+    }
+  }
+
+  &Button {
+    min-width: 122px;
+    transition: all .3s;
+  }
+}

@@ -1,0 +1,13 @@
+@import "../../../../../../../scss/vars";
+
+.options {
+  display: flex;
+  margin-left: auto;
+  align-items: center;
+
+  .rating {
+    &Button {
+      margin-top: 5px;
+    }
+  }
+}

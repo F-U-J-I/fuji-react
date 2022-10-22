@@ -1,0 +1,10 @@
+@import "../../../../../../scss/vars";
+
+.members {
+  display: flex;
+  justify-content: center;
+
+  &Text {
+    color: $gray-2;
+  }
+}

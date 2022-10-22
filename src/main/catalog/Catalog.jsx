@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import cl from './_Catalog.module.scss'
-import CollectionBigDefault from "../../core/components/collection/big/default/CollectionBigDefault";
+import CollectionBigMini from "../../core/components/collection/big/mini/CollectionBigMini";
 import {getCatalog} from "../core/api/collectionAPI";
 import {MainPageWrapperContext} from "../core/context/Context";
 
@@ -48,10 +48,10 @@ class Catalog extends Component {
         let collectionListHTML = [];
         if (!error) {
             collectionListHTML = collectionList.map(item => (
-                <CollectionBigDefault key={item.path}
-                                      collection={item}
-                                      addedCollectionList={addedCollectionList}
-                                      setAddedCollectionList={setAddedCollectionList} />
+                <CollectionBigMini key={item.path}
+                                   collection={item}
+                                   addedCollectionList={addedCollectionList}
+                                   setAddedCollectionList={setAddedCollectionList} />
             ));
         }
 

@@ -1,0 +1,44 @@
+@import "../../../../../../scss/vars";
+
+.collection {
+  display: flex;
+
+  .image {
+    width: 85px;
+    height: 85px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .text {
+    margin: auto 0 auto 20px;
+
+    .title {
+      border-bottom: 3px solid $empty;
+      transition: all .15s;
+
+      &:hover {
+        border-bottom: 3px solid $white;
+      }
+    }
+  }
+
+  .info {
+    display: flex;
+    margin-bottom: auto;
+
+    .rating {
+      margin-top: 13px;
+      margin-left: 15px;
+    }
+
+    .addCollection {
+      margin-left: 15px;
+      margin-top: 17px;
+    }
+  }
+
+  &Link {
+    margin: 16px 0 auto auto;
+  }
+}
