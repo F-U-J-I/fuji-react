@@ -1,0 +1,10 @@
+@import "../../../../../scss/vars";
+
+.button {
+  background-color: $red;
+  border: 3px solid $red;
+
+  &:hover {
+    background-color: $red_20;
+  }
+}

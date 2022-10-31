@@ -3,9 +3,9 @@ import {BASE_URL_API, request} from "../../../core/api/mainAPI";
 const COLLECTION_URL_API = `${BASE_URL_API}/collections`
 
 export async function getCollectionProfile(limit){
-    let url = `${COLLECTION_URL_API}/all/${sessionStorage.getItem('path')}`
+    let url = `${COLLECTION_URL_API}/all/${sessionStorage.getItem('path')}/?ordering=date_added`
     if (limit !== undefined)
-        url += `/?limit=${limit}`
+        url += `&limit=${limit}`
     return await request('GET', url)
 }
 
@@ -13,6 +13,11 @@ export async function getCollectionProfile(limit){
 export async function createCollection(){
     const url = `${COLLECTION_URL_API}/create/`
     return await request('POST', url)
+}
+
+export async function deleteCollection(path){
+    const url = `${COLLECTION_URL_API}/delete/${path}`
+    return await request('DELETE', url)
 }
 
 // Получить каталог

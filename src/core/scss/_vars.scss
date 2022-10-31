@@ -8,6 +8,7 @@ $f-book: 'Gotham-Book', sans-serif;
 // Font size
 $fs-36: 36px;
 $fs-32: 32px;
+$fs-24: 24px;
 $fs-20: 20px;
 $fs-18: 18px;
 $fs-16: 16px;
@@ -41,7 +42,9 @@ $yellow: #FFC312;
 $yellow_20: rgba($yellow, 0.2);
 
 $black: #000;
+$black_20: rgba($black, 0.2);
 $black_25: rgba($black, 0.25);
+$black_50: rgba($black, 0.5);
 $black_70: rgba($black, 0.7);
 
 $purple-red-gradient: linear-gradient(90deg, $purple 0%, $red 100%);

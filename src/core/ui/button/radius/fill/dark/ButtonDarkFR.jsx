@@ -1,6 +1,6 @@
 import React from 'react';
 import cl from "./_ButtonDarkFR.module.scss"
-import Text16M from "../../text/16/medium/Text16M";
+import Text16M from "../../../../text/16/medium/Text16M";
 
 const ButtonDarkFR = ({title, className, ...props}) => {
     return (

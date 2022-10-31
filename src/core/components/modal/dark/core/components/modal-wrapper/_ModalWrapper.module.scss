@@ -1,0 +1,42 @@
+@import "../../../../../../scss/vars";
+
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+
+  display: flex;
+  background-color: $black_50;
+  width: 100vw;
+  height: 100vh;
+}
+
+.block {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: $black-light-2;
+  border-radius: 50px;
+  padding: 60px 70px 100px 70px;
+  margin: auto;
+
+  .title {
+    &Text {
+      text-align: center;
+    }
+    &Cross {
+      width: 25px;
+      height: 25px;
+
+      position: absolute;
+      right: 70px;
+      top: 70px;
+      transition: all .15s;
+
+      &:hover {
+        scale: 1.2;
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+@import "../../../../../scss/vars";
+
+.button {
+  background-color: $black-light-3;
+  border: 3px solid $black-light-3;
+
+  &:hover {
+    background-color: $black_20;
+    //border-color: $black-light-4;
+  }
+}

@@ -5,7 +5,7 @@ import ItemMakeRating from "../make_rating_item/default/ItemMakeRating";
 import List from "../../../../../../../../list/list/List";
 import {deleteGradeCollection} from "../../../../../../../../../../main/core/api/collectionAPI";
 import ListItem from "../../../../../../../../list/list_item/default/ListItem";
-import useOutsideAlerter from "../../../../../../../../../service/outsideOnClick";
+import {useOutsideAlerter} from "../../../../../../../../../service/outsideOnClick";
 
 const Rated = ({rating, path, setRating, setState, deleteState, updateState, className, ...props}) => {
     const [isVisible, setIsVisible] = useState(false)

@@ -42,7 +42,6 @@ class Catalog extends Component {
     }
 
     render() {
-        // console.log(context)
         const {setAddedCollectionList} = this.context
         const {error, collectionList, addedCollectionList} = this.state;
         let collectionListHTML = [];

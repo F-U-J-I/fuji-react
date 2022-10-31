@@ -3,7 +3,7 @@ import cl from './_Rating.module.scss'
 import clColor from '../../../../../rating/_Rating.module.scss'
 import Text16B from "../../../../../../ui/text/16/bold/Text16B";
 import getClassNameColor from "../../../../../../service/rating";
-import ModalPurpleFR from "../../../../../modal/purple-fill-radius/ModalPurpleFR";
+import ModalPurpleFR from "../../../../../modal/purple_fill_radius/ModalPurpleFR";
 
 const getRatingView = (rating) => {
     if (rating === '0.0')

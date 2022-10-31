@@ -14,8 +14,9 @@ const CollectionHeadDefault = ({collection, addedCollectionList, setAddedCollect
                                image_url={collection.image_url}
                                author={collection.author}
                                rating={collection.rating}
-                               isAdded={collection.is_added}
                                countRatings={collection.count_ratings}
+                               isAdded={collection.is_added}
+                               membersAmount={collection.members_amount}
                                addedCollectionList={addedCollectionList}
                                setAddedCollectionList={setAddedCollectionList}/>
             <LinkGray to={linkCollection} className={cl.link} title='Открыть всё'/>

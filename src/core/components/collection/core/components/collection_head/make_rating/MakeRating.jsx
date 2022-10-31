@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import cl from "./_MakeRating.module.scss";
-import ButtonDarkFR from "../../../../../../ui/button/fill-radius-dark/ButtonDarkFR";
+import ButtonDarkFR from "../../../../../../ui/button/radius/fill/dark/ButtonDarkFR";
 import ListMakeRating from "./core/components/make_rating_list/ListMakeRating";
 import Rated from "./core/components/rated/Rated";
 import ItemMakeRatingHover from "./core/components/make_rating_item/hover/ItemMakeRatingHover";
@@ -30,14 +30,6 @@ class MakeRating extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        // console.log('componentDidUpdate')
-        // console.log('props')
-        // console.log(prevProps)
-        // console.log(this.props)
-        //
-        // console.log('state')
-        // console.log(prevState)
-        // console.log(this.state)
         if (this.props.path !== prevProps.path) {
             this.setState({
                 grade: this.props.grade,
@@ -65,7 +57,6 @@ class MakeRating extends Component {
                     classNameState: RATED_STATE,
                     currentRating: newGrade,
                 })
-                // console.log(r.rating)
                 this.props.setRating(r.rating)
             }
         )

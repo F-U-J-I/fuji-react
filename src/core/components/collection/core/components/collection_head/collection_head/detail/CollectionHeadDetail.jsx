@@ -1,15 +1,21 @@
 import React, {Component} from 'react';
+
 import clCommon from "../_CollectionHead.module.scss";
 import cl from "./_CollectionHeadDetail.module.scss";
+
+import editSVG from "../../../../../../../static/img/edit-fill-white.svg";
+
 import CollectionDefault from "../../default/CollectionDefault";
 import MakeRating from "../../make_rating/MakeRating";
 import CollectionTracking from "../../tracking/CollectionTracking";
+import ButtonOval from "../../../../../../../ui/button/oval/ButtonOval";
+import {isMyCollection} from "../../../../../../../service/collection";
+import ButtonDeleteCollection from "../../delete_collection/ButtonDeleteCollection";
 
 
 class CollectionHeadDetail extends Component {
     constructor(props) {
         super(props);
-        // collection, addedCollectionList, setAddedCollectionList, className, ...props
         this.state = {
             collection: props.collection,
             rating: props.collection.rating,
@@ -27,25 +33,27 @@ class CollectionHeadDetail extends Component {
                 isAdded: this.props.collection.is_added,
             })
         }
-        console.log(`==> ${this.state.isAdded}`)
     }
 
     _setRating = (newRating) => {
         this.setState({rating: newRating})
     }
 
-    _setMembersAmount = (newMembersAmount) => {
-        this.setState({membersAmount: newMembersAmount})
-    }
-
-    _setIsAdded = (bool) => {
-        this.setState({isAdded: bool})
+    _onClickDelete = () => {
+        const array = [...this.props.addedCollectionList]
+        for (let i = 0; i !== array.length; i++) {
+            if (array[i].path === this.props.collection.path) {
+                array.splice(i, 1)
+                this.props.setAddedCollectionList(array)
+                break
+            }
+        }
     }
 
     render() {
         const {addedCollectionList, setAddedCollectionList, className, ...props} = this.props;
-        const {collection, rating, membersAmount, isAdded} = this.state;
-        // console.log(membersAmount)
+        const {collection, rating} = this.state;
+        const _isMyCollection = isMyCollection(collection.author.path)
         return (
             <div className={[clCommon.collectionHead, className].join(" ")} {...props}>
                 <CollectionDefault path={collection.path}
@@ -53,57 +61,30 @@ class CollectionHeadDetail extends Component {
                                    image_url={collection.image_url}
                                    author={collection.author}
                                    rating={rating}
-                                   isAdded={isAdded}
-                                   setIsAdded={this._setIsAdded}
                                    countRatings={collection.count_ratings}
-                                   membersAmount={membersAmount}
-                                   setMembersAmount={this._setMembersAmount}
+                                   isAdded={collection.is_added}
+                                   membersAmount={collection.members_amount}
                                    addedCollectionList={addedCollectionList}
                                    setAddedCollectionList={setAddedCollectionList}/>
 
                 <div className={cl.options}>
-                    <div className={cl.rating}>
-                        <CollectionTracking membersAmount={collection.members_amount}/>
-                        <MakeRating className={cl.ratingButton} path={collection.path} grade={collection.grade}
-                                    rating={rating} setRating={this._setRating}/>
-                    </div>
+                    {_isMyCollection ? (
+                        <>
+                            <ButtonOval image={editSVG} className={cl.edit}/>
+                            <ButtonDeleteCollection onClickDelete={this._onClickDelete} path={collection.path} className={cl.delete} />
+                        </>
+                    ) : (
+                        <div className={cl.rating}>
+                            <CollectionTracking membersAmount={collection.members_amount}/>
+                            <MakeRating className={cl.ratingButton} path={collection.path} grade={collection.grade}
+                                        rating={rating} setRating={this._setRating}/>
+                        </div>
+                    )}
                 </div>
 
             </div>
         );
     }
 }
-
-// const CollectionHeadDetail = ({collection, addedCollectionList, setAddedCollectionList, className, ...props}) => {
-//     const [rating, setRating] = useState(collection.rating)
-//     console.log(rating)
-//     return (
-//         <div className={[clCommon.collectionHead, className].join(" ")} {...props}>
-//             <CollectionDefault path={collection.path}
-//                                title={collection.title}
-//                                image_url={collection.image_url}
-//                                author={collection.author}
-//                                rating={rating}
-//                                is_added={collection.is_added}
-//                                count_ratings={collection.count_ratings}
-//                                addedCollectionList={addedCollectionList}
-//                                setAddedCollectionList={setAddedCollectionList}/>
-//             <div className={cl.options}>
-//                 <div className={cl.rating}>
-//                     <pre className={cl.members}>
-//                         <Text12B className={cl.membersText}>{collection.members_amount} </Text12B>
-//                         <Text12M className={cl.membersText}>следящих</Text12M>
-//                     </pre>
-//                     <MakeRating className={cl.ratingButton}
-//                                 path={collection.path}
-//                                 grade={collection.grade}
-//                                 rating={rating}
-//                                 setRating={setRating} />
-//                 </div>
-//             </div>
-//
-//         </div>
-//     );
-// };
 
 export default CollectionHeadDetail;

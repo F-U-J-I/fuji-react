@@ -4,10 +4,18 @@
   display: flex;
   margin-left: auto;
   align-items: center;
+  max-height: 63px;
+  margin-top: auto;
+  margin-bottom: auto;
 
   .rating {
     &Button {
       margin-top: 5px;
     }
+  }
+
+  .edit, .delete {
+    margin-top: auto;
+    margin-left: 10px;
   }
 }

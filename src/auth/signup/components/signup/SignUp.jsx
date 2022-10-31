@@ -6,7 +6,7 @@ import userSVG from "../../../../core/static/img/user.svg";
 import emailSVG from "../../../../core/static/img/email.svg";
 import lockSVG from "../../../../core/static/img/lock.svg";
 import LinkPurple from "../../../../core/ui/link/purple/LinkPurple";
-import ButtonPurpleFR from "../../../../core/ui/button/fill-radius-purple/ButtonPurpleFR";
+import ButtonPurpleFR from "../../../../core/ui/button/radius/fill/purple/ButtonPurpleFR";
 import Text14 from "../../../../core/ui/text/14/Text14";
 import {useNavigate} from "react-router";
 import {logout, register} from "../../../api/authAPI";

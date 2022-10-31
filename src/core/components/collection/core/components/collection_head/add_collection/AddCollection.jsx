@@ -18,8 +18,6 @@ class AddCollection extends Component {
         }
     }
 
-    // console.log('AddCollection')
-    // console.log(collectionIsAdded)
     render() {
         const {className, onClick} = this.props;
         const {isAdded} = this.state;

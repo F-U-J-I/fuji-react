@@ -6,7 +6,7 @@ import clSignIn from "./_SignIn.module.scss"
 
 import H2 from "../../../../core/ui/title/H2/H2";
 import LinkPurple from "../../../../core/ui/link/purple/LinkPurple";
-import ButtonPurpleFR from "../../../../core/ui/button/fill-radius-purple/ButtonPurpleFR";
+import ButtonPurpleFR from "../../../../core/ui/button/radius/fill/purple/ButtonPurpleFR";
 import Text14 from "../../../../core/ui/text/14/Text14";
 
 import emailSVG from "../../../../core/static/img/email.svg"
