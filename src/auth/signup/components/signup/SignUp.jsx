@@ -7,7 +7,7 @@ import emailSVG from "../../../../core/static/img/email.svg";
 import lockSVG from "../../../../core/static/img/lock.svg";
 import LinkPurple from "../../../../core/ui/link/purple/LinkPurple";
 import ButtonPurpleFR from "../../../../core/ui/button/radius/fill/purple/ButtonPurpleFR";
-import Text14 from "../../../../core/ui/text/14/Text14";
+import Text14M from "../../../../core/ui/text/14/medium/Text14M";
 import {useNavigate} from "react-router";
 import {logout, register} from "../../../api/authAPI";
 
@@ -87,10 +87,10 @@ const SignUp = ({className}) => {
                 <ButtonPurpleFR type="submit">Зарегистрироваться</ButtonPurpleFR>
             </a>
 
-            <Text14 className={clAuth.navDescription}>
+            <Text14M className={clAuth.navDescription}>
                 Есть аккаунт?
                 <LinkPurple to="/signin" className={clAuth.navDescription__link}>Войти</LinkPurple>
-            </Text14>
+            </Text14M>
         </form>
     );
 };

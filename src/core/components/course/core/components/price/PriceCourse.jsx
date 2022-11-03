@@ -1,20 +1,20 @@
 import React from 'react';
 import cl from './_PriceCourse.module.scss'
-import Text18 from "../../../../../ui/text/18/Text18";
-import Text14 from "../../../../../ui/text/14/Text14";
+import Text18M from "../../../../../ui/text/18/medium/Text18M";
+import Text14M from "../../../../../ui/text/14/medium/Text14M";
 
 const PriceCourse = ({price, className, ...props}) => {
     if (price) {
         return (
 
             <div className={[cl.nonFree, className].join(" ")} {...props}>
-                <Text18 className={cl.price}>{price}</Text18>
-                <Text14 className={cl.symbol}>₽</Text14>
+                <Text18M className={cl.price}>{price}</Text18M>
+                <Text14M className={cl.symbol}>₽</Text14M>
             </div>
         )
     }
     return (
-        <Text18 className={[cl.free, className].join(" ")} {...props}>Бесплатно</Text18>
+        <Text18M className={[cl.free, className].join(" ")} {...props}>Бесплатно</Text18M>
     )
 };
 

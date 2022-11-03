@@ -3,7 +3,8 @@ export const BASE_URL = 'http://127.0.0.1:8000';
 export const BASE_URL_API = `${BASE_URL}/api`;
 export const HEADERS = {
     'Content-Type': 'application/json',
-    'Accept': 'application/json'
+    // 'Content-Type': 'multipart/form-data',
+    'Accept': 'application/json',
 }
 
 export function isLogin() {
@@ -26,20 +27,26 @@ export function save(key, value) {
 }
 
 export function getImage(src) {
-    return `${BASE_URL}${src}`
+    if (src)
+        return `${BASE_URL}${src}`
+    return null
 }
 
 export function requestGET(url) {
     return request('GET', url)
 }
 
-export async function request(method, url, body) {
-    const res = await fetch(url, {
+export async function request(method, url, body, headers) {
+    const data = {
         method: method,
         credentials: 'include',
         headers: getHeaders(),
         body: body
-    })
+    }
+    if (headers !== undefined) {
+        data.headers = headers
+    }
+    const res = await fetch(url, data)
     if (res.ok) {
         return await res.json();
     }

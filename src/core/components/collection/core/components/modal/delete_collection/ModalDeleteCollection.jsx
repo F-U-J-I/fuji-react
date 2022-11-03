@@ -31,31 +31,4 @@ const ModalDeleteCollection = ({onClickDelete, path, setIsVisible, ...props}) =>
     );
 };
 
-// const ModalDeleteCollection = ({path, setIsVisible, ...props}) => {
-//     const description = "Эта подборка удалится безвозвратно. Вы точно хотите удалить её?"
-//
-//     // static contextType = MainPageWrapperContext;
-//     const navigate = useNavigate();
-//     const handleOnClickDelete = () => {
-//         deleteCollection(path).then(
-//             r => {
-//                 setIsVisible(false)
-//                 navigate('/')
-//             },
-//             e => {
-//                 console.log(e)
-//             }
-//         )
-//     }
-//
-//     return (
-//             <ModalDelete
-//                 title="Удалить подборку"
-//                 description={description}
-//                 onClickDelete={handleOnClickDelete}
-//                 setIsVisible={setIsVisible}
-//                 {...props} />
-//     );
-// };
-
 export default ModalDeleteCollection;

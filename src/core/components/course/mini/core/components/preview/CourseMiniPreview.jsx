@@ -4,7 +4,7 @@ import cl from "./_CourseMiniPreview.module.scss";
 import clCommon from "../_CourseMiniCommon.module.scss";
 
 import H3 from "../../../../../../ui/title/H3/H3";
-import Text14 from "../../../../../../ui/text/14/Text14";
+import Text14M from "../../../../../../ui/text/14/medium/Text14M";
 import PriceCourse from "../../../../core/components/price/PriceCourse";
 import MainInfoItem from "../main-info-item/MainInfoItem";
 
@@ -48,7 +48,7 @@ const CourseMiniPreview = ({course, className, ...props}) => {
                 </div>
                 <div className={cl.titleInfoText}>
                     <H3 className={[cl.titleInfoTextTitle, clCommon.title].join(" ")}>{course.title}</H3>
-                    <Text14 className={[cl.titleInfoTextAuthor, clCommon.author].join(" ")}>{course.author.username}</Text14>
+                    <Text14M className={[cl.titleInfoTextAuthor, clCommon.author].join(" ")}>{course.author.username}</Text14M>
                 </div>
             </div>
             <div className={cl.info}>

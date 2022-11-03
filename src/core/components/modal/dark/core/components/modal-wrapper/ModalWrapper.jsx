@@ -22,7 +22,9 @@ const ModalWrapper = ({className, setIsVisible, title, children, ...props}) => {
                     <H1 className={cl.titleText}>{title}</H1>
                     <img src={crossSVG} alt="icon" className={cl.titleCross} onClick={handleOnClickClose} />
                 </div>
-                {children}
+                <div className={cl.content}>
+                    {children}
+                </div>
             </form>
         </div>
     );

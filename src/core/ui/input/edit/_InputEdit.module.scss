@@ -1,0 +1,74 @@
+@import "../../../scss/vars";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.label {
+  display: flex;
+
+  .symbolRequired {
+    color: $red !important;
+    margin-left: 5px;
+  }
+}
+
+.input, .textarea {
+  margin-top: 10px;
+  width: 100%;
+  background-color: $black-light-3;
+
+  border-radius: 10px;
+  border: 2px solid $gray-1;
+  outline: 0;
+
+  font-family: $f-medium;
+  font-size: $fs-16;
+  color: $white;
+
+  transition: all .15s;
+
+  &:focus {
+    border-color: $purple;
+
+    &:hover {
+      border-color: $purple;
+    }
+  }
+
+  &:hover {
+    border-color: $white;
+  }
+}
+
+.input {
+  padding: 24px;
+}
+
+.textarea {
+  padding: 24px;
+  height: 100%;
+  min-height: 71px;
+  resize: vertical;
+}
+
+.error {
+  display: flex;
+  margin-top: 5px;
+  //display: none;
+  //opacity: 0;
+  z-index: -1;
+  cursor: default;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  &Text {
+    color: $red;
+    margin-left: 8px;
+  }
+}

@@ -1,0 +1,70 @@
+@import "../../../../scss/vars";
+
+.content {
+  margin-top: 50px;
+  width: 100%;
+
+  &Item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &:nth-child(n+2) {
+      margin-left: 25px;
+    }
+  }
+
+  .wallpaper {
+    &Image {
+      width: 570px;
+      border-radius: 35px 0 0 0;
+      height: 150px;
+    }
+
+    &Help {
+      color: $gray-2;
+      margin-top: 5px;
+      text-align: center;
+    }
+  }
+
+  &Line {
+    display: flex;
+    margin-top: 25px;
+
+    .preview {
+      max-width: 245px;
+
+      &Image {
+        border-radius: 30px;
+        width: 245px;
+        height: 245px;
+      }
+    }
+
+    .text {
+
+      .textarea {
+        margin-top: 20px;
+        height: 100%;
+
+        &This {
+          max-height: 170px;
+        }
+      }
+    }
+
+  }
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+
+  &Item {
+    &:nth-child(n+2) {
+      margin-left: 25px;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import cl from './_Rating.module.scss'
 import clColor from '../../../../../rating/_Rating.module.scss'
 import Text16B from "../../../../../../ui/text/16/bold/Text16B";
@@ -23,23 +23,45 @@ const getRatingText = (countRatings) => {
     return 'оценки'
 }
 
-const Rating = ({className, rating, countRatings, ...props}) => {
-    let classNameColor = getClassNameColor(rating)
-    let ratingView = getRatingView(rating)
-    const ratingText = getRatingText(parseInt(countRatings))
+class Rating extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            countRatings: props.countRatings
+        }
+    }
 
-    return (
-        <div className={[cl.block, className].join(" ")}>
-            {countRatings !== 0 &&
-                <div className={cl.active}>
-                    <ModalPurpleFR title={countRatings} description={` ${ratingText}`} className={cl.activeModal}/>
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.countRatings !== this.state.countRatings) {
+            // console.log(this.props.countRatings)
+            // console.log(this.state.countRatings)
+            this.setState({
+                countRatings: this.props.countRatings
+            })
+        }
+    }
+
+    render() {
+        const {className, rating} = this.props;
+        const {countRatings} = this.state;
+
+        let classNameColor = getClassNameColor(rating)
+        let ratingView = getRatingView(rating)
+        const ratingText = getRatingText(parseInt(countRatings))
+
+        return (
+            <div className={[cl.block, className].join(" ")}>
+                {countRatings !== 0 &&
+                    <div className={cl.active}>
+                        <ModalPurpleFR title={countRatings} description={` ${ratingText}`} className={cl.activeModal}/>
+                    </div>
+                }
+                <div className={[cl.rating, classNameColor].join(' ')}>
+                    <Text16B className={[cl.title, clColor.title].join(' ')}>{ratingView}</Text16B>
                 </div>
-            }
-            <div className={[cl.rating, classNameColor].join(' ')} {...props}>
-                <Text16B className={[cl.title, clColor.title].join(' ')}>{ratingView}</Text16B>
             </div>
-        </div>
-    );
+        );
+    }
 }
 
 export default Rating;

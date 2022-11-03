@@ -1,6 +1,6 @@
 import {BASE_URL_API, request} from "../../../core/api/mainAPI";
 
-const COLLECTION_URL_API = `${BASE_URL_API}/collections`
+export const COLLECTION_URL_API = `${BASE_URL_API}/collections`
 
 export async function getCollectionProfile(limit){
     let url = `${COLLECTION_URL_API}/all/${sessionStorage.getItem('path')}/?ordering=date_added`
@@ -15,10 +15,20 @@ export async function createCollection(){
     return await request('POST', url)
 }
 
+export async function updateCollection(path, body){
+    const url = `${COLLECTION_URL_API}/update/${path}/`
+    const headers = {
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${sessionStorage.getItem('access')}`
+    }
+    return await request('PUT', url, body, headers)
+}
+
 export async function deleteCollection(path){
     const url = `${COLLECTION_URL_API}/delete/${path}`
     return await request('DELETE', url)
 }
+
 
 // Получить каталог
 export async function getCatalog() {
