@@ -1,0 +1,79 @@
+@import "../../../../../../core/scss/vars";
+
+.wrapper {
+  position: relative;
+  width: 100%;
+
+  .back {
+    position: relative;
+    &Dark {
+      position: absolute;
+      background-color: $black_50;
+      width: 100%;
+      height: calc(100% - 4px);
+    }
+
+    .wallpaper {
+      height: 440px;
+    }
+  }
+
+  .defaultWallpaper {
+    width: 100%;
+    height: 460px;
+    border-bottom: 2px solid $black-light-3;
+    //border-radius: 0 0 20% 20%;
+    display: flex;
+    //justify-content: center;
+
+    .emoji {
+      margin-top: 230px;
+      margin-left: 60px;
+    }
+  }
+
+  .front {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 4px);
+    top: 0;
+
+    &Wrapper {
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+      align-items: center;
+
+      .avatar {
+        margin-top: 25px;
+      }
+
+      .status {
+        margin-top: 10px;
+      }
+
+      .communications {
+        margin-top: 5px;
+        display: flex;
+
+        &Item:nth-child(n+2) {
+            margin-left: 30px;
+        }
+      }
+
+      .subscribe, .unsubscribe {
+        margin-top: 18px;
+      }
+
+      .menu {
+        //bottom: -3px;
+        //position: absolute;
+        //margin-top: 20px;
+        margin-top: auto;
+        //margin-bottom: 0 !important;
+      }
+    }
+  }
+
+}
+

@@ -4,15 +4,15 @@ import {useNavigate} from "react-router"
 import clAuth from "../../../core/components/_Auth.module.scss"
 import clSignIn from "./_SignIn.module.scss"
 
-import H2 from "../../../../core/ui/title/H2/H2";
+import H3 from "../../../../core/ui/title/H3/H3";
 import LinkPurple from "../../../../core/ui/link/purple/LinkPurple";
-import ButtonPurpleFR from "../../../../core/ui/button/radius/fill/purple/ButtonPurpleFR";
 import Text14M from "../../../../core/ui/text/14/medium/Text14M";
 
 import emailSVG from "../../../../core/static/img/email.svg"
 import lockSVG from "../../../../core/static/img/lock.svg"
 import InputDefault from "../../../../core/components/default_input/InputDefault";
-import {getTokenData, logout} from "../../../api/authAPI";
+import {getTokenData, logout, setUser} from "../../../api/authAPI";
+import ButtonSign from "../../../core/components/button/ButtonSign";
 
 
 const SignIn = ({className}) => {
@@ -37,7 +37,9 @@ const SignIn = ({className}) => {
         response.then(
             () => {
                 setErrMsg('')
-                return mainUrl('../')
+                setUser().then(() => {
+                    return mainUrl('../')
+                })
             },
             () => {
                 console.log('error')
@@ -50,7 +52,7 @@ const SignIn = ({className}) => {
 
     return (
         <form className={[clAuth.block, className].join(" ")} onSubmit={handleSubmit}>
-            <H2 className={clAuth.title}>Вход</H2>
+            <H3 className={clAuth.title}>Вход</H3>
 
             <p ref={errRef} className={[errMsg ? clAuth.messageError : '', clAuth.message].join(" ")} aria-live="assertive">{errMsg}</p>
 
@@ -69,7 +71,7 @@ const SignIn = ({className}) => {
             <LinkPurple to="#" className={clSignIn.navHelp}>Забыли пароль?</LinkPurple>
 
             <a className={clAuth.submit} href='/'>
-                <ButtonPurpleFR type="submit">Войти</ButtonPurpleFR>
+                <ButtonSign type="submit">Войти</ButtonSign>
             </a>
 
             <Text14M className={clAuth.navDescription}>

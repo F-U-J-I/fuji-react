@@ -14,6 +14,10 @@
   cursor: pointer;
   overflow: hidden;
 
+  .title {
+    white-space: nowrap;
+  }
+
   &:hover {
     background-color: $black-light-4 !important;
   }

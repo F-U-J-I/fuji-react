@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import cl from './_Catalog.module.scss'
-import CollectionBigMini from "../../core/components/collection/big/mini/CollectionBigMini";
+import BigMiniCollection from "../../core/components/collection/big/mini/BigMiniCollection";
 import {getCatalog} from "../core/api/collectionAPI";
 import {MainPageWrapperContext} from "../core/context/Context";
+import {catalogId} from "../core/wrapper/main_page_wrapper/core/service/activeIdService";
 
 class Catalog extends Component {
     constructor(props) {
@@ -15,7 +16,7 @@ class Catalog extends Component {
     }
 
     componentDidMount() {
-        this.setCatalog()
+        this._setData()
     }
 
     static contextType = MainPageWrapperContext;
@@ -26,6 +27,11 @@ class Catalog extends Component {
                 addedCollectionList: this.context.addedCollectionList
             })
         }
+    }
+
+    _setData() {
+        this.context.setActiveId(catalogId)
+        this.setCatalog()
     }
 
     setCatalog() {
@@ -47,7 +53,7 @@ class Catalog extends Component {
         let collectionListHTML = [];
         if (!error) {
             collectionListHTML = collectionList.map(item => (
-                <CollectionBigMini key={item.path}
+                <BigMiniCollection key={item.path}
                                    collection={item}
                                    addedCollectionList={addedCollectionList}
                                    setAddedCollectionList={setAddedCollectionList} />

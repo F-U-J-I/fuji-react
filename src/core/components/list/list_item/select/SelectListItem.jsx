@@ -7,7 +7,7 @@ import checkMarkSVG from "../../../../static/img/check-mark-fill-white.svg";
 const SelectListItem = ({className, title, id, nameInput, activeId, ...props}) => {
     return (
         <label className={[clDefault.wrapper, className].join(" ")} {...props}>
-            <Text16M>{title}</Text16M>
+            <Text16M className={clDefault.title}>{title}</Text16M>
             <input id={id} type="radio" className={cl.input} name={nameInput}
                    defaultChecked={id === activeId}/>
             <img src={checkMarkSVG} alt='icon' className={cl.check}/>

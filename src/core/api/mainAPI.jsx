@@ -32,8 +32,18 @@ export function getImage(src) {
     return null
 }
 
-export function requestGET(url) {
-    return request('GET', url)
+export function getParams(params) {
+    if (params === undefined || params === null || params.length === 0)
+        return ''
+
+    let paramsStr = []
+    for (let key in params)
+        paramsStr.push(`${key}=${params[key]}`)
+    return `?${paramsStr.join('&')}`
+}
+
+export function getURL(url, params) {
+    return url + getParams(params)
 }
 
 export async function request(method, url, body, headers) {
@@ -50,5 +60,5 @@ export async function request(method, url, body, headers) {
     if (res.ok) {
         return await res.json();
     }
-    return Promise.reject();
+    return Promise.reject(res);
 }

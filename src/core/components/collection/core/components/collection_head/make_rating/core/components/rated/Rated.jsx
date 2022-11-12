@@ -7,7 +7,7 @@ import {deleteGradeCollection} from "../../../../../../../../../../main/core/api
 import ListItem from "../../../../../../../../list/list_item/default/ListItem";
 import {useOutsideAlerter} from "../../../../../../../../../service/outsideOnClick";
 
-const Rated = ({rating, path, setRating, countRatings, setCountRatings, nameState, setState, deleteState, updateState, className, ...props}) => {
+const Rated = ({rating, path, setRating, nameState, setState, deleteState, updateState, className, ...props}) => {
     const [isVisible, setIsVisible] = useState(false)
 
     const handleClickUpdate = () => {
@@ -19,7 +19,6 @@ const Rated = ({rating, path, setRating, countRatings, setCountRatings, nameStat
             r => {
                 setState(deleteState)
                 setRating(r.rating)
-                setCountRatings(countRatings - 1)
             },
             e => {
                 console.log(e)

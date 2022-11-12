@@ -10,35 +10,31 @@
     border-radius: 10px;
   }
 
-  .text {
-    margin: auto 0 auto 20px;
-
-    .title {
-      border-bottom: 3px solid $empty;
-      transition: all .15s;
-
-      &:hover {
-        border-bottom: 3px solid $white;
-      }
-    }
-  }
-
   .info {
     display: flex;
-    margin-bottom: auto;
+    flex-direction: column;
+    margin-top: auto;
+    margin-bottom: 6px;
+    margin-left: 20px;
 
-    .rating {
-      margin-top: 13px;
+    &Item:nth-child(n+2) {
       margin-left: 15px;
+      margin-top: auto;
+      margin-bottom: auto;
     }
 
-    .addCollection {
-      margin-left: 15px;
-      margin-top: 17px;
-    }
-  }
+    .top {
+      display: flex;
 
-  &Link {
-    margin: 16px 0 auto auto;
+      .title {
+        border-bottom: 3px solid $empty;
+        transition: all .15s;
+
+        &:hover {
+          border-bottom: 3px solid $white;
+        }
+      }
+
+    }
   }
 }

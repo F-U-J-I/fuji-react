@@ -7,12 +7,17 @@ const USER_URL = 'profile/';
 // const LOGIN_URL = 'api/token/';
 
 function saveToken(tokenData) {
-    sessionStorage.setItem('access', tokenData['access']);
-    sessionStorage.setItem('refresh', tokenData['refresh']);
-    setUser().then()
+    save('access', tokenData['access'])
+    save('refresh', tokenData['refresh'])
 }
 
-async function setUser() {
+function saveUser(user) {
+    save('username', user.username);
+    save('path', user.path);
+    save('avatarUrl', user.avatar_url);
+}
+
+export async function setUser() {
     await fetch(`${BASE_URL_API}/${USER_URL}`, {
         method: 'GET',
         credentials: 'include',
@@ -21,13 +26,10 @@ async function setUser() {
         .then(async (res) => {
             if (res.status === 200) {
                 const user = await res.json();
-                save('username', user.username);
-                save('path', user.path);
-                save('avatarUrl', user.avatar_url);
-                // window.location.reload();
-                return Promise.resolve()
+                saveUser(user)
+                return Promise.resolve(user)
             }
-            return Promise.reject();
+            return Promise.reject(res);
         });
 }
 
@@ -47,7 +49,7 @@ export async function getTokenData(email, password){
                 saveToken(tokenData); // сохраняем полученный токен в sessionStorage, с помощью функции, заданной ранее
                 return Promise.resolve()
             }
-            return Promise.reject();
+            return Promise.reject(res);
         })
 }
 

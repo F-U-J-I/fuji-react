@@ -6,8 +6,10 @@ import CourseMiniActive from "../core/components/active/CourseMiniActive";
 
 const CourseMini = ({course, className, ...props}) => {
     return (
-        <div className={cl.course}>
-            <CourseMiniPreview className={cl.preview} course={course} {...props}/>
+        <div className={[cl.course, className].join(" ")}>
+            <div className={cl.previewWrapper}>
+                <CourseMiniPreview className={cl.preview} course={course} {...props}/>
+            </div>
             <div className={cl.activeWrapper}>
                 <div className={cl.blur}/>
                 <CourseMiniActive className={cl.active} course={course} {...props}/>

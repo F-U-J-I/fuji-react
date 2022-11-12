@@ -1,12 +1,9 @@
 import React, {Component} from 'react';
-import {useParams} from "react-router";
 import {getCollection} from "../core/api/collectionAPI";
 import {MainPageWrapperContext} from "../core/context/Context";
-import CollectionBigDetail from "../../core/components/collection/big/detail/CollectionBigDetail";
+import BigDetailCollection from "../../core/components/collection/big/detail/BigDetailCollection";
+import {withParams} from "../../core/service/params";
 
-function withParams(Component) {
-    return props => <Component {...props} params={useParams()}/>
-}
 
 class DetailCollectionPage extends Component {
     constructor(props) {
@@ -58,7 +55,7 @@ class DetailCollectionPage extends Component {
     render() {
         const {isLoaded, collection, addedCollectionList} = this.state;
         if (isLoaded) {
-            return <CollectionBigDetail collection={collection}
+            return <BigDetailCollection collection={collection}
                                         addedCollectionList={addedCollectionList}
                                         setAddedCollectionList={this.context.setAddedCollectionList}/>
         }

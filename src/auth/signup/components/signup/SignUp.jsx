@@ -1,15 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import clAuth from "../../../core/components/_Auth.module.scss";
-import H2 from "../../../../core/ui/title/H2/H2";
+import H3 from "../../../../core/ui/title/H3/H3";
 import InputDefault from "../../../../core/components/default_input/InputDefault";
 import userSVG from "../../../../core/static/img/user.svg";
 import emailSVG from "../../../../core/static/img/email.svg";
 import lockSVG from "../../../../core/static/img/lock.svg";
 import LinkPurple from "../../../../core/ui/link/purple/LinkPurple";
-import ButtonPurpleFR from "../../../../core/ui/button/radius/fill/purple/ButtonPurpleFR";
 import Text14M from "../../../../core/ui/text/14/medium/Text14M";
 import {useNavigate} from "react-router";
 import {logout, register} from "../../../api/authAPI";
+import ButtonSign from "../../../core/components/button/ButtonSign";
 
 const SignUp = ({className}) => {
 
@@ -59,7 +59,7 @@ const SignUp = ({className}) => {
 
     return (
         <form className={[clAuth.block, className].join(" ")} onSubmit={handleSubmit}>
-            <H2 className={clAuth.title}>Регистрация</H2>
+            <H3 className={clAuth.title}>Регистрация</H3>
 
             <p className={[errMsg ? clAuth.messageError : '', clAuth.message].join(" ")}
                aria-live="assertive">{errMsg}</p>
@@ -84,7 +84,7 @@ const SignUp = ({className}) => {
             </div>
 
             <a className={clAuth.submit} href='/'>
-                <ButtonPurpleFR type="submit">Зарегистрироваться</ButtonPurpleFR>
+                <ButtonSign type="submit">Зарегистрироваться</ButtonSign>
             </a>
 
             <Text14M className={clAuth.navDescription}>

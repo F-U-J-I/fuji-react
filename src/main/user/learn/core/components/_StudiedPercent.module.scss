@@ -1,0 +1,59 @@
+@import "../../../../../core/scss/vars";
+
+.block {
+  display: flex;
+  flex-direction: column;
+}
+
+.studying {
+  display: flex;
+  align-self: center;
+}
+
+.oval {
+  display: flex;
+  margin-top: 13px;
+  width: 230px;
+  height: 230px;
+  position: relative;
+  border-radius: 50%;
+
+
+  .percent {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &:after {
+    border-radius: 50%;
+    display: block;
+    content: "";
+    background: $black-light-2;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    height: 206px;
+    width: 206px;
+  }
+}
+
+.studied {
+  width: 230px;
+  margin-top: 20px;
+
+  &Title {
+    text-align: center;
+  }
+
+  &Description {
+    display: flex;
+    justify-content: center;
+  }
+}

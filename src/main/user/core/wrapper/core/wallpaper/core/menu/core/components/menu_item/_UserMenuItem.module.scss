@@ -1,0 +1,17 @@
+@import "../../../../../../../../../../../core/scss/vars";
+
+.link:hover .default {
+  color: $white;
+}
+
+.default {
+  color: $gray-2;
+  margin-bottom: auto;
+  transition: all .15s;
+  padding-bottom: 25px;
+}
+
+.active {
+  padding-bottom: 22px;
+  border-bottom: 3px solid $purple-2;
+}

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import cl from './_AddCollection.module.scss'
-import H3 from "../../../../../../ui/title/H3/H3";
+import H4 from "../../../../../../ui/title/H4/H4";
 
 class AddCollection extends Component {
     constructor(props) {
@@ -25,7 +25,7 @@ class AddCollection extends Component {
         return (
             <div className={[cl.block, className, isAdded ? cl.isAdded : ""].join(" ")} >
                 <div className={cl.image} onClick={onClick}/>
-                <H3 className={cl.title}/>
+                <H4 className={cl.title}/>
             </div>
         );
     }

@@ -60,12 +60,17 @@ class CollectionHeadDetail extends Component {
         this.setState({preview: newPreview})
     }
 
-    _setCountRatings = (newCountRatings) => {
-        console.log('_setCountRatings')
-        console.log(newCountRatings)
-        this.setState({countRatings: newCountRatings})
+    _setMembersAmount = (newMembersAmount) => {
+        this.setState({membersAmount: newMembersAmount})
     }
 
+    _setIsAdded = (bool) => {
+        this.setState({isAdded: bool})
+    }
+
+    _setCountRatings = (newCountRatings) => {
+        this.setState({countRatings: newCountRatings})
+    }
 
     _getIndexAddedCollectionList = () => {
         for (let i = 0; i !== this.props.addedCollectionList.length; i++)
@@ -102,6 +107,12 @@ class CollectionHeadDetail extends Component {
                 this.props.setWallpaper(r.wallpaper)
                 this._updateCollection(title, description, r.image_url)
                 this._setPreview(r.image_url)
+
+                this.setState({
+                    wallpaper: r.wallpaper,
+                    image_url: r.image_url,
+                })
+
                 return true
             },
             e => {
@@ -122,18 +133,21 @@ class CollectionHeadDetail extends Component {
 
     render() {
         const {description, setDescription, setWallpaper, addedCollectionList, setAddedCollectionList, className, ...props} = this.props;
-        const {collection, title, rating, preview, wallpaper, countRatings, grade} = this.state;
+        const {collection, title, rating, preview, wallpaper, countRatings, grade, membersAmount, isAdded} = this.state;
         const _isMyCollection = isMyCollection(collection.author.path)
         return (
             <div className={[clCommon.collectionHead, className].join(" ")} {...props}>
                 <CollectionDefault path={collection.path}
                                    title={title}
+                                   isTitleText={true}
                                    image_url={preview}
                                    author={collection.author}
                                    rating={rating}
                                    countRatings={countRatings}
-                                   isAdded={collection.is_added}
-                                   membersAmount={collection.members_amount}
+                                   isAdded={isAdded}
+                                   setIsAdded={this._setIsAdded}
+                                   membersAmount={membersAmount}
+                                   setMembersAmount={this._setMembersAmount}
                                    addedCollectionList={addedCollectionList}
                                    setAddedCollectionList={setAddedCollectionList}/>
 
@@ -152,7 +166,7 @@ class CollectionHeadDetail extends Component {
                         </>
                     ) : (
                         <div className={cl.rating}>
-                            <CollectionTracking membersAmount={collection.members_amount}/>
+                            <CollectionTracking membersAmount={membersAmount}/>
                             <MakeRating className={cl.ratingButton} path={collection.path} grade={grade} setGrade={this._setGrade}
                                         rating={rating} setRating={this._setRating} countRatings={countRatings}
                                         setCountRatings={this._setCountRatings}/>

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import cl from "./_MakeRating.module.scss";
-import ButtonDarkFR from "../../../../../../ui/button/radius/fill/dark/ButtonDarkFR";
+import ButtonDarkDefaultFR from "../../../../../../ui/button/radius/fill/dark/default/ButtonDarkDefaultFR";
 import ListMakeRating from "./core/components/make_rating_list/ListMakeRating";
 import Rated from "./core/components/rated/Rated";
 import ItemMakeRatingHover from "./core/components/make_rating_item/hover/ItemMakeRatingHover";
@@ -25,10 +25,8 @@ class MakeRating extends Component {
             grade: props.grade,
             rating: props.rating,
             localGrade: props.grade,
-            classNameState: getState(props.grade),
-            startClassNameState: getState(this.props.grade),
-            countUpdate: 0,
             currentRating: props.grade,
+            classNameState: getState(this.props.grade)
         }
     }
 
@@ -39,19 +37,9 @@ class MakeRating extends Component {
                 rating: this.props.rating,
                 localGrade: this.props.grade,
                 classNameState: getState(this.props.grade),
-                startClassNameState: getState(this.props.grade),
-                countUpdate: 0,
                 currentRating: this.props.grade,
             })
         }
-        // if (this.props.rating !== this.state.rating) {
-        //     this.props.setRating(this.state.rating)
-        // }
-    }
-
-    _isFirstRate = () => {
-        return (this.state.startClassNameState === NOT_RATED_STATE)
-            && (this.state.countUpdate === 0)
     }
 
     handleOnClickItem = (newGrade) => {
@@ -62,30 +50,36 @@ class MakeRating extends Component {
         callback(this.props.path, newGrade).then(
             r => {
                 this.props.setGrade(newGrade)
-                if (this._isFirstRate()) {
-                    this.props.setCountRatings(this.props.countRatings + 1)
-                }
                 this.setState({
                     rating: r.rating,
                     localGrade: newGrade,
                     classNameState: RATED_STATE,
                     currentRating: newGrade,
-                    countUpdate: this.state.countUpdate + 1,
                 })
                 this.props.setRating(r.rating)
             }
         )
     }
 
+    _swapClassNameState = (newClassNameState) => {
+        const oldState = this.state.classNameState;
+        this._setClassNameState(newClassNameState)
+
+        if (newClassNameState === NOT_RATED_STATE
+            && oldState !== NOT_RATED_STATE) {
+            this.props.setCountRatings(this.props.countRatings - 1)
+        } else if (newClassNameState === NOT_RATED_ACTIVE_STATE
+            && oldState === NOT_RATED_STATE) {
+            this.props.setCountRatings(this.props.countRatings + 1)
+        }
+    }
+
     _setClassNameState = (newClassNameState) => {
-        console.log(newClassNameState)
-        this.setState({
-            classNameState: newClassNameState,
-        })
+        this.setState({classNameState: newClassNameState})
     }
 
     render() {
-        const {className, path, setRating, countRatings, setCountRatings, setGrade, ...props} = this.props;
+        const {className, path, countRatings, setRating, setCountRatings, setGrade, ...props} = this.props;
         const {classNameState, currentRating} = this.state;
 
         const ratingList = [1, 2, 3, 4, 5];
@@ -95,8 +89,7 @@ class MakeRating extends Component {
                 {currentRating !== null &&
                     <Rated rating={currentRating} path={path}
                            className={[cl.rated, classNameState === RATED_STATE ? cl.active : ''].join(" ")}
-                           countRatings={countRatings} setCountRatings={setCountRatings}
-                           setRating={setRating} setState={this._setClassNameState}
+                           setRating={setRating} setState={this._swapClassNameState}
                            nameState={classNameState} deleteState={NOT_RATED_STATE} updateState={NOT_RATED_ACTIVE_STATE}/>
                 }
                 <ListMakeRating
@@ -105,8 +98,8 @@ class MakeRating extends Component {
                         <ItemMakeRatingHover key={n} rating={n} onClick={() => this.handleOnClickItem(n)}/>
                     )}
                 </ListMakeRating>
-                <ButtonDarkFR className={cl.ratingButton} title='Оценить'
-                              onClick={() => this._setClassNameState(NOT_RATED_ACTIVE_STATE)}/>
+                <ButtonDarkDefaultFR className={cl.ratingButton} title='Оценить'
+                                     onClick={() => this._swapClassNameState(NOT_RATED_ACTIVE_STATE)}/>
             </div>
         )
     }

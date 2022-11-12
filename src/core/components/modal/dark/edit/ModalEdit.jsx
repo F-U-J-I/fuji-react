@@ -25,12 +25,13 @@ const ModalEdit = ({path, titleModal, title, description, image_url, wallpaper, 
 
 
     const handleOnClickSubmit = async () => {
-        // wallpaperFormData.append('image', e.currentTarget.files[0], e.currentTarget.files[0].name)
-        onClickSubmit(titleCollection, descriptionCollection, wallpaperFile, previewFile).then(
-            () => {
-                setIsVisible(false)
-            }
-        )
+        if (titleCollection !== '') {
+            onClickSubmit(titleCollection, descriptionCollection, wallpaperFile, previewFile).then(
+                () => {
+                    setIsVisible(false)
+                }
+            )
+        }
     }
 
     const onWallpaperSelected = (e) => {
@@ -75,7 +76,7 @@ const ModalEdit = ({path, titleModal, title, description, image_url, wallpaper, 
 
             <div className={cl.navigation}>
                 <ButtonDarkFOR className={cl.navigationItem} title="Назад" onClick={handleOnClickClose}/>
-                <ButtonPurpleFOR className={cl.navigationItem} title="Сохранить" onClick={handleOnClickSubmit}/>
+                <ButtonPurpleFOR type="submit" className={cl.navigationItem} title="Сохранить" onClick={handleOnClickSubmit}/>
             </div>
         </ModalWrapper>
     );

@@ -1,0 +1,7 @@
+.collections {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  //grid-template-columns: repeat(auto-fill, 284px);
+  grid-gap: 20px;
+  width: 100%;
+}

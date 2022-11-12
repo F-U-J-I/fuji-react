@@ -1,13 +1,29 @@
-import {BASE_URL_API, request} from "../../../core/api/mainAPI";
+import {BASE_URL_API, getURL, request} from "../../../core/api/mainAPI";
 
 export const COLLECTION_URL_API = `${BASE_URL_API}/collections`
 
-export async function getCollectionProfile(limit){
-    let url = `${COLLECTION_URL_API}/all/${sessionStorage.getItem('path')}/?ordering=date_added`
-    if (limit !== undefined)
-        url += `&limit=${limit}`
+// Подборки пользователя
+export async function getCollectionProfile(path, params){
+    let pathLocal = path
+    if (path === undefined)
+        pathLocal = sessionStorage.getItem('path')
+    const url = getURL(`${COLLECTION_URL_API}/all/${pathLocal}/`, params)
     return await request('GET', url)
 }
+
+// Добавленные подборки
+export async function getAddedCollection(path, params){
+    const url = getURL(`${COLLECTION_URL_API}/added/${path}/`, params)
+    return await request('GET', url)
+}
+
+// Созданные подборки
+export async function getCreatedCollection(path, params){
+    const url = getURL(`${COLLECTION_URL_API}/created/${path}/`, params)
+    return await request('GET', url)
+}
+
+
 
 // Создание подборки
 export async function createCollection(){
@@ -28,6 +44,7 @@ export async function deleteCollection(path){
     const url = `${COLLECTION_URL_API}/delete/${path}`
     return await request('DELETE', url)
 }
+
 
 
 // Получить каталог
@@ -54,6 +71,8 @@ export async function popCollection(path) {
     const url = `${COLLECTION_URL_API}/pop/${path}/`
     return await request('DELETE', url)
 }
+
+
 
 // CREATE | UPDATE | DELETE grade collections
 // CREATE

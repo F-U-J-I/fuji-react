@@ -1,0 +1,9 @@
+
+
+.menu {
+  display: flex;
+
+  &Item:nth-child(n+2) {
+    margin-left: 40px;
+  }
+}

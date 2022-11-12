@@ -1,0 +1,21 @@
+@import "../../../scss/vars";
+
+.menu {
+  display: flex;
+}
+
+.border {
+  height: 100%;
+  width: 68px;
+}
+
+.content {
+  display: flex;
+  background-color: $black-light-1;
+  padding-top: 10px;
+  padding-bottom: 20px;
+
+  .button:nth-child(n+2) {
+    margin-left: 50px;
+  }
+}

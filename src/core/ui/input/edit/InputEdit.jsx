@@ -8,8 +8,15 @@ import cl from './_InputEdit.module.scss'
 import warningSVG from "../../../static/img/warning-fill-red.svg"
 
 
-const InputEdit = ({title, id, required, type, className, classNameInput, ...props}) => {
+const InputEdit = ({title, id, required, type, value, className, classNameInput, ...props}) => {
     const [error, setError] = useState(false)
+
+    if (required) {
+        if (value === '' && !error)
+            setError(true)
+        else if (value.trim() !== '' && error)
+            setError(false)
+    }
 
     return (
         <div className={[className, cl.wrapper].join(" ")}>
@@ -18,8 +25,8 @@ const InputEdit = ({title, id, required, type, className, classNameInput, ...pro
                 {required && <Text18B className={cl.symbolRequired}>*</Text18B>}
             </label>
             {type === 'textarea'
-                ? <textarea className={[classNameInput, cl.textarea].join(" ")} id={id} required={required} {...props}/>
-                : <input type={type} className={[classNameInput, cl.input].join(" ")} id={id} required={required} {...props}/>
+                ? <textarea className={[classNameInput, cl.textarea].join(" ")} id={id} value={value} required={required} {...props}/>
+                : <input type={type} className={[classNameInput, cl.input].join(" ")} id={id} value={value} required={required} {...props}/>
             }
             {required && error &&
                 <span className={cl.error}>

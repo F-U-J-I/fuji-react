@@ -1,0 +1,32 @@
+@import "../../../../../../../../../core/scss/vars";
+
+.user {
+  //position: relative;
+  position: absolute;
+
+  &Image {
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 50px;
+    max-height: 50px;
+
+    object-fit: cover;
+    border-radius: 50px;
+  }
+
+  .menu {
+    top: -17px;
+    right: -25px;
+    position: absolute;
+    display: none;
+    box-shadow: 0 0 10px 0 $black_25;
+
+    &Active {
+      display: block;
+    }
+
+    &Username {
+      margin-right: 15px;
+    }
+  }
+}

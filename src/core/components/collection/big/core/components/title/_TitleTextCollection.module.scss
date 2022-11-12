@@ -1,0 +1,10 @@
+@import "../../../../../../scss/vars";
+
+.title {
+  border-bottom: 3px solid $empty;
+  transition: all .15s;
+
+  &:hover {
+    border-bottom: 3px solid $white;
+  }
+}

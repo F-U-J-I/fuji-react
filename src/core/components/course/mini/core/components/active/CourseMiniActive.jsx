@@ -9,7 +9,7 @@ import watchSVG from "../../../../../../static/img/watch-outline-white.svg";
 
 import {getNumber, getWatch} from "../../../../../../service/number";
 import {COURSE_URL} from "../../../../../../service/urls";
-import H3 from "../../../../../../ui/title/H3/H3";
+import H4 from "../../../../../../ui/title/H4/H4";
 import Text14M from "../../../../../../ui/text/14/medium/Text14M";
 import Text16Book from "../../../../../../ui/text/16/book/Text16Book";
 import MainInfoItem from "../main-info-item/MainInfoItem";
@@ -45,7 +45,7 @@ const CourseMiniActive = ({course, className, ...props}) => {
         <Link to={`${COURSE_URL}/${course.path}`}
               className={[cl.course, clCommon.course, existsDescription ? '' : cl.empty, className].join(" ")} {...props}>
             <Text14M className={[cl.author, clCommon.author].join(" ")}>{course.author.username}</Text14M>
-            <H3 className={[cl.title, clCommon.title].join(" ")}>{course.title}</H3>
+            <H4 className={[cl.title, clCommon.title].join(" ")}>{course.title}</H4>
             <Text16Book className={cl.description}>{course.description}</Text16Book>
 
             <div className={[clCommon.mainInfo, cl.mainInfo].join(" ")}>

@@ -4,6 +4,10 @@
 .course {
   position: relative;
 
+  .previewWrapper {
+    overflow-y: hidden;
+  }
+
   .preview {
     background-color: $black-light-3;
   }

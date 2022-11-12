@@ -1,0 +1,19 @@
+.content {
+  width: 100%;
+  &Line {
+    display: flex;
+    width: 100%;
+
+    .studiedPercent {
+      margin-left: 50px;
+      margin-top: 16px;
+    }
+  }
+
+  .collection {
+    width: 100%;
+    &:nth-child(n+2) {
+      margin-top: 45px;
+    }
+  }
+}

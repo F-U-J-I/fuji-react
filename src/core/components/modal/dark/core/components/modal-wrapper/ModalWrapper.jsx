@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react';
 import cl from './_ModalWrapper.module.scss'
-import H1 from "../../../../../../ui/title/H1/H1";
+import H2 from "../../../../../../ui/title/H2/H2";
 import {useOutsideAlerterAfter} from "../../../../../../service/outsideOnClick";
 
 import crossSVG from '../../../../../../static/img/cross-fill-white.svg'
@@ -19,7 +19,7 @@ const ModalWrapper = ({className, setIsVisible, title, children, ...props}) => {
         <div className={cl.wrapper}>
             <form ref={box} className={[className, cl.block].join(" ")} {...props}>
                 <div className={cl.title}>
-                    <H1 className={cl.titleText}>{title}</H1>
+                    <H2 className={cl.titleText}>{title}</H2>
                     <img src={crossSVG} alt="icon" className={cl.titleCross} onClick={handleOnClickClose} />
                 </div>
                 <div className={cl.content}>

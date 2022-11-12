@@ -3,9 +3,13 @@
 
 .link {
   display: flex;
-  font-family: $f-medium;
-  font-size: $fs-14;
   color: $purple;
+  font-family: $f-medium;
+
+  .title {
+    font-size: $fs-14;
+    color: $purple;
+  }
 
   span {
     border-bottom: 1px solid $empty;
