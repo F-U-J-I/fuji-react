@@ -3,7 +3,7 @@ import cl from './_ArchiveWrapper.module.scss'
 
 import {ArchiveWrapperContext} from "./core/context/ArchiveWrapperContext";
 import TopMenu from "../../../../core/components/menu/top/TopMenu";
-import {collectionId, courseId, friendId} from "../service/menuID";
+import {collectionId, courseId} from "../service/menuID";
 import {MainPageWrapperContext} from "../../../core/context/Context";
 import {archiveId} from "../../../core/wrapper/main_page_wrapper/core/service/activeIdService";
 
@@ -39,9 +39,8 @@ class ArchiveWrapper extends Component {
         )
 
         const menu = [
-            {title: 'Подборки', to: '/archive/collections/', id: collectionId},
             {title: 'Курсы', to: '/archive/', id: courseId},
-            {title: 'Друзья', to: '/archive/friends/', id: friendId},
+            {title: 'Подборки', to: '/archive/collections/', id: collectionId},
         ]
 
         return (

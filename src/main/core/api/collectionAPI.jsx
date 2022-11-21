@@ -1,4 +1,4 @@
-import {BASE_URL_API, getURL, request} from "../../../core/api/mainAPI";
+import {BASE_URL_API, getParams, getURL, request} from "../../../core/api/mainAPI";
 
 export const COLLECTION_URL_API = `${BASE_URL_API}/collections`
 
@@ -45,6 +45,11 @@ export async function deleteCollection(path){
     return await request('DELETE', url)
 }
 
+
+export async function getCollections(params) {
+    const url = `${COLLECTION_URL_API}/${getParams(params)}`
+    return await request('GET', url)
+}
 
 
 // Получить каталог

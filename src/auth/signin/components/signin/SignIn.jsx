@@ -42,7 +42,6 @@ const SignIn = ({className}) => {
                 })
             },
             () => {
-                console.log('error')
                 setErrMsg('Неправильный логин или пароль')
             }
         );

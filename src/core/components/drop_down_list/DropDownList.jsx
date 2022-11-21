@@ -17,7 +17,7 @@ const DropDownList = ({list, defaultValue, setDefaultValue, className, ...props}
 
     const handleClickFilterItem = (e) => {
         for (let i = 0; i < list.length; i++) {
-            if (list[i].id === e.target.id) {
+            if (list[i].id == e.target.id) {
                 setDefaultValue(list[i])
             }
         }
@@ -26,13 +26,12 @@ const DropDownList = ({list, defaultValue, setDefaultValue, className, ...props}
 
     const box = useRef(null);
     useOutsideAlerter(box, setIsVisible);
-
     return (
         <form ref={box} className={[cl.select, className].join(" ")} {...props}>
-            <ListTitle title={defaultValue.name} onClick={handleClickFilter} />
+            <ListTitle title={defaultValue.title} onClick={handleClickFilter} />
             <List className={[cl.selectContent, isVisible ? "" : cl.selectContentActive].join(" ")}>
                 {list.map(item =>
-                    <SelectListItem key={item.id} title={item.name} id={item.id} nameInput={filterItemName}
+                    <SelectListItem key={item.id} title={item.title} id={item.id} nameInput={filterItemName}
                                     onClick={handleClickFilterItem} activeId={defaultValue.id}/>
                 )}
             </List>

@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import cl from './_Catalog.module.scss'
-import BigMiniCollection from "../../core/components/collection/big/mini/BigMiniCollection";
 import {getCatalog} from "../core/api/collectionAPI";
 import {MainPageWrapperContext} from "../core/context/Context";
 import {catalogId} from "../core/wrapper/main_page_wrapper/core/service/activeIdService";
+import CollectionBigList from "../../core/components/collection/big/list/CollectionBigList";
 
 class Catalog extends Component {
     constructor(props) {
@@ -35,16 +35,9 @@ class Catalog extends Component {
     }
 
     setCatalog() {
-        getCatalog()
-            .then((result) => {
-                this.setState({
-                    collectionList: result.results
-                })
-            }, () => {
-                this.setState({
-                    error: true
-                })
-            })
+        getCatalog().then(
+            r => {this.setState({collectionList: r.results})},
+            e => {this.setState({error: e.status})})
     }
 
     render() {
@@ -52,12 +45,11 @@ class Catalog extends Component {
         const {error, collectionList, addedCollectionList} = this.state;
         let collectionListHTML = [];
         if (!error) {
-            collectionListHTML = collectionList.map(item => (
-                <BigMiniCollection key={item.path}
-                                   collection={item}
+            collectionListHTML = (
+                <CollectionBigList collectionList={collectionList}
                                    addedCollectionList={addedCollectionList}
-                                   setAddedCollectionList={setAddedCollectionList} />
-            ));
+                                   setAddedCollectionList={setAddedCollectionList}/>
+            )
         }
 
         return (

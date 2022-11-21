@@ -2,20 +2,23 @@ import React, {Component} from 'react';
 import cl from "./_MainPageWrapper.module.scss";
 import SideBar from "./core/components/side_bar/SideBar";
 import TopBar from "./core/components/top_bar/TopBar";
-import {isLogin} from "../../../../core/api/mainAPI";
-import {Navigate} from "react-router";
 import {getCollectionProfile} from "../../api/collectionAPI";
 import {MainPageWrapperContext} from "../../context/Context";
+import {menuList} from "../../../../core/service/list";
+import {getError} from "../../../../core/service/error";
 
 class MainPageWrapper extends Component {
     constructor(props) {
         super(props);
         this.state = {
             path: sessionStorage.getItem('path'),
+            addedCollectionList: [],
+            menu: menuList,
+            search: '',
+            filter: menuList[0],
+            activeId: null,
             error: false,
             isLoad: false,
-            activeId: null,
-            addedCollectionList: []
         }
     }
 
@@ -25,70 +28,73 @@ class MainPageWrapper extends Component {
 
     _setData() {
         this.setState({path: sessionStorage.getItem('path')})
-        this.setProfile()
+        this._setProfile()
+        this.setState({isLoad: true})
     }
 
     _setActiveId = (newId) => {
         this.setState({activeId: newId})
     }
 
-    setProfile() {
+    _setProfile() {
         const path = sessionStorage.getItem('path')
         const params = {ordering: 'date_added'}
-        getCollectionProfile(path, params)
-            .then((result) => {
-                this._setAddedCollectionList(result.results)
-                this.setState({isLoad: true})
-            }, () => {
-                this.setState({
-                    error: true,
-                    isLoad: true
-                })
-            })
-    }
-
-    _setAddedCollectionList = (list) => {
-        this.setState({
-            addedCollectionList: list,
+        getCollectionProfile(path, params).then(r => {
+            this._setAddedCollectionList(r.results)
+        }, e => {
+            this.setState({error: e.status})
         })
     }
 
+    _setAddedCollectionList = (list) => {
+        this.setState({addedCollectionList: list})
+    }
+
+    _setSearch = (newValue) => {
+        this.setState({search: newValue})
+    }
+
+    _setFilter = (newValue) => {
+        this.setState({filter: newValue})
+    }
+
     render() {
-        const {activeId} = this.state;
+        const {activeId, menu, search, filter, addedCollectionList, isLoad, error} = this.state;
         const {children, ...props} = this.props;
 
-        if (!isLogin()) {
-            return <Navigate to='/signin'/>
-        }
+        if (error) return getError(error)
 
         let content = null;
-        if (this.state.isLoad) {
+        if (isLoad) {
             content = (
                 <MainPageWrapperContext.Provider value={{
                     setActiveId: this._setActiveId,
-                    addedCollectionList: this.state.addedCollectionList,
+                    search: search,
+                    filter: filter,
+                    setFilter: this._setFilter,
+                    addedCollectionList: addedCollectionList,
+                    menu: menu,
                     setAddedCollectionList: this._setAddedCollectionList,
                     ...props
                 }}>
                     {children}
-                </MainPageWrapperContext.Provider>
-            )
+                </MainPageWrapperContext.Provider>)
         }
 
-        return (
-            <div className={cl.page}>
-                <SideBar activeId={activeId} setCollectionList={this._setAddedCollectionList}
-                         collectionList={this.state.addedCollectionList}/>
-                <div className={cl.main}>
-                    <div className={cl.mainWrapper}>
-                        <TopBar/>
-                        <div className={[cl.mainContent, this.props.className].join(" ")}>
-                            {content}
-                        </div>
+        return (<div className={cl.page}>
+            <SideBar activeId={activeId} setCollectionList={this._setAddedCollectionList}
+                     collectionList={this.state.addedCollectionList}/>
+            <div className={cl.main}>
+                <div className={cl.mainWrapper}>
+                    <TopBar search={search} setSearch={this._setSearch}
+                            filter={filter} setFilter={this._setFilter}
+                            menu={menu}/>
+                    <div className={[cl.mainContent, this.props.className].join(" ")}>
+                        {content}
                     </div>
                 </div>
             </div>
-        );
+        </div>);
     }
 }
 

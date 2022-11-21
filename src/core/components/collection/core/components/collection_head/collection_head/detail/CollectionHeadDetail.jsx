@@ -64,10 +64,6 @@ class CollectionHeadDetail extends Component {
         this.setState({membersAmount: newMembersAmount})
     }
 
-    _setIsAdded = (bool) => {
-        this.setState({isAdded: bool})
-    }
-
     _setCountRatings = (newCountRatings) => {
         this.setState({countRatings: newCountRatings})
     }
@@ -145,7 +141,6 @@ class CollectionHeadDetail extends Component {
                                    rating={rating}
                                    countRatings={countRatings}
                                    isAdded={isAdded}
-                                   setIsAdded={this._setIsAdded}
                                    membersAmount={membersAmount}
                                    setMembersAmount={this._setMembersAmount}
                                    addedCollectionList={addedCollectionList}

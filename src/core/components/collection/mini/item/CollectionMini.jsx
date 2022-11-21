@@ -1,6 +1,6 @@
 import React from 'react';
 import cl from './_CollectionMini.module.scss'
-import H4 from "../../../../ui/title/H4/H4";
+import H5 from "../../../../ui/title/H5/H5";
 import StatusCollection from "../status/StatusCollection";
 import Text14M from "../../../../ui/text/14/medium/Text14M";
 import {Link} from "react-router-dom";
@@ -14,7 +14,7 @@ const CollectionMini = ({collection, className, ...props}) => {
         <Link to={to} className={[className, cl.collection].join(" ")} {...props}>
             <img className={cl.preview} src={preview} alt='preview' />
             <div className={cl.text}>
-                <H4 className={cl.title}>{collection.title}</H4>
+                <H5 className={cl.title}>{collection.title}</H5>
                 <StatusCollection className={cl.status} />
                 <Text14M className={cl.author}>Создал: {collection.author.username}</Text14M>
             </div>

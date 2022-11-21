@@ -54,10 +54,11 @@ class DetailCollectionPage extends Component {
 
     render() {
         const {isLoaded, collection, addedCollectionList} = this.state;
+        const {setAddedCollectionList} = this.context;
         if (isLoaded) {
             return <BigDetailCollection collection={collection}
                                         addedCollectionList={addedCollectionList}
-                                        setAddedCollectionList={this.context.setAddedCollectionList}/>
+                                        setAddedCollectionList={setAddedCollectionList}/>
         }
     }
 }

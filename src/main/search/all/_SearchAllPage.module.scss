@@ -1,0 +1,8 @@
+.content {
+  .wrapper:nth-child(n+1) {
+    margin-top: 45px;
+  }
+  &List {
+    margin-top: 35px;
+  }
+}

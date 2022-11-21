@@ -40,8 +40,6 @@ const SignUp = ({className}) => {
                     return loginUrl('../signin')
                 },
                 error => {
-                    console.log('error')
-                    console.log(error)
                     if (error.email) {
                         setErrMsg('Пользователь с таким email уже существует')
                     } else if (error.password) {

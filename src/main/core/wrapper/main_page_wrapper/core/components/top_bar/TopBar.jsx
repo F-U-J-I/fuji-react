@@ -3,11 +3,11 @@ import cl from './_TopBar.module.scss'
 import SearchFilter from "../../../../../ui/search/search_filter/SearchFilter";
 import UserNav from "./core/components/UserNav";
 
-const TopBar = ({className, ...props}) => {
+const TopBar = ({menu, search, setSearch, filter, setFilter, className, ...props}) => {
 
     return (
         <div className={[cl.block, className].join(" ")} {...props}>
-            <SearchFilter className={cl.search}/>
+            <SearchFilter selectList={menu} search={search} setSearch={setSearch} filter={filter} setFilter={setFilter} className={cl.search}/>
             <UserNav className={cl.userNav}/>
         </div>
     );

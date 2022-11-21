@@ -33,8 +33,6 @@ class Rating extends Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.countRatings !== this.state.countRatings) {
-            // console.log(this.props.countRatings)
-            // console.log(this.state.countRatings)
             this.setState({
                 countRatings: this.props.countRatings
             })

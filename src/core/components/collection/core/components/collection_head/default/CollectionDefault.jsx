@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import cl from "./_CollectionDefault.module.scss";
 import {getImage} from "../../../../../../api/mainAPI";
-import Author from "../../../../../user/core/author/Author";
+import Author from "../../../../../user/author/Author";
 import Rating from "../rating/Rating";
 import AddCollection from "../add_collection/AddCollection";
 import {addCollection, popCollection} from "../../../../../../../main/core/api/collectionAPI";
@@ -11,15 +11,16 @@ import PreviewCollection from "../../../../big/core/components/preview/PreviewCo
 import TitleTextCollection from "../../../../big/core/components/title/TitleTextCollection";
 
 
-const CollectionDefault = ({path, author, image_url, title, isTitleText, rating, countRatings, isAdded,
-                               setAddedCollectionList, addedCollectionList, setMembersAmount, setIsAdded,
+const CollectionDefault = ({path, author, image_url, title, isTitleText, rating, countRatings,
+                               isAdded, setAddedCollectionList, addedCollectionList, setMembersAmount,
                                membersAmount, ...props}) => {
 
+    const [isAddedLocal, setIsAddedLocal] = useState(isAdded)
     const _getCollection = () => {
         return {
             title: title,
             path: path,
-            image_url: image_url
+            image_url: image_url,
         }
     }
 
@@ -39,17 +40,19 @@ const CollectionDefault = ({path, author, image_url, title, isTitleText, rating,
     }
 
     const _handleClickAdd = () => {
-        if (isAdded) {
+        if (isAddedLocal) {
             popCollection(path).then(() => {
                 _removeCollection()
-                setIsAdded(false)
-                setMembersAmount(membersAmount - 1)
+                setIsAddedLocal(false)
+                if (setMembersAmount)
+                    setMembersAmount(membersAmount - 1)
             })
         } else {
             addCollection(path).then(() => {
                 _addCollection()
-                setIsAdded(true)
-                setMembersAmount(membersAmount + 1)
+                setIsAddedLocal(true)
+                if (setMembersAmount)
+                    setMembersAmount(membersAmount + 1)
             })
         }
     }
@@ -69,7 +72,7 @@ const CollectionDefault = ({path, author, image_url, title, isTitleText, rating,
                         <AddCollection className={cl.infoItem}
                                        path={path}
                                        onClick={_handleClickAdd}
-                                       isAdded={isAdded}/>
+                                       isAdded={isAddedLocal}/>
                     }
                 </div>
                 <Author image={author.avatar_url} name={author.username} path={author.path}/>

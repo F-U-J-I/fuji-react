@@ -1,10 +1,9 @@
 import React from 'react';
-import clCommon from "../_ButtonPurpleFR.module.scss";
-import cl from "./_ButtonPurpleBigFR.module.scss";
-import ButtonFR from "../../core/components/ButtonFR";
+import clSize from "../../../../core/scss/_ButtonSize.module.scss";
+import ButtonPurpleFR from "../core/components/button_purple_fill_radius/ButtonPurpleFR";
 
 const ButtonPurpleBigFR = ({className, ...props}) => {
-    return <ButtonFR className={[clCommon.button, cl.button, className].join(" ")} {...props} />
+    return <ButtonPurpleFR className={[clSize.big, className].join(" ")} {...props} />
 };
 
 export default ButtonPurpleBigFR;

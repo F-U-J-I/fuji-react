@@ -3,9 +3,9 @@ import EmptyList from "../../../empty/EmptyList";
 import cl from "./_CollectionMiniList.module.scss";
 import CollectionMini from "../item/CollectionMini";
 
-const CollectionMiniList = ({collections, className, ...props}) => {
-    if (!collections) {
-        return <EmptyList className={className} {...props} />
+const CollectionMiniList = ({titleEmpty, descriptionEmpty, collections, className, ...props}) => {
+    if (collections === undefined || collections == null || collections.length === 0) {
+        return <EmptyList title={titleEmpty} description={descriptionEmpty} className={className} {...props} />
     }
     return (
         <div className={[cl.collections, className].join(" ")} {...props}>

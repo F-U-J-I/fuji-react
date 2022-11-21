@@ -3,10 +3,10 @@ import {Link} from "react-router-dom";
 import cl from "./_CourseMiniPreview.module.scss";
 import clCommon from "../_CourseMiniCommon.module.scss";
 
-import H4 from "../../../../../../ui/title/H4/H4";
+import H5 from "../../../../../../ui/title/H5/H5";
 import Text14M from "../../../../../../ui/text/14/medium/Text14M";
 import PriceCourse from "../../../../core/components/price/PriceCourse";
-import MainInfoItem from "../main-info-item/MainInfoItem";
+import MainInfoItem from "../../../../core/components/main-info-item/MainInfoItem";
 
 import {getImage} from "../../../../../../api/mainAPI";
 import {getNumber, getWatch} from "../../../../../../service/number";
@@ -14,7 +14,7 @@ import {COURSE_URL} from "../../../../../../service/urls";
 import starSVG from "../../../../../../static/img/star-fill-yellow.svg";
 import userSVG from "../../../../../../static/img/user-outline-white.svg";
 import watchSVG from "../../../../../../static/img/watch-outline-white.svg";
-import ProgressCourse from "../../../../core/components/progress/ProgressCourse";
+import ProgressCourseMini from "../../../../core/components/progress/mini/ProgressCourseMini";
 
 const CourseMiniPreview = ({course, className, ...props}) => {
     const image = getImage(course.image_url)
@@ -47,7 +47,7 @@ const CourseMiniPreview = ({course, className, ...props}) => {
                     <div className={cl.titleInfoImageDark} />
                 </div>
                 <div className={cl.titleInfoText}>
-                    <H4 className={[cl.titleInfoTextTitle, clCommon.title].join(" ")}>{course.title}</H4>
+                    <H5 className={[cl.titleInfoTextTitle, clCommon.title].join(" ")}>{course.title}</H5>
                     <Text14M className={[cl.titleInfoTextAuthor, clCommon.author].join(" ")}>{course.author.username}</Text14M>
                 </div>
             </div>
@@ -60,7 +60,7 @@ const CourseMiniPreview = ({course, className, ...props}) => {
                 <div className={clCommon.otherInfo}>
                     {course.status_progress === null
                         ? <PriceCourse price={course.price} className={clCommon.price}/>
-                        : <ProgressCourse progress={course.progress.progress} maxProgress={course.progress.max_progress}/>
+                        : <ProgressCourseMini progress={course.progress.progress} maxProgress={course.progress.max_progress}/>
                     }
                 </div>
             </div>

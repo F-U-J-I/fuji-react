@@ -7,7 +7,7 @@ import Avatar from "./core/avatar/Avatar";
 import StatusUser from "./core/status/StatusUser";
 import H2 from "../../../../../../core/ui/title/H2/H2";
 import ButtonPurpleBigFR from "../../../../../../core/ui/button/radius/fill/purple/big/ButtonPurpleBigFR";
-import ButtonPurpleOR from "../../../../../../core/ui/button/radius/outline/purple/ButtonPurpleOR";
+import ButtonPurpleOR from "../../../../../../core/ui/button/radius/outline/purple/very_big/ButtonPurpleVeryBigOR";
 import UserMenu from "./core/menu/UserMenu";
 import LinkShowFollower from "./core/show_follower/LinkShowFollower";
 import {useNavigate} from "react-router";

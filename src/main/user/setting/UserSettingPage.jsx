@@ -11,13 +11,6 @@ class UserSettingPage extends Component {
         this.context.setPath(sessionStorage.getItem('path'))
     }
 
-    // componentDidUpdate(prevProps, prevState, snapshot) {
-    //     if (prevProps.params.path !== this.props.params.path) {
-    //         this.context.setActiveId(SETTING_ID)
-    //         this.context.setPath(sessionStorage.getItem('path'))
-    //     }
-    // }
-
     static contextType = UserWrapperContext;
 
     render() {

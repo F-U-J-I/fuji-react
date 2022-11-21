@@ -63,13 +63,13 @@ class UserLearn extends Component {
         const {studyingCourses, studiedCollections, studyingPercent, isLoad} = this.state;
         const {className, ...props} = this.props;
 
-        const toProcess = 'learn/process/';
-        const toComplete = 'learn/complete/';
+        const toProcess = '/learn/process/';
+        const toComplete = '/learn/complete/';
         if (isLoad)
             return (
                 <div className={[cl.content, className].join(" ")} {...props}>
                     <div className={cl.contentLine}>
-                        <SystemBaseCollection title="Изучает" to={`learn/process/`} courses={studyingCourses} className={cl.collection}/>
+                        <SystemBaseCollection title="Изучает" to={toProcess} courses={studyingCourses} className={cl.collection}/>
                         <StudiedPercent className={cl.studiedPercent}
                                         percent={studyingPercent.percent}
                                         toProcess={toProcess}
@@ -77,7 +77,7 @@ class UserLearn extends Component {
                                         studiedQuantity={studyingPercent.studied_quantity}
                                         studyingQuantity={studyingPercent.studying_quantity}/>
                     </div>
-                    <SystemBaseCollection title="Завершил" to={`learn/complete/`} courses={studiedCollections} className={cl.collection}/>
+                    <SystemBaseCollection title="Завершил" to={toComplete} courses={studiedCollections} className={cl.collection}/>
                 </div>
             );
     }

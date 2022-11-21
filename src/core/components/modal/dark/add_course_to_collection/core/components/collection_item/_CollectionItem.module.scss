@@ -1,0 +1,37 @@
+@import "../../../../../../../scss/vars";
+
+.active {
+  background-color: $black-light-3 !important;
+}
+
+.collectionItem {
+  display: flex;
+  cursor: pointer;
+  border-radius: 20px;
+  padding-right: 20px;
+  transition: all .2s;
+
+  &:hover {
+    background-color: $black-light-3;
+  }
+
+  .image {
+    width: 70px;
+    height: 70px;
+    border-radius: 20px;
+    object-fit: cover;
+  }
+
+  .title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: auto 12px;
+  }
+
+  .checkImage {
+    margin: auto 0 auto auto;
+    width: 15px;
+    height: 15px;
+  }
+}

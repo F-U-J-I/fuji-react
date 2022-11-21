@@ -1,0 +1,102 @@
+@import "../../../../../../../scss/vars";
+
+.course {
+  display: flex;
+  background-color: $black-light-3;
+  border-radius: 10px;
+  border: 2px solid $empty;
+  padding: 16px;
+  height: 252px;
+  max-width: 1220px;
+  transition: all .2s;
+
+  &:hover {
+    border-color: $purple;
+
+    .preview {
+      //border-color: $purple;
+    }
+  }
+}
+
+.preview {
+  width: 320px;
+  height: 100%;
+  border: 2px solid $black-light-2;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: all .15s;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  width: 100%;
+
+  .title {
+    margin-top: 14px;
+  }
+
+
+  .author {
+    display: flex;
+    margin-top: 5px;
+    align-items: center;
+
+    &:hover .authorName {
+      color: $green;
+    }
+
+    &Image {
+      width: 20px;
+      height: 20px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    &Name {
+      margin-left: 8px;
+      transition: all .15s;
+    }
+  }
+
+  .description {
+    margin-top: 9px;
+    height: 57px;
+    margin-bottom: auto;
+  }
+  .withoutDescription {
+    color: $gray-2;
+    //margin: auto 0;
+  }
+
+  .info {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    flex-basis: min-content;
+  }
+
+  .mainInfoList {
+    display: flex;
+    margin-top: 18px;
+    //margin-bottom: 62px;
+  }
+
+  .otherInfo {
+    display: flex;
+    margin-top: 16px;
+    width: 100%;
+  }
+
+  .price {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .progress {
+    margin-top: 0 !important;
+  }
+}

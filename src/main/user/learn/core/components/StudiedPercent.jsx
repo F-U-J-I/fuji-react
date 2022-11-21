@@ -3,18 +3,8 @@ import cl from './_StudiedPercent.module.scss'
 import Text16M from "../../../../../core/ui/text/16/medium/Text16M";
 import LinkPurple from "../../../../../core/ui/link/purple/LinkPurple";
 import H1 from "../../../../../core/ui/title/H1/H1";
-import H4 from "../../../../../core/ui/title/H4/H4";
-
-const getCourseText = (count) => {
-    // 11..19; x5..x9; x0
-    if ((count > 10 && count < 20) || (count % 10 > 4 || count % 10 === 0))
-        return `курсов`
-    // x1, (кроме 11..19)
-    else if (count % 10 === 1)
-        return `курс`
-    // other
-    return `курса`
-}
+import H5 from "../../../../../core/ui/title/H5/H5";
+import {getCourseText} from "../../../../../core/service/declension";
 
 const StudiedPercent = ({studyingQuantity, studiedQuantity, percent, toProcess, toComplete, className, ...props}) => {
     const ONE_PERCENT = 3.6;
@@ -40,7 +30,7 @@ const StudiedPercent = ({studyingQuantity, studiedQuantity, percent, toProcess, 
                 </div>
             </div>
             <div className={cl.studied}>
-                <H4 className={cl.studiedTitle}>Процент прохождения курсов</H4>
+                <H5 className={cl.studiedTitle}>Процент прохождения курсов</H5>
                 <pre>
                     <Text16M className={cl.studiedDescription}>(Завершено <LinkPurple to={toComplete}>{studiedQuantity} {getCourseText(studiedQuantity)}</LinkPurple>)</Text16M>
                 </pre>

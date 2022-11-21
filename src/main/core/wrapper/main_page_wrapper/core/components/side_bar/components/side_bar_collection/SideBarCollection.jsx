@@ -9,7 +9,6 @@ const SideBarCollection = ({to, image, title, className, ...props}) => {
         <Link to={to} className={[cl.collection, className].join(" ")} {...props}>
             <img src={image} alt={alt} className={cl.collectionImage}/>
             <Text16M className={cl.collectionTitle}>{title}</Text16M>
-            {/*<p className={cl.collectionTitle}>{title}</p>*/}
         </Link>
     );
 };

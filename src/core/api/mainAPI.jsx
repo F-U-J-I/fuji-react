@@ -38,8 +38,11 @@ export function getParams(params) {
 
     let paramsStr = []
     for (let key in params)
-        paramsStr.push(`${key}=${params[key]}`)
-    return `?${paramsStr.join('&')}`
+        if (params[key] !== undefined && params[key] !== null)
+            paramsStr.push(`${key}=${params[key]}`)
+    if (paramsStr.length)
+        return `?${paramsStr.join('&')}`
+    return paramsStr
 }
 
 export function getURL(url, params) {

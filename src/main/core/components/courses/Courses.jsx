@@ -80,10 +80,7 @@ class Courses extends Component {
     _setCourses = () => {
         const params = this._getParams()
         this._getCoursesWithFilter()(this.props.path, params).then(
-            r => {
-                this.setState({courses: r.results})
-                console.log(r.results)
-            },
+            r => {this.setState({courses: r.results})},
             e => {this.setState({error: e.status})},
         )
     }
@@ -97,7 +94,7 @@ class Courses extends Component {
 
         let coursesHTML = null
         if (isLoad)
-            coursesHTML = (<CourseMiniList courses={courses} className={cl.courses} />)
+            coursesHTML = (<CourseMiniList courses={courses} className={cl.courses} titleError='＼(〇_ｏ)／' descriptionError='Мы ничего не нашли' />)
 
         return (
             <div {...props}>

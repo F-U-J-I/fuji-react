@@ -5,7 +5,7 @@ import {useOutsideAlerterAfter} from "../../../../../../service/outsideOnClick";
 
 import crossSVG from '../../../../../../static/img/cross-fill-white.svg'
 
-const ModalWrapper = ({className, setIsVisible, title, children, ...props}) => {
+const ModalWrapper = ({className, setIsVisible, title, titleClassName, crossClassName, children, ...props}) => {
 
     const handleOnClickClose = () => {
         setIsVisible(false)
@@ -19,8 +19,8 @@ const ModalWrapper = ({className, setIsVisible, title, children, ...props}) => {
         <div className={cl.wrapper}>
             <form ref={box} className={[className, cl.block].join(" ")} {...props}>
                 <div className={cl.title}>
-                    <H2 className={cl.titleText}>{title}</H2>
-                    <img src={crossSVG} alt="icon" className={cl.titleCross} onClick={handleOnClickClose} />
+                    <H2 className={[cl.titleText, titleClassName].join(" ")}>{title}</H2>
+                    <img src={crossSVG} alt="icon" className={[cl.titleCross, crossClassName].join(" ")} onClick={handleOnClickClose} />
                 </div>
                 <div className={cl.content}>
                     {children}

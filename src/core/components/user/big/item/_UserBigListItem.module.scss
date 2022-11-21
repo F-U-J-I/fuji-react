@@ -1,0 +1,45 @@
+@import "../../../../scss/vars";
+
+.user {
+  background-color: $black-light-3;
+  border-radius: 20px;
+  padding: 30px 20px 40px;
+  display: flex;
+  width: 100%;
+
+  .avatar {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .text {
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+
+    .status {
+      color: $green;
+      margin-top: 5px;
+    }
+
+    .path {
+      margin-top: 5px;
+      color: $gray-2;
+    }
+
+    .description {
+      margin-top: 5px;
+    }
+
+    .withoutDescription {
+      color: $gray-2;
+    }
+
+    .button {
+      margin-top: 5px;
+      //background-color: $green;
+    }
+  }
+}

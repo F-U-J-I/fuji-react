@@ -17,11 +17,6 @@ class LearnProcess extends Component {
         this._setData()
     }
 
-    // componentDidUpdate(prevProps, prevState, snapshot) {
-    //     if (prevProps.path !== this.props.path)
-    //         this._setData()
-    // }
-
     _setData = () => {
         this._setCoursesLearning()
         this.setState({isLoad: true})

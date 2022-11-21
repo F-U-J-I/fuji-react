@@ -22,55 +22,71 @@ import UserLearnPage from "./main/user/learn/UserLearnPage";
 import {ArchiveWrapper} from "./main/archive/core/wrapper/ArchiveWrapper";
 import {ArchiveWrapperContext} from "./main/archive/core/wrapper/core/context/ArchiveWrapperContext";
 import ArchiveCourse from "./main/archive/course/ArchiveCourse";
-import ArchiveFriend from "./main/archive/friend/ArchiveFriend";
 import ArchiveCollection from "./main/archive/collection/ArchiveCollection";
+import SearchAllPage from "./main/search/all/SearchAllPage";
+import {SearchWrapperPage} from "./main/search/core/wrapper/SearchWrapperPage";
+import {SearchWrapperPageContext} from "./main/search/core/wrapper/core/context/SearchWrapperPageContext";
+import SearchCoursePage from "./main/search/courses/SearchCoursePage";
+import SearchCollectionPage from "./main/search/collections/SearchCollectionPage";
+import SearchUserPage from "./main/search/users/SearchUserPage";
 
 function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="*" element={<Page404/> }/>
-                <Route path="/404" element={<Page404/> }/>
-                <Route path="/signin" element={<SignInPage/> }/>
+                <Route path="*" element={<Page404/>}/>
+                <Route path="/404" element={<Page404/>}/>
+                <Route path="/signin" element={<SignInPage/>}/>
                 <Route path="/signup" element={<SignUpPage/>}/>
-                <Route
-                    element={
-                        <MainPageWrapper MainPageWrapperContext={MainPageWrapperContext}>
-                            <Outlet />
-                        </MainPageWrapper>
-                    }
-                >
-                    <Route path="/learn" element={<Learn />}/>
-                    <Route path="/learn/process/" element={<LearnProcess />}/>
-                    <Route path="/learn/complete/" element={<LearnComplete />}/>
-
-                    <Route path="/" element={<Catalog />}/>
+                <Route element={
+                    <MainPageWrapper MainPageWrapperContext={MainPageWrapperContext}>
+                        <Outlet/>
+                    </MainPageWrapper>
+                }>
+                    <Route path="/" element={<Catalog/>}/>
                     <Route path="/collections/:path" element={<DetailCollection/>}/>
 
-                    <Route
-                        element={
-                            <ArchiveWrapper ArchiveWrapperContext={ArchiveWrapperContext}>
-                                <Outlet />
-                            </ArchiveWrapper>
-                        }>
-                        <Route path="/archive/" element={<ArchiveCourse />}/>
-                        <Route path="/archive/collections/" element={<ArchiveCollection />}/>
-                        <Route path="/archive/friends/" element={<ArchiveFriend />}/>
+                    {/* МОЁ ОБУЧЕНИЕ */}
+                    <Route path="/learn/" element={<Learn/>}/>
+                    <Route path="/learn/process/" element={<LearnProcess/>}/>
+                    <Route path="/learn/complete/" element={<LearnComplete/>}/>
+
+                    {/* АРХИВ */}
+                    <Route element={
+                        <ArchiveWrapper ArchiveWrapperContext={ArchiveWrapperContext}>
+                            <Outlet/>
+                        </ArchiveWrapper>
+                    }>
+                        <Route path="/archive/" element={<ArchiveCourse/>}/>
+                        <Route path="/archive/collections/" element={<ArchiveCollection/>}/>
                     </Route>
 
-                    <Route
-                        element={
-                        <UserWrapper UserWrapperContext={UserWrapperContext}>
-                            <Outlet />
-                        </UserWrapper>
-                        }>
-                            <Route path="/users/:path" element={<UserLearnPage/>}/>
-                            <Route path="/users/:path/collections" element={<UserCollectionPage/>}/>
-                            <Route path="/users/:path/courses" element={<UserCoursePage/>}/>
-                            <Route path="/settings" element={<UserSettingPage/>}/>
+                    {/* ПОИСК */}
+                    <Route element={
+                        <SearchWrapperPage SearchWrapperPageContext={SearchWrapperPageContext}>
+                            <Outlet/>
+                        </SearchWrapperPage>
+                    }>
+                        <Route path="/search/" element={<SearchAllPage/>}/>
+                        <Route path="/search/courses/" element={<SearchCoursePage/>}/>
+                        <Route path="/search/collections/" element={<SearchCollectionPage />}/>
+                        <Route path="/search/users/" element={<SearchUserPage />}/>
 
-                            <Route path="/users/:path/learn/process/" element={<LearnProcessCollection/>}/>
-                            <Route path="/users/:path/learn/complete/" element={<LearnCompleteCollection/>}/>
+                    </Route>
+
+                    {/* СТРАНИЦА ПОЛЬЗОВАТЕЛЯ */}
+                    <Route element={
+                        <UserWrapper UserWrapperContext={UserWrapperContext}>
+                            <Outlet/>
+                        </UserWrapper>
+                    }>
+                        <Route path="/users/:path" element={<UserLearnPage/>}/>
+                        <Route path="/users/:path/collections" element={<UserCollectionPage/>}/>
+                        <Route path="/users/:path/courses" element={<UserCoursePage/>}/>
+                        <Route path="/settings" element={<UserSettingPage/>}/>
+
+                        <Route path="/users/:path/learn/process/" element={<LearnProcessCollection/>}/>
+                        <Route path="/users/:path/learn/complete/" element={<LearnCompleteCollection/>}/>
                     </Route>
                 </Route>
             </Routes>

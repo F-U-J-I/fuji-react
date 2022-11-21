@@ -1,5 +1,7 @@
-
+@import "../../core/scss/vars";
 
 .block {
   padding: 55px 45px;
+  display: flex;
+  flex-direction: column;
 }

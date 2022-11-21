@@ -1,7 +1,17 @@
-import {BASE_URL_API, request} from "../../../core/api/mainAPI";
-
+import {BASE_URL_API, getParams, request} from "../../../core/api/mainAPI";
 
 export const USER_URL_API = `${BASE_URL_API}/profiles`
+
+
+export async function getProfiles(params) {
+    const url = `${USER_URL_API}/${getParams(params)}`
+    return await request('GET', url)
+}
+
+export async function getMiniProfiles(params) {
+    const url = `${USER_URL_API}/mini/${getParams(params)}`
+    return await request('GET', url)
+}
 
 export async function getHeaderUser(path){
     const url = `${USER_URL_API}/${path}/header/`

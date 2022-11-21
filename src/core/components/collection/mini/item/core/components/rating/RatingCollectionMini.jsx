@@ -5,10 +5,7 @@ import getClassNameColor from "../../../../../../../service/rating";
 import Text14B from "../../../../../../../ui/text/14/bold/Text14B";
 
 const RatingCollectionMini = ({rating, className, ...props}) => {
-    console.log(rating)
-
     let classNameColor = getClassNameColor(rating)
-
     return (
         <div className={[cl.rating, classNameColor, className].join(' ')} {...props}>
             <Text14B className={[cl.title, clColor.title].join(' ')}>{rating}</Text14B>

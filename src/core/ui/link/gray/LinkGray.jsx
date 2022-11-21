@@ -1,12 +1,12 @@
 import React from 'react';
 import cl from "./_LinkGray.module.scss";
-import H4 from "../../title/H4/H4";
+import H5 from "../../title/H5/H5";
 import {Link} from "react-router-dom";
 
 const LinkGray = ({to, title, className, children, ...props}) => {
     return (
         <Link to={to} className={[cl.link, className].join(" ")} {...props}>
-            <H4 className={cl.linkTitle}>{title}</H4>
+            <H5 className={cl.linkTitle}>{title}</H5>
             {children}
         </Link>
     );

@@ -1,0 +1,7 @@
+.line {
+  overflow-y: clip;
+  width: 100%;
+  grid-template-rows: 1fr;
+  row-gap: 0;
+  grid-auto-rows: 0;
+}
