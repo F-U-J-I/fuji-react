@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {ArchiveWrapperContext} from "../core/wrapper/core/context/ArchiveWrapperContext";
 import {collectionId} from "../core/service/menuID";
-import H2 from "../../../core/ui/title/H2/H2";
+import H3 from "../../../core/ui/title/H3/H3";
 import cl from "../core/scss/_Archive.module.scss";
 import Collections from "../../core/components/collections/Collections";
 
@@ -25,7 +25,7 @@ class ArchiveCourse extends Component {
 
         return (
             <div>
-                <H2 className={cl.title}>Подборки</H2>
+                <H3 className={cl.title}>Подборки</H3>
                 <Collections path={path} className={cl.content} {...props} />
             </div>
         );

@@ -2,8 +2,8 @@ import React from 'react';
 import cl from './_StudiedPercent.module.scss'
 import Text16M from "../../../../../core/ui/text/16/medium/Text16M";
 import LinkPurple from "../../../../../core/ui/link/purple/LinkPurple";
-import H1 from "../../../../../core/ui/title/H1/H1";
-import H5 from "../../../../../core/ui/title/H5/H5";
+import H2 from "../../../../../core/ui/title/H2/H2";
+import H6 from "../../../../../core/ui/title/H6/H6";
 import {getCourseText} from "../../../../../core/service/declension";
 
 const StudiedPercent = ({studyingQuantity, studiedQuantity, percent, toProcess, toComplete, className, ...props}) => {
@@ -26,11 +26,11 @@ const StudiedPercent = ({studyingQuantity, studiedQuantity, percent, toProcess, 
             </pre>
             <div className={cl.oval} style={getStyle()}>
                 <div className={cl.percent}>
-                    <H1>{percent}%</H1>
+                    <H2>{percent}%</H2>
                 </div>
             </div>
             <div className={cl.studied}>
-                <H5 className={cl.studiedTitle}>Процент прохождения курсов</H5>
+                <H6 className={cl.studiedTitle}>Процент прохождения курсов</H6>
                 <pre>
                     <Text16M className={cl.studiedDescription}>(Завершено <LinkPurple to={toComplete}>{studiedQuantity} {getCourseText(studiedQuantity)}</LinkPurple>)</Text16M>
                 </pre>

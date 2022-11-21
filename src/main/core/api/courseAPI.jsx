@@ -27,6 +27,11 @@ export async function getCollectionsWithCourses(path, params){
     return await request('GET', url)
 }
 
+export async function getPageCourse(path){
+    const url = `${COURSE_URL_API}/page/${path}/`
+    return await request('GET', url)
+}
+
 
 // ADD COURSE IN COLLECTION
 

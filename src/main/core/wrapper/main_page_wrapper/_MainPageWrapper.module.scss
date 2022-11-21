@@ -1,12 +1,15 @@
 @import '../../../../core/scss/vars';
+@import '../../../../core/scss/mixins/media';
 
 .page {
   display: flex;
+  position: relative;
 }
 
 .main {
   display: flex;
   background-color: $black-light-1;
+  //position: absolute;
   width: 100%;
   height: 100vh;
 
@@ -24,7 +27,25 @@
     flex-direction: column;
     overflow-y: auto;
     background-color: $black-light-2;
-    border-radius: 35px 0 0 0;
     height: 100%;
+  }
+
+  &ContentRadius {
+    border-radius: 35px 0 0 0;
+  }
+}
+
+.min {
+  margin-left: 86px;
+}
+
+.big {
+  margin-left: 300px;
+}
+
+/* Extra large devices | 1440px or less */
+@include elg-desktop {
+  .mainContent {
+    margin-left: 86px;
   }
 }

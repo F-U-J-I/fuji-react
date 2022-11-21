@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import clCommon from "../core/scss/_Learn.module.scss"
 import {getStudyingCourses} from "../../core/api/userAPI";
 import SystemDetailCollection from "../../../core/components/collection/big/system/detail/SystemDetailCollection";
+import {
+    TOP_MENU_DEFAULT
+} from "../../core/wrapper/main_page_wrapper/core/components/top_bar/core/services/topMenuService";
 
 class LearnProcess extends Component {
     constructor(props) {
@@ -19,6 +22,8 @@ class LearnProcess extends Component {
 
     _setData = () => {
         this._setCoursesLearning()
+        this.context.setMin(false)
+        this.context.setTopMenu(TOP_MENU_DEFAULT)
         this.setState({isLoad: true})
     }
 

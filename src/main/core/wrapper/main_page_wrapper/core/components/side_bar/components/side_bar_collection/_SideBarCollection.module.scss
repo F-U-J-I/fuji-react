@@ -1,7 +1,7 @@
 @import "../../../../../../../../../core/scss/vars";
 
 .collection {
-  //width: 100%;
+  position: relative;
   display: flex;
   padding: 5px;
 
@@ -10,6 +10,7 @@
     height: 33px;
     border-radius: 5px;
     object-fit: cover;
+    transition: all .3s;
   }
 
   &Title {

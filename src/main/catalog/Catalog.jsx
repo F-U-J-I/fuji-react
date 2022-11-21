@@ -4,6 +4,7 @@ import {getCatalog} from "../core/api/collectionAPI";
 import {MainPageWrapperContext} from "../core/context/Context";
 import {catalogId} from "../core/wrapper/main_page_wrapper/core/service/activeIdService";
 import CollectionBigList from "../../core/components/collection/big/list/CollectionBigList";
+import {TOP_MENU_DEFAULT} from "../core/wrapper/main_page_wrapper/core/components/top_bar/core/services/topMenuService";
 
 class Catalog extends Component {
     constructor(props) {
@@ -31,6 +32,8 @@ class Catalog extends Component {
 
     _setData() {
         this.context.setActiveId(catalogId)
+        this.context.setMin(false)
+        this.context.setTopMenu(TOP_MENU_DEFAULT)
         this.setCatalog()
     }
 

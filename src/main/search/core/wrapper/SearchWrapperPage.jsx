@@ -3,6 +3,9 @@ import {MainPageWrapperContext} from "../../../core/context/Context";
 import {SearchWrapperPageContext} from "./core/context/SearchWrapperPageContext";
 import TopMenu from "../../../../core/components/menu/top/TopMenu";
 import cl from "./_SearchWrapperPage.module.scss";
+import {
+    TOP_MENU_DEFAULT
+} from "../../../core/wrapper/main_page_wrapper/core/components/top_bar/core/services/topMenuService";
 
 class SearchWrapperPage extends Component {
     static contextType = MainPageWrapperContext;
@@ -16,6 +19,8 @@ class SearchWrapperPage extends Component {
 
     componentDidMount() {
         this.context.setActiveId(null)
+        this.context.setMin(false)
+        this.context.setTopMenu(TOP_MENU_DEFAULT)
     }
 
     _getItemMenu = (id) => {

@@ -1,9 +1,9 @@
 import React from 'react';
-import cl from './_TopBar.module.scss'
-import SearchFilter from "../../../../../ui/search/search_filter/SearchFilter";
-import UserNav from "./core/components/UserNav";
+import cl from './_TopBarDefault.module.scss'
+import SearchFilter from "../../../../../../ui/search/search_filter/SearchFilter";
+import UserNav from "../core/components/UserNav";
 
-const TopBar = ({menu, search, setSearch, filter, setFilter, className, ...props}) => {
+const TopBarDefault = ({menu, search, setSearch, filter, setFilter, className, ...props}) => {
 
     return (
         <div className={[cl.block, className].join(" ")} {...props}>
@@ -13,4 +13,4 @@ const TopBar = ({menu, search, setSearch, filter, setFilter, className, ...props
     );
 };
 
-export default TopBar;
+export default TopBarDefault;

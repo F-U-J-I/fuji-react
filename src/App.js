@@ -29,6 +29,7 @@ import {SearchWrapperPageContext} from "./main/search/core/wrapper/core/context/
 import SearchCoursePage from "./main/search/courses/SearchCoursePage";
 import SearchCollectionPage from "./main/search/collections/SearchCollectionPage";
 import SearchUserPage from "./main/search/users/SearchUserPage";
+import CoursePage from "./main/course_page/CoursePage";
 
 function App() {
     return (
@@ -45,6 +46,8 @@ function App() {
                 }>
                     <Route path="/" element={<Catalog/>}/>
                     <Route path="/collections/:path" element={<DetailCollection/>}/>
+                    <Route path="/courses/:path/page" element={<CoursePage/>}/>
+
 
                     {/* МОЁ ОБУЧЕНИЕ */}
                     <Route path="/learn/" element={<Learn/>}/>

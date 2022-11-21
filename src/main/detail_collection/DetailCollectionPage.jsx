@@ -3,6 +3,7 @@ import {getCollection} from "../core/api/collectionAPI";
 import {MainPageWrapperContext} from "../core/context/Context";
 import BigDetailCollection from "../../core/components/collection/big/detail/BigDetailCollection";
 import {withParams} from "../../core/service/params";
+import {TOP_MENU_DEFAULT} from "../core/wrapper/main_page_wrapper/core/components/top_bar/core/services/topMenuService";
 
 
 class DetailCollectionPage extends Component {
@@ -18,11 +19,9 @@ class DetailCollectionPage extends Component {
 
     componentDidMount() {
         this.setCollection(this.props.params.path)
+        this.context.setMin(false)
+        this.context.setTopMenu(TOP_MENU_DEFAULT)
     }
-
-    // componentWillReceiveProps(nextProps, nextContext) {
-    //     this.setCollection(nextProps.params.path)
-    // }
 
     static contextType = MainPageWrapperContext;
 

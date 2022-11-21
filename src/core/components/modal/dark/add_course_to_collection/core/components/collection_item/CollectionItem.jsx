@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import cl from './_CollectionItem.module.scss'
-import H5 from "../../../../../../../ui/title/H5/H5";
+import H6 from "../../../../../../../ui/title/H6/H6";
 import {getImage} from "../../../../../../../api/mainAPI";
 import checkMarkSVG from '../../../../../../../static/img/check-mark-fill-green.svg'
 
@@ -14,7 +14,7 @@ const CollectionItem = ({path, title, preview, isAdded, onClick, className, ...p
     return (
         <div className={[cl.collectionItem, className, isAddedLocal ? cl.active : ''].join(" ")} onClick={handleOnClick} {...props}>
             <img src={getImage(preview)} className={cl.image} alt='preview'/>
-            <H5 className={cl.title}>{title}</H5>
+            <H6 className={cl.title}>{title}</H6>
             {isAddedLocal &&
                 <img src={checkMarkSVG} alt='yes' className={cl.checkImage} />
             }

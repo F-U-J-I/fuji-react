@@ -2,7 +2,7 @@ import React from 'react';
 import cl from './_CourseBig.module.scss'
 import {Link} from "react-router-dom";
 import {getImage} from "../../../../../../../api/mainAPI";
-import H4 from "../../../../../../../ui/title/H4/H4";
+import H5 from "../../../../../../../ui/title/H5/H5";
 import Text14M from "../../../../../../../ui/text/14/medium/Text14M";
 import Text16Book from "../../../../../../../ui/text/16/book/Text16Book";
 import {getCoursePageURL, USER_URL} from "../../../../../../../service/urls";
@@ -21,7 +21,7 @@ const CourseBig = ({course, to, className, ...props}) => {
         <Link to={courseURL} className={[cl.course, className].join(" ")} {...props}>
             <img src={getImage(course.image_url)} alt='preview' className={cl.preview}/>
             <div className={cl.content}>
-                <H4 className={cl.title}>{course.title}</H4>
+                <H5 className={cl.title}>{course.title}</H5>
 
                 <Link to={userURL} className={cl.author}>
                     <img src={getImage(course.author.avatar_url)} alt='author' className={cl.authorImage}/>

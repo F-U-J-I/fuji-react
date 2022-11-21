@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
 import cl from "./_MainPageWrapper.module.scss";
 import SideBar from "./core/components/side_bar/SideBar";
-import TopBar from "./core/components/top_bar/TopBar";
+import TopBarDefault from "./core/components/top_bar/default/TopBarDefault";
 import {getCollectionProfile} from "../../api/collectionAPI";
 import {MainPageWrapperContext} from "../../context/Context";
 import {menuList} from "../../../../core/service/list";
 import {getError} from "../../../../core/service/error";
+import TopBarCoursePage from "./core/components/top_bar/course_page/TopBarCoursePage";
+import {TOP_MENU_DEFAULT} from "./core/components/top_bar/core/services/topMenuService";
+
 
 class MainPageWrapper extends Component {
     constructor(props) {
@@ -17,6 +20,8 @@ class MainPageWrapper extends Component {
             search: '',
             filter: menuList[0],
             activeId: null,
+            isMin: false,
+            topMenu: TOP_MENU_DEFAULT,
             error: false,
             isLoad: false,
         }
@@ -58,8 +63,16 @@ class MainPageWrapper extends Component {
         this.setState({filter: newValue})
     }
 
+    _setMin = (bool) => {
+        this.setState({isMin: bool})
+    }
+
+    _setTopMenu = (id) => {
+        this.setState({topMenu: id})
+    }
+
     render() {
-        const {activeId, menu, search, filter, addedCollectionList, isLoad, error} = this.state;
+        const {activeId, menu, search, filter, addedCollectionList, isMin, topMenu, isLoad, error} = this.state;
         const {children, ...props} = this.props;
 
         if (error) return getError(error)
@@ -75,26 +88,37 @@ class MainPageWrapper extends Component {
                     addedCollectionList: addedCollectionList,
                     menu: menu,
                     setAddedCollectionList: this._setAddedCollectionList,
+                    setMin: this._setMin,
+                    topMenu: topMenu,
+                    setTopMenu: this._setTopMenu,
                     ...props
                 }}>
                     {children}
                 </MainPageWrapperContext.Provider>)
         }
 
-        return (<div className={cl.page}>
-            <SideBar activeId={activeId} setCollectionList={this._setAddedCollectionList}
-                     collectionList={this.state.addedCollectionList}/>
-            <div className={cl.main}>
-                <div className={cl.mainWrapper}>
-                    <TopBar search={search} setSearch={this._setSearch}
-                            filter={filter} setFilter={this._setFilter}
-                            menu={menu}/>
-                    <div className={[cl.mainContent, this.props.className].join(" ")}>
-                        {content}
+        return (
+            <div className={cl.page}>
+                <SideBar activeId={activeId}
+                         setCollectionList={this._setAddedCollectionList}
+                         collectionList={this.state.addedCollectionList}
+                         isMin={isMin}/>
+
+                <div className={cl.main}>
+                    <div className={cl.mainWrapper}>
+                        {topMenu === TOP_MENU_DEFAULT
+                        ? <TopBarDefault search={search} setSearch={this._setSearch} filter={filter} setFilter={this._setFilter}
+                                         menu={menu}/>
+                        : <TopBarCoursePage />
+                        }
+                        <div className={[cl.mainContent, topMenu === TOP_MENU_DEFAULT ? cl.mainContentRadius : '',
+                            isMin ? cl.min : cl.big, this.props.className].join(" ")}>
+                            {content}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>);
+        );
     }
 }
 

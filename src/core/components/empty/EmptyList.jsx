@@ -1,7 +1,7 @@
 import React from 'react';
 import cl from "./_EmptyList.module.scss";
-import H2 from "../../ui/title/H2/H2";
-import H5 from "../../ui/title/H5/H5";
+import H3 from "../../ui/title/H3/H3";
+import H6 from "../../ui/title/H6/H6";
 
 const EmptyList = ({title, description, className, ...props}) => {
     const getTitle = () => {
@@ -17,8 +17,8 @@ const EmptyList = ({title, description, className, ...props}) => {
 
     return (
         <div className={[cl.empty, className].join(" ")} {...props}>
-            <H2>{getTitle()}</H2>
-            <H5>{getDescription()}</H5>
+            <H3>{getTitle()}</H3>
+            <H6>{getDescription()}</H6>
         </div>
     );
 };

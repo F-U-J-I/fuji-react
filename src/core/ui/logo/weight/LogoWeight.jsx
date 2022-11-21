@@ -1,10 +1,13 @@
 import React from 'react';
 import logo from '../../../static/img/logo.svg'
 import cl from './_LogoWeight.module.scss'
+import {Link} from "react-router-dom";
 
-const LogoWeight = ({className}) => {
+const LogoWeight = ({classNameImage, ...props}) => {
     return (
-        <img src={logo} alt="logo" className={[className, cl.logo].join(" ")}/>
+        <Link to='/' {...props}>
+            <img src={logo} alt="logo" className={[classNameImage, cl.logo].join(" ")}/>
+        </Link>
     );
 };
 

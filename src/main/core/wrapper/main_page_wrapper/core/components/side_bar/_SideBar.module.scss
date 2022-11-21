@@ -1,11 +1,78 @@
 @import '../../../../../../../core/scss/vars';
+@import '../../../../../../../core/scss/mixins/media';
+
+@mixin minim($collection, $menuNavTitle, $logo) {
+
+  .#{$logo} {
+    width: 43px;
+    overflow: hidden;
+    margin-left: 15px;
+  }
+
+  .#{$menuNavTitle} {
+    left: 0 !important;
+    transition: .1s !important;
+    z-index: -1;
+    opacity: 0;
+  }
+
+  .#{$collection} {
+    transition: all .3s;
+    margin-left: 3px;
+
+    &Image {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+    }
+  }
+
+  &:hover {
+    width: 300px;
+
+    .#{$logo} {
+      width: 148px;
+      margin-left: auto;
+    }
+
+    .#{$menuNavTitle} {
+      opacity: 1;
+      z-index: 0;
+      left: 60px !important;
+      transition: .3s !important;
+    }
+
+    .#{$collection} {
+      padding: 5px;
+      margin-left: 0;
+
+      &:nth-child(n+2) {
+        margin-top: 0;
+      }
+
+      &Image {
+        width: 33px;
+        height: 33px;
+        border-radius: 5px;
+      }
+    }
+  }
+}
 
 .block {
   display: flex;
   background-color: $black-light-1;
+  position: absolute;
+  z-index: 1;
   max-width: 300px;
   width: 100%;
   height: 100vh;
+  transition: all .15s;
+}
+
+.min {
+  width: 86px;
+  @include minim(collection, menuNavTitle, logo);
 }
 
 .wrapper {
@@ -13,11 +80,13 @@
   flex-direction: column;
   width: 100%;
   padding: 0 16px;
+  transition: all .3s;
 }
 
 .logo {
   display: flex;
   margin: 50px auto 0;
+  transition: all .25s;
 }
 
 .menu {
@@ -40,4 +109,13 @@
   margin-bottom: 5px;
   max-height: 100%;
   overflow-y: auto;
+}
+
+
+/* Extra large devices | 1440px or less */
+@include elg-desktop {
+  .block {
+    width: 86px;
+    @include minim(collection, menuNavTitle, logo);
+  }
 }

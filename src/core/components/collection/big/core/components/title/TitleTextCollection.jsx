@@ -1,5 +1,5 @@
 import React from 'react';
-import H2 from "../../../../../../ui/title/H2/H2";
+import H3 from "../../../../../../ui/title/H3/H3";
 import cl from "./_TitleTextCollection.module.scss";
 import {Link} from "react-router-dom";
 
@@ -7,10 +7,10 @@ const TitleTextCollection = ({title, to, isTitleText, className, ...props}) => {
     return (
         <div>
             {isTitleText
-                ? <H2 className={className} {...props}>{title}</H2>
+                ? <H3 className={className} {...props}>{title}</H3>
                 : (
                     <Link to={to} className={className} {...props}>
-                        <H2 className={cl.title}>{title}</H2>
+                        <H3 className={cl.title}>{title}</H3>
                     </Link>
                 )
             }

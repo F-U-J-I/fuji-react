@@ -4,7 +4,7 @@ import {useNavigate} from "react-router"
 import clAuth from "../../../core/components/_Auth.module.scss"
 import clSignIn from "./_SignIn.module.scss"
 
-import H3 from "../../../../core/ui/title/H3/H3";
+import H4 from "../../../../core/ui/title/H4/H4";
 import LinkPurple from "../../../../core/ui/link/purple/LinkPurple";
 import Text14M from "../../../../core/ui/text/14/medium/Text14M";
 
@@ -51,7 +51,7 @@ const SignIn = ({className}) => {
 
     return (
         <form className={[clAuth.block, className].join(" ")} onSubmit={handleSubmit}>
-            <H3 className={clAuth.title}>Вход</H3>
+            <H4 className={clAuth.title}>Вход</H4>
 
             <p ref={errRef} className={[errMsg ? clAuth.messageError : '', clAuth.message].join(" ")} aria-live="assertive">{errMsg}</p>
 

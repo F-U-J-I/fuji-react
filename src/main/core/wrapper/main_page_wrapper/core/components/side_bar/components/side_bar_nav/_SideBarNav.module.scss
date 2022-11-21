@@ -18,10 +18,13 @@
   }
 
   .title {
+    position: absolute;
     font-family: $f-bold;
     font-size: $fs-16;
     color: $gray-2;
-    margin: auto auto auto 24px;
+    //margin: auto auto auto 24px;
+    left: 60px;
+    top: 16px;
 
     transition: all 0.15s;
   }

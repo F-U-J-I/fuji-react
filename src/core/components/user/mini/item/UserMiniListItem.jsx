@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import cl from './_UserMiniListItem.module.scss'
 import {Link} from "react-router-dom";
 import {getImage} from "../../../../api/mainAPI";
-import H5 from "../../../../ui/title/H5/H5";
+import H6 from "../../../../ui/title/H6/H6";
 import Text14M from "../../../../ui/text/14/medium/Text14M";
 import ButtonGreenBigFR from "../../../../ui/button/radius/fill/green/big/ButtonGreenBigFR";
 import {subscribeUser, unsubscribeUser} from "../../../../../main/core/api/userAPI";
@@ -31,7 +31,7 @@ const UserMiniListItem = ({user, className, ...props}) => {
     return (
         <Link to={to} className={cl.user} {...props}>
             <img src={getImage(user.avatar_url)} alt='avatar' className={cl.avatar}/>
-            <H5 className={cl.username}>{user.username}</H5>
+            <H6 className={cl.username}>{user.username}</H6>
             <Text14M className={cl.status}>Пользователь</Text14M>
             <Text14M className={cl.path}>@{user.path}</Text14M>
             {isSubscribed !== null &&

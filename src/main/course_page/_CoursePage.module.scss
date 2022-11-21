@@ -1,0 +1,51 @@
+@import "../../core/scss/vars";
+
+.main {
+  position: relative;
+
+  &Wallpaper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+
+    &Image {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      //left: -20%;
+      object-fit: cover;
+    }
+    &Dark {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      background-color: $black_50;
+    }
+  }
+
+  &Content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+
+    &Author, &Title {
+      text-align: center;
+    }
+
+    &Navigations {
+      display: flex;
+      margin-top: 115px;
+
+      &Button:nth-child(n+2) {
+        margin-left: 25px;
+      }
+    }
+  }
+}

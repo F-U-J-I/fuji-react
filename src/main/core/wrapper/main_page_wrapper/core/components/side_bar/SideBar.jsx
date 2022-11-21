@@ -123,34 +123,43 @@ class SideBar extends Component {
 
     render() {
         const {error, collectionList, sideBarData} = this.state;
+        const {isMin} = this.props;
 
         let collectionListHTML = collectionList;
-        if (!error) {
-            collectionListHTML = collectionList.map(
-                item => (
-                    <SideBarCollection key={item.path} to={`${COLLECTION_URL}/${item.path}`} image={BASE_URL + item.image_url}
-                                       title={item.title}/>
-                )
-            );
-        }
+        if (!error)
+            collectionListHTML = collectionList.map(item => (
+                <SideBarCollection key={item.path}
+                                   to={`${COLLECTION_URL}/${item.path}`}
+                                   image={BASE_URL + item.image_url}
+                                   title={item.title}
+                                   className={cl.collection}/>
+            ));
 
         return (
-            <div className={cl.block}>
+            <div className={[cl.block, isMin ? cl.min : ''].join(" ")}>
                 <div className={cl.wrapper}>
-                    <LogoWeight className={cl.logo}/>
+                    <LogoWeight className={cl.logo} classNameImage={cl.logoImage}/>
+                    {/*<LogoMin className={cl.logo} classNameImage={cl.logoImage}/>*/}
 
                     <div className={cl.menu}>
                         {sideBarData.map((item) =>
-                            <SideBarNav
-                                imageDefault={item.imageDefault} imageActive={item.imageActive}
-                                title={item.title} to={item.to} key={item.id} active={item.id === this.props.activeId}/>
+                            <SideBarNav imageDefault={item.imageDefault}
+                                        imageActive={item.imageActive}
+                                        title={item.title}
+                                        to={item.to}
+                                        key={item.id}
+                                        active={item.id === this.props.activeId}
+                                        classNameTitle={cl.menuNavTitle}/>
                         )}
                     </div>
 
-                    <SideBarNav
-                        imageDefault={addDefaultSVG} imageActive={addActiveSVG}
-                        title='Создать подборку' to='#' className={cl.createCollection}
-                        onClick={this.createCollection}
+                    <SideBarNav to='#'
+                                imageDefault={addDefaultSVG}
+                                imageActive={addActiveSVG}
+                                title='Создать подборку'
+                                onClick={this.createCollection}
+                                classNameTitle={cl.menuNavTitle}
+                                className={cl.createCollection}
                     />
                     <div className={cl.collectionLine}/>
                     <div className={cl.collectionList}>

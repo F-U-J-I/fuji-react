@@ -3,20 +3,19 @@ import {Link} from "react-router-dom";
 import cl from "./_CourseMiniPreview.module.scss";
 import clCommon from "../_CourseMiniCommon.module.scss";
 
-import H5 from "../../../../../../ui/title/H5/H5";
+import H6 from "../../../../../../ui/title/H6/H6";
 import Text14M from "../../../../../../ui/text/14/medium/Text14M";
 import PriceCourse from "../../../../core/components/price/PriceCourse";
 import MainInfoItem from "../../../../core/components/main-info-item/MainInfoItem";
 
 import {getImage} from "../../../../../../api/mainAPI";
 import {getNumber, getWatch} from "../../../../../../service/number";
-import {COURSE_URL} from "../../../../../../service/urls";
 import starSVG from "../../../../../../static/img/star-fill-yellow.svg";
 import userSVG from "../../../../../../static/img/user-outline-white.svg";
 import watchSVG from "../../../../../../static/img/watch-outline-white.svg";
 import ProgressCourseMini from "../../../../core/components/progress/mini/ProgressCourseMini";
 
-const CourseMiniPreview = ({course, className, ...props}) => {
+const CourseMiniPreview = ({course, to, className, ...props}) => {
     const image = getImage(course.image_url)
     const info = [
         {
@@ -40,14 +39,14 @@ const CourseMiniPreview = ({course, className, ...props}) => {
     ]
 
     return (
-        <Link to={`${COURSE_URL}/${course.path}`} className={[clCommon.course, cl.course, className].join(" ")} {...props}>
+        <Link to={to} className={[clCommon.course, cl.course, className].join(" ")} {...props}>
             <div className={cl.titleInfo}>
                 <div className={cl.titleInfoImage}>
                     <img className={cl.titleInfoImageSelf} src={image} alt='preview'/>
                     <div className={cl.titleInfoImageDark} />
                 </div>
                 <div className={cl.titleInfoText}>
-                    <H5 className={[cl.titleInfoTextTitle, clCommon.title].join(" ")}>{course.title}</H5>
+                    <H6 className={[cl.titleInfoTextTitle, clCommon.title].join(" ")}>{course.title}</H6>
                     <Text14M className={[cl.titleInfoTextAuthor, clCommon.author].join(" ")}>{course.author.username}</Text14M>
                 </div>
             </div>
@@ -59,7 +58,7 @@ const CourseMiniPreview = ({course, className, ...props}) => {
                 </div>
                 <div className={clCommon.otherInfo}>
                     {course.status_progress === null
-                        ? <PriceCourse price={course.price} className={clCommon.price}/>
+                        ? <PriceCourse price={course.price} className={[clCommon.price, cl.price].join(" ")}/>
                         : <ProgressCourseMini progress={course.progress.progress} maxProgress={course.progress.max_progress}/>
                     }
                 </div>

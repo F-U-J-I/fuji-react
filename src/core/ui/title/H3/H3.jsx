@@ -1,5 +1,5 @@
 import React from 'react';
-import cl from "./_H3.module.scss"
+import cl from "./_H3.module.scss";
 import clCommon from "../_H.module.scss"
 
 const H3 = ({children, className, ...props}) => {

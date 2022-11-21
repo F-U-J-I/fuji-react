@@ -3,6 +3,9 @@ import UserWallpaper from "./core/wallpaper/UserWallpaper";
 import cl from './_UserWrapper.module.scss'
 import {UserWrapperContext} from "./core/context/UserWrapperContext";
 import {MainPageWrapperContext} from "../../../core/context/Context";
+import {
+    TOP_MENU_DEFAULT
+} from "../../../core/wrapper/main_page_wrapper/core/components/top_bar/core/services/topMenuService";
 
 
 class UserWrapper extends Component {
@@ -21,6 +24,8 @@ class UserWrapper extends Component {
 
     _setData() {
         this.context.setActiveId(null)
+        this.context.setMin(false)
+        this.context.setTopMenu(TOP_MENU_DEFAULT)
     }
 
     _setActiveId = (newId) => {

@@ -1,10 +1,7 @@
 import React from 'react';
 import cl from './_CourseMiniActive.module.scss'
 import clCommon from '../_CourseMiniCommon.module.scss'
-import {Link} from "react-router-dom";
-
-import {COURSE_URL} from "../../../../../../service/urls";
-import H5 from "../../../../../../ui/title/H5/H5";
+import H6 from "../../../../../../ui/title/H6/H6";
 import Text14M from "../../../../../../ui/text/14/medium/Text14M";
 import Text16Book from "../../../../../../ui/text/16/book/Text16Book";
 import MainInfoItem from "../../../../core/components/main-info-item/MainInfoItem";
@@ -20,10 +17,9 @@ const CourseMiniActive = ({course, className, ...props}) => {
     // console.log(course)
     // console.log(course.status_progress)
     return (
-        <Link to={`${COURSE_URL}/${course.path}`}
-              className={[cl.course, clCommon.course, existsDescription ? '' : cl.empty, className].join(" ")} {...props}>
+        <div className={[cl.course, clCommon.course, existsDescription ? '' : cl.empty, className].join(" ")} {...props}>
             <Text14M className={[cl.author, clCommon.author].join(" ")}>{course.author.username}</Text14M>
-            <H5 className={[cl.title, clCommon.title].join(" ")}>{course.title}</H5>
+            <H6 className={[cl.title, clCommon.title].join(" ")}>{course.title}</H6>
             <Text16Book className={cl.description}>{course.description}</Text16Book>
 
             <div className={[clCommon.mainInfo, cl.mainInfo].join(" ")}>
@@ -34,11 +30,11 @@ const CourseMiniActive = ({course, className, ...props}) => {
 
             <div className={[clCommon.otherInfo, cl.otherInfo].join(" ")}>
                 {course.status_progress === null
-                    ? <PriceCourse price={course.price} className={clCommon.price}/>
+                    ? <PriceCourse price={course.price} className={[clCommon.price, cl.price].join(" ")}/>
                     : <ProgressCourseMini progress={course.progress.progress} maxProgress={course.progress.max_progress}/>
                 }
             </div>
-        </Link>
+        </div>
     );
 };
 

@@ -5,7 +5,7 @@ import Wallpaper from "../../../../../../core/ui/image/wallpaper/Wallpaper";
 import {getImage} from "../../../../../../core/api/mainAPI";
 import Avatar from "./core/avatar/Avatar";
 import StatusUser from "./core/status/StatusUser";
-import H2 from "../../../../../../core/ui/title/H2/H2";
+import H3 from "../../../../../../core/ui/title/H3/H3";
 import ButtonPurpleBigFR from "../../../../../../core/ui/button/radius/fill/purple/big/ButtonPurpleBigFR";
 import ButtonPurpleOR from "../../../../../../core/ui/button/radius/outline/purple/very_big/ButtonPurpleVeryBigOR";
 import UserMenu from "./core/menu/UserMenu";
@@ -127,7 +127,7 @@ class UserWallpaper extends Component {
                     <div className={cl.frontWrapper}>
                         <Avatar className={cl.avatar} image={avatar}/>
                         <StatusUser className={cl.status}/>
-                        <H2>{username}</H2>
+                        <H3>{username}</H3>
                         <div className={cl.communications}>
                             <LinkShowFollower className={cl.communicationsItem} count={subscribers}
                                               text={this.getSubscribersText(subscribers)} to='#'/>

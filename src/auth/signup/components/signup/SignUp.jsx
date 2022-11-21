@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import clAuth from "../../../core/components/_Auth.module.scss";
-import H3 from "../../../../core/ui/title/H3/H3";
+import H4 from "../../../../core/ui/title/H4/H4";
 import InputDefault from "../../../../core/components/default_input/InputDefault";
 import userSVG from "../../../../core/static/img/user.svg";
 import emailSVG from "../../../../core/static/img/email.svg";
@@ -57,7 +57,7 @@ const SignUp = ({className}) => {
 
     return (
         <form className={[clAuth.block, className].join(" ")} onSubmit={handleSubmit}>
-            <H3 className={clAuth.title}>Регистрация</H3>
+            <H4 className={clAuth.title}>Регистрация</H4>
 
             <p className={[errMsg ? clAuth.messageError : '', clAuth.message].join(" ")}
                aria-live="assertive">{errMsg}</p>

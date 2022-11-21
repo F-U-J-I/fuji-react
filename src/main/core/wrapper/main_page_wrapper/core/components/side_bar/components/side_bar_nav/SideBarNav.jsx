@@ -2,7 +2,7 @@ import React from 'react';
 import cl from './_SideBarNav.module.scss'
 import {Link} from "react-router-dom";
 
-const SideBarNav = ({imageDefault, imageActive, alt, title, to, active, className, ...props}) => {
+const SideBarNav = ({imageDefault, imageActive, alt, title, to, active, classNameTitle, className, ...props}) => {
     let localAlt = 'icon'
     if (alt) {
         localAlt = alt
@@ -12,7 +12,7 @@ const SideBarNav = ({imageDefault, imageActive, alt, title, to, active, classNam
         <Link to={to} className={[cl.link, active ? cl.active : '', className].join(" ")} {...props}>
             <img className={cl.image} src={imageDefault} alt={localAlt}/>
             <img className={[cl.image, cl.imageActive].join(' ')} src={imageActive} alt={localAlt}/>
-            <span className={cl.title}>{title}</span>
+            <span className={[cl.title, classNameTitle].join(" ")}>{title}</span>
         </Link>
     );
 };

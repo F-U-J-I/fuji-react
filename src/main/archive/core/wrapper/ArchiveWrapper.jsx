@@ -6,6 +6,9 @@ import TopMenu from "../../../../core/components/menu/top/TopMenu";
 import {collectionId, courseId} from "../service/menuID";
 import {MainPageWrapperContext} from "../../../core/context/Context";
 import {archiveId} from "../../../core/wrapper/main_page_wrapper/core/service/activeIdService";
+import {
+    TOP_MENU_DEFAULT
+} from "../../../core/wrapper/main_page_wrapper/core/components/top_bar/core/services/topMenuService";
 
 class ArchiveWrapper extends Component {
     static contextType = MainPageWrapperContext;
@@ -19,6 +22,8 @@ class ArchiveWrapper extends Component {
 
     componentDidMount() {
         this.context.setActiveId(archiveId)
+        this.context.setMin(false)
+        this.context.setTopMenu(TOP_MENU_DEFAULT)
     }
 
     _setActiveId = (newId) => {

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import cl from './_UserBigListItem.module.scss';
 import {getImage} from "../../../../api/mainAPI";
-import H4 from "../../../../ui/title/H4/H4";
+import H5 from "../../../../ui/title/H5/H5";
 import Text16M from "../../../../ui/text/16/medium/Text16M";
 import ButtonPurpleBigOR from "../../../../ui/button/radius/outline/purple/big/ButtonPurpleBigOR";
 import ButtonPurpleBigFR from "../../../../ui/button/radius/fill/purple/big/ButtonPurpleBigFR";
@@ -20,7 +20,7 @@ const UserBigListItem = ({user, className, ...props}) => {
         <Link to={to} className={[cl.user, className].join(" ")} {...props}>
             <img src={getImage(user.avatar_url)} alt='avatar' className={cl.avatar}/>
             <div className={cl.text}>
-                <H4>{user.username}</H4>
+                <H5>{user.username}</H5>
                 <Text16M className={cl.status}>Пользователь</Text16M>
                 <Text16M className={cl.path}>@{user.path}</Text16M>
                 {user.description
