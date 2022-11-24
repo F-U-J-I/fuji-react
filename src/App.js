@@ -30,6 +30,10 @@ import SearchCoursePage from "./main/search/courses/SearchCoursePage";
 import SearchCollectionPage from "./main/search/collections/SearchCollectionPage";
 import SearchUserPage from "./main/search/users/SearchUserPage";
 import CoursePage from "./main/course_page/CoursePage";
+import TeachingPage from "./main/teaching/TeachingPage";
+import {CreateCourseWrapper} from "./main/create_course/core/wrapper/CreateCourseWrapper";
+import {CreateCourseWrapperContext} from "./main/create_course/core/wrapper/core/context/CreateCourseWrapperContext";
+import ThemesPage from "./main/create_course/themes/ThemesPage";
 
 function App() {
     return (
@@ -48,6 +52,8 @@ function App() {
                     <Route path="/collections/:path" element={<DetailCollection/>}/>
                     <Route path="/courses/:path/page" element={<CoursePage/>}/>
 
+                    {/* {Преподавание} */}
+                    <Route path="/teaching" element={<TeachingPage/>}/>
 
                     {/* МОЁ ОБУЧЕНИЕ */}
                     <Route path="/learn/" element={<Learn/>}/>
@@ -91,6 +97,18 @@ function App() {
                         <Route path="/users/:path/learn/process/" element={<LearnProcessCollection/>}/>
                         <Route path="/users/:path/learn/complete/" element={<LearnCompleteCollection/>}/>
                     </Route>
+
+                    {/*  СОЗДАНИЕ КУРСА  */}
+                    <Route element={
+                        <CreateCourseWrapper CreateCourseWrapperContext={CreateCourseWrapperContext}>
+                            <Outlet />
+                        </CreateCourseWrapper>
+                    }>
+                        <Route path="/courses/:path/create/" element={<ThemesPage />} />
+
+                    </Route>
+
+
                 </Route>
             </Routes>
         </BrowserRouter>

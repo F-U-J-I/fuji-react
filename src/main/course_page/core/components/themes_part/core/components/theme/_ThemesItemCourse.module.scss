@@ -1,0 +1,67 @@
+@import "../../../../../../../../core/scss/vars";
+
+
+.theme {
+  position: relative;
+  padding: 50px 100px;
+  background-color: $black-light-3;
+  border-radius: 20px;
+
+  .summary {
+    display: flex;
+    align-items: center;
+    transition: all .3s;
+    outline: none;
+    border: 0;
+    width: 100%;
+
+    .title {
+      max-width: 860px;
+      margin-right: auto;
+      text-align: left;
+      width: 100%;
+    }
+
+    .cross {
+      margin-left: 20px;
+      width: 30px;
+      height: 30px;
+      transform: rotate(45deg);
+      transition: all .3s;
+
+      &:hover {
+        scale: 1.2;
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    transition: all .3s;
+
+    .lesson {
+      &:nth-child(n+2) {
+        margin-left: 15px;
+      }
+    }
+
+    .empty {
+      text-align: center;
+      width: 100%;
+      color: $gray-2;
+    }
+  }
+}
+
+.active {
+  .summary {
+    .cross {
+      transform: rotate(90deg);
+    }
+  }
+
+  .content {
+    margin-top: 25px;
+  }
+}

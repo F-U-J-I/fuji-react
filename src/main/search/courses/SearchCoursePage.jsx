@@ -4,7 +4,7 @@ import {courseId, menuList} from "../../../core/service/list";
 import {getCourses} from "../../core/api/courseAPI";
 import {getError} from "../../../core/service/error";
 import SystemDetailCollection from "../../../core/components/collection/big/system/detail/SystemDetailCollection";
-import CourseBigList from "../../../core/components/course/big/list/CourseBigList";
+import CourseBigNList from "../../../core/components/course/big/with_navigation/list/CourseBigNList";
 
 class SearchCoursePage extends Component {
     static contextType = SearchWrapperPageContext;
@@ -63,7 +63,7 @@ class SearchCoursePage extends Component {
         let content = null;
         if (isLoad)
             content = (
-                <CourseBigList addedCollections={addedCollectionList} courses={courses} />
+                <CourseBigNList addedCollections={addedCollectionList} courses={courses} />
             )
 
         return (

@@ -1,0 +1,13 @@
+@import "../../../../../../../../../core/scss/vars";
+
+.button {
+  background-color: $black-light-2;
+  border: 3px solid $empty;
+  border-radius: 20px;
+  padding: 25px 125px;
+  transition: all .15s;
+
+  &:hover {
+    background-color: $purple;
+  }
+}

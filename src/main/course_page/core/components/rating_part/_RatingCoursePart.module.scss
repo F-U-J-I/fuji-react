@@ -1,0 +1,41 @@
+@import "../../../../../core/scss/vars";
+
+.content {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .grades,
+  .settingGrade {
+    display: flex;
+    border-radius: 100px;
+    background-color: $black-light-3;
+  }
+
+  .grades {
+    padding: 20px 40px;
+  }
+
+  .settingGrade {
+    cursor: pointer;
+    align-items: center;
+    padding: 20px 60px;
+    transition: all .2s;
+
+    .title {
+      margin-right: 10px ;
+    }
+
+    &:hover {
+      background-color: $black-light-4;
+    }
+  }
+
+  .help {
+    color: $gray-2;
+    text-align: center;
+    margin-top: 10px;
+  }
+}

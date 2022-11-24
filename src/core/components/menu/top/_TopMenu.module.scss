@@ -2,6 +2,8 @@
 
 .menu {
   display: flex;
+  justify-content: center;
+
 }
 
 .border {
@@ -12,10 +14,16 @@
 .content {
   display: flex;
   background-color: $black-light-1;
+  //height: 100%;
   padding-top: 10px;
   padding-bottom: 20px;
+  //margin: auto 0;
 
-  .button:nth-child(n+2) {
-    margin-left: 50px;
+  .button {
+    display: flex;
+
+    &:nth-child(n+2) {
+      margin-left: 50px;
+    }
   }
 }

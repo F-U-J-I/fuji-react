@@ -1,0 +1,10 @@
+
+.content {
+  margin-top: 80px;
+}
+
+.theme {
+  &:nth-child(n+2) {
+    margin-top: 10px;
+  }
+}

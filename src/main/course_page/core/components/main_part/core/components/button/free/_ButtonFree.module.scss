@@ -1,0 +1,12 @@
+@import "../../../../../../../../../core/scss/vars";
+
+.button {
+  background-color: $black-light-2;
+  border-radius: 20px;
+  padding: 28px 128px;
+  transition: all .15s;
+
+  &:hover {
+    background-color: $green;
+  }
+}

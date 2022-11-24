@@ -1,0 +1,19 @@
+.grade {
+  display: flex;
+  padding: 20px;
+  border-radius: 100px;
+  width: 61px;
+  cursor: pointer;
+
+  transition: all .15s;
+
+  .title {
+    text-align: center;
+    width: 100%;
+    transition: all .15s;
+  }
+
+  &:nth-child(n+2) {
+    margin-left: 6px;
+  }
+}

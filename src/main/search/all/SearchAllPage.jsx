@@ -5,7 +5,7 @@ import {SearchWrapperPageContext} from "../core/wrapper/core/context/SearchWrapp
 import {allId, menuList} from "../../../core/service/list";
 import {getCourses} from "../../core/api/courseAPI";
 import SystemWrapper from "../../../core/components/collection/big/system/core/wrapper/SystemWrapper";
-import CourseBigList from "../../../core/components/course/big/list/CourseBigList";
+import CourseBigNList from "../../../core/components/course/big/with_navigation/list/CourseBigNList";
 import {getError} from "../../../core/service/error";
 import {getCollections} from "../../core/api/collectionAPI";
 import CollectionMiniLineList from "../../../core/components/collection/mini/line/CollectionMiniLineList";
@@ -87,7 +87,7 @@ class SearchAllPage extends Component {
         return (
             <div className={cl.content}>
                 <SystemWrapper title={menuList[1].title} to={menuList[1].to} className={cl.wrapper}>
-                    <CourseBigList addedCollections={addedCollectionList} courses={courses} className={cl.contentList} />
+                    <CourseBigNList addedCollections={addedCollectionList} courses={courses} className={cl.contentList} />
                 </SystemWrapper>
 
                 <SystemWrapper title={menuList[2].title} to={menuList[2].to} className={cl.wrapper}>

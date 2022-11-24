@@ -1,0 +1,14 @@
+.block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.list {
+  margin-top: 45px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-gap: 20px;
+  //justify-content: center;
+  //width: 100%;
+}

@@ -45,11 +45,11 @@ a {
 
 /* ВЫДЕЛЕНИЕ ТЕКСТА */
 ::selection {
-  background: #7B61FF; /* Safari */
+  background: #6E51FF; /* Safari */
   color: #FFF;
 }
 ::-moz-selection {
-  background: #7B61FF; /* Firefox */
+  background: #6E51FF; /* Firefox */
   color: #FFF;
 }
 

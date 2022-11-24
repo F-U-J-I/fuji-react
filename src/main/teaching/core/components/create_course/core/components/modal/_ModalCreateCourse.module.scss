@@ -1,0 +1,27 @@
+
+.text {
+  margin-top: 40px;
+  text-align: center;
+  padding: 0 30px;
+  max-width: 610px;
+}
+
+.input {
+  max-width: 510px;
+  width: 100%;
+  margin: 50px 50px 0;
+}
+
+.navigation {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+
+  .button {
+    padding: 17px 80px;
+
+    &:nth-child(n+2) {
+      margin-left: 50px;
+    }
+  }
+}

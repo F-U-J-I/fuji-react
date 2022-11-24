@@ -7,7 +7,12 @@ import {MainPageWrapperContext} from "../../context/Context";
 import {menuList} from "../../../../core/service/list";
 import {getError} from "../../../../core/service/error";
 import TopBarCoursePage from "./core/components/top_bar/course_page/TopBarCoursePage";
-import {TOP_MENU_DEFAULT} from "./core/components/top_bar/core/services/topMenuService";
+import {
+    TOP_MENU_COURSE_PAGE,
+    TOP_MENU_CREATE_COURSE,
+    TOP_MENU_DEFAULT
+} from "./core/components/top_bar/core/services/topMenuService";
+import TopBarCreateCourse from "./core/components/top_bar/create_course/TopBarCreateCourse";
 
 
 class MainPageWrapper extends Component {
@@ -16,10 +21,15 @@ class MainPageWrapper extends Component {
         this.state = {
             path: sessionStorage.getItem('path'),
             addedCollectionList: [],
+
             menu: menuList,
             search: '',
             filter: menuList[0],
             activeId: null,
+
+            title: '',
+            description: '',
+
             isMin: false,
             topMenu: TOP_MENU_DEFAULT,
             error: false,
@@ -63,6 +73,14 @@ class MainPageWrapper extends Component {
         this.setState({filter: newValue})
     }
 
+    _setTitle = (newValue) => {
+        this.setState({title: newValue})
+    }
+
+    _setDescription = (newValue) => {
+        this.setState({description: newValue})
+    }
+
     _setMin = (bool) => {
         this.setState({isMin: bool})
     }
@@ -72,13 +90,26 @@ class MainPageWrapper extends Component {
     }
 
     render() {
-        const {activeId, menu, search, filter, addedCollectionList, isMin, topMenu, isLoad, error} = this.state;
+        const {activeId, menu, search, filter, addedCollectionList,
+            title, description,
+            isMin, topMenu, isLoad, error} = this.state;
         const {children, ...props} = this.props;
 
         if (error) return getError(error)
 
+        const getTopMenu = () => {
+            if (topMenu === TOP_MENU_DEFAULT)
+                return <TopBarDefault search={search} setSearch={this._setSearch} filter={filter} setFilter={this._setFilter}
+                                      menu={menu}/>
+            if (topMenu === TOP_MENU_CREATE_COURSE)
+                return <TopBarCreateCourse title={title} description={description} />
+            return <TopBarCoursePage />
+        }
+
         let content = null;
+        let topMenuHTML = null;
         if (isLoad) {
+            topMenuHTML = getTopMenu()
             content = (
                 <MainPageWrapperContext.Provider value={{
                     setActiveId: this._setActiveId,
@@ -88,6 +119,10 @@ class MainPageWrapper extends Component {
                     addedCollectionList: addedCollectionList,
                     menu: menu,
                     setAddedCollectionList: this._setAddedCollectionList,
+
+                    setTitle: this._setTitle,
+                    setDescription: this._setDescription,
+
                     setMin: this._setMin,
                     topMenu: topMenu,
                     setTopMenu: this._setTopMenu,
@@ -106,12 +141,8 @@ class MainPageWrapper extends Component {
 
                 <div className={cl.main}>
                     <div className={cl.mainWrapper}>
-                        {topMenu === TOP_MENU_DEFAULT
-                        ? <TopBarDefault search={search} setSearch={this._setSearch} filter={filter} setFilter={this._setFilter}
-                                         menu={menu}/>
-                        : <TopBarCoursePage />
-                        }
-                        <div className={[cl.mainContent, topMenu === TOP_MENU_DEFAULT ? cl.mainContentRadius : '',
+                        {topMenuHTML}
+                        <div className={[cl.mainContent, topMenu !== TOP_MENU_COURSE_PAGE ? cl.mainContentRadius : '',
                             isMin ? cl.min : cl.big, this.props.className].join(" ")}>
                             {content}
                         </div>

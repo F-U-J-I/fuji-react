@@ -12,7 +12,7 @@ const UserNav = ({className}) => {
     const imageUser = getImage(sessionStorage.getItem('avatarUrl'));
 
     const listMenu = [
-        {id: 1, title: 'Преподавание', to: '#'},
+        {id: 1, title: 'Преподавание', to: '/teaching'},
         {id: 2, title: 'Настройки', to: '/settings'},
     ]
 

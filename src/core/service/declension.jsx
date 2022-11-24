@@ -20,3 +20,15 @@ export const getCollectionText = (count) => {
 export const getInCollectionText = (count) => {
     return getText(count, `подборках`, `подборке`, `подборках`)
 }
+
+export const getFeedbackText = (count) => {
+    return getText(count, `отзывов`, `отзыв`, `отзыва`)
+}
+
+export const getStudentText = (count) => {
+    return getText(count, `учащихся`, `учащийся`, `учащихся`)
+}
+
+export const getLessonText = (count) => {
+    return getText(count, `уроков`, `урок`, `урока`)
+}

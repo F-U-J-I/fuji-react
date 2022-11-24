@@ -117,6 +117,7 @@ class ModalAddCourseToCollection extends Component {
             )
         )
 
+        this.props.setIsVisible(false)
         await Promise.all(promisesAdded);
         await Promise.all(promisesRemoved);
         this.props.onClick(quantityInCollection)
