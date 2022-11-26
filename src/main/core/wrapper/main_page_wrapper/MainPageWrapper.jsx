@@ -9,10 +9,11 @@ import {getError} from "../../../../core/service/error";
 import TopBarCoursePage from "./core/components/top_bar/course_page/TopBarCoursePage";
 import {
     TOP_MENU_COURSE_PAGE,
-    TOP_MENU_CREATE_COURSE,
+    TOP_MENU_CREATE_COURSE, TOP_MENU_CREATE_STEP_COURSE,
     TOP_MENU_DEFAULT
 } from "./core/components/top_bar/core/services/topMenuService";
 import TopBarCreateCourse from "./core/components/top_bar/create_course/TopBarCreateCourse";
+import TopBarSteps from "./core/components/top_bar/steps/TopBarSteps";
 
 
 class MainPageWrapper extends Component {
@@ -29,6 +30,9 @@ class MainPageWrapper extends Component {
 
             title: '',
             description: '',
+            to: '#',
+
+            steps: [],
 
             isMin: false,
             topMenu: TOP_MENU_DEFAULT,
@@ -89,20 +93,33 @@ class MainPageWrapper extends Component {
         this.setState({topMenu: id})
     }
 
+    _setTo = (str) => {
+        this.setState({to: str})
+    }
+
+    _setSteps = (newList) => {
+        this.setState({steps: newList})
+    }
+
     render() {
         const {activeId, menu, search, filter, addedCollectionList,
-            title, description,
+            title, description, to,
+            steps,
             isMin, topMenu, isLoad, error} = this.state;
         const {children, ...props} = this.props;
 
         if (error) return getError(error)
+
 
         const getTopMenu = () => {
             if (topMenu === TOP_MENU_DEFAULT)
                 return <TopBarDefault search={search} setSearch={this._setSearch} filter={filter} setFilter={this._setFilter}
                                       menu={menu}/>
             if (topMenu === TOP_MENU_CREATE_COURSE)
-                return <TopBarCreateCourse title={title} description={description} />
+                return <TopBarCreateCourse title={title} description={description} to={to}/>
+
+            if (topMenu === TOP_MENU_CREATE_STEP_COURSE)
+                return <TopBarSteps steps={steps}/>
             return <TopBarCoursePage />
         }
 
@@ -122,6 +139,9 @@ class MainPageWrapper extends Component {
 
                     setTitle: this._setTitle,
                     setDescription: this._setDescription,
+                    setTo: this._setTo,
+
+                    setSteps: this._setSteps,
 
                     setMin: this._setMin,
                     topMenu: topMenu,

@@ -18,6 +18,8 @@
     .title {
       max-width: 860px;
       margin-right: auto;
+      overflow: hidden;
+      text-overflow: ellipsis;
       text-align: left;
       width: 100%;
     }

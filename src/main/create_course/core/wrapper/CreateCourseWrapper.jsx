@@ -14,7 +14,6 @@ class CreateCourseWrapper extends Component {
         super(props);
         this.state = {
             menuId: null,
-            path: null,
             to: '#',
             isLoad: false
         }
@@ -37,6 +36,7 @@ class CreateCourseWrapper extends Component {
 
     setTo = (newTo) => {
         this.setState({to: newTo})
+        this.context.setTo(newTo)
     }
 
     render() {

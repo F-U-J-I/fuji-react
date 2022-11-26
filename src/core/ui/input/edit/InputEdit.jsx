@@ -8,7 +8,7 @@ import cl from './_InputEdit.module.scss'
 import warningSVG from "../../../static/img/warning-fill-red.svg"
 
 
-const InputEdit = ({title, id, required, type, value, className, classNameInput, ...props}) => {
+const InputEdit = ({title, id, required, type, value, classNameLabel, classNameTitle, classNameInput, className, ...props}) => {
     const [error, setError] = useState(false)
 
     if (required) {
@@ -20,8 +20,8 @@ const InputEdit = ({title, id, required, type, value, className, classNameInput,
 
     return (
         <div className={[className, cl.wrapper].join(" ")}>
-            <label className={cl.label} htmlFor={id}>
-                <Text18M>{title}</Text18M>
+            <label className={[cl.label, classNameLabel].join(" ")} htmlFor={id}>
+                <Text18M className={classNameTitle}>{title}</Text18M>
                 {required && <Text18B className={cl.symbolRequired}>*</Text18B>}
             </label>
             {type === 'textarea'

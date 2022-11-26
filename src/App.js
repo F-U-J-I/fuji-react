@@ -33,7 +33,8 @@ import CoursePage from "./main/course_page/CoursePage";
 import TeachingPage from "./main/teaching/TeachingPage";
 import {CreateCourseWrapper} from "./main/create_course/core/wrapper/CreateCourseWrapper";
 import {CreateCourseWrapperContext} from "./main/create_course/core/wrapper/core/context/CreateCourseWrapperContext";
-import ThemesPage from "./main/create_course/themes/ThemesPage";
+import ThemesPage from "./main/create_course/other/themes/ThemesPage";
+import LessonsPage from "./main/create_course/other/lessons/LessonsPage";
 
 function App() {
     return (
@@ -105,9 +106,9 @@ function App() {
                         </CreateCourseWrapper>
                     }>
                         <Route path="/courses/:path/create/" element={<ThemesPage />} />
-
+                        <Route path="/courses/:path/create/:pathTheme/" element={<LessonsPage />} />
+                        <Route path="/courses/:path/create/:pathTheme/:pathLesson/:pathStep/" element={<LessonsPage />} />
                     </Route>
-
 
                 </Route>
             </Routes>

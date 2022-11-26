@@ -74,6 +74,7 @@ class CoursePage extends Component {
         let themesHTML = null;
         let ratingHTML = null;
         if (isLoad) {
+            console.log(course.themes.length)
             mainHTML = (
                 <MainCoursePart course={course.course}
                                 rating={rating}
@@ -94,7 +95,7 @@ class CoursePage extends Component {
                 themesHTML = <ThemesCoursePart themes={course.themes} className={cl.block} />
 
             if (course.themes.length > 0)
-                themesHTML = <RatingCoursePart path={path}
+                ratingHTML = <RatingCoursePart path={path}
                                                rating={rating} setRating={this.setRating}
                                                grade={grade} setGrade={this.setGrade}
                                                className={cl.block} />

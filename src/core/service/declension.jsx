@@ -32,3 +32,7 @@ export const getStudentText = (count) => {
 export const getLessonText = (count) => {
     return getText(count, `уроков`, `урок`, `урока`)
 }
+
+export const getStepText = (count) => {
+    return getText(count, `шагов`, `шаг`, `шага`)
+}

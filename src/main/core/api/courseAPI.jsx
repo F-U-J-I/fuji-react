@@ -42,11 +42,18 @@ export async function popCourseInCollection(path, collectionPath, params){
     return await request('DELETE', url, body)
 }
 
-
-// COURSE PAGE
 export async function getPageCourse(path){
-    const url = `${COURSE_URL_API}/page/${path}/`
+    const url = `${COURSE_URL_API}/creating/${path}/get/page/`
     return await request('GET', url)
+}
+
+export async function updatePageCourse(path, body){
+    const url = `${COURSE_URL_API}/creating/${path}/update/page/course/`
+    const headers = {
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${sessionStorage.getItem('access')}`
+    }
+    return await request('PUT', url, body, headers)
 }
 
 
@@ -69,15 +76,17 @@ export async function deleteGradeCourse(path){
 }
 
 // CREATE
+
+// COURSE
+export async function getTitleCourse(path){
+    const url = `${COURSE_URL_API}/learn/${path}/title/`
+    return await request('GET', url)
+}
+
 export async function createCourse(title){
     const url = `${COURSE_URL_API}/create/`
     const body = JSON.stringify({title: title})
     return await request('POST', url, body)
-}
-
-export async function getTitleCourse(path){
-    const url = `${COURSE_URL_API}/learn/${path}/title/`
-    return await request('GET', url)
 }
 
 
@@ -106,6 +115,44 @@ export async function deleteTheme(pathCourse, pathTheme){
     return await request('DELETE', url)
 }
 
+export async function getTitleTheme(pathCourse, pathTheme){
+    const url = `${COURSE_URL_API}/learn/${pathCourse}/themes/${pathTheme}/title/`
+    return await request('GET', url)
+}
+
+
+// LESSON
+export async function getLessonsCourse(pathCourse, pathTheme){
+    const url = `${COURSE_URL_API}/learn/${pathCourse}/themes/${pathTheme}/lessons/`
+    return await request('GET', url)
+}
+
+export async function createLesson(pathCourse, pathTheme){
+    const url = `${COURSE_URL_API}/creating/${pathCourse}/theme/${pathTheme}/create/lesson/`
+    return await request('POST', url)
+}
+
+export async function updateLesson(pathCourse, pathTheme, pathLesson, body){
+    const url = `${COURSE_URL_API}/creating/${pathCourse}/theme/${pathTheme}/update/lesson/${pathLesson}/`
+    const headers = {
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${sessionStorage.getItem('access')}`
+    }
+    return await request('PUT', url, body, headers)
+}
+
+export async function deleteLesson(pathCourse, pathTheme, pathLesson){
+    const url = `${COURSE_URL_API}/creating/${pathCourse}/theme/${pathTheme}/delete/lesson/${pathLesson}/`
+    return await request('DELETE', url)
+}
+
+
+// STEP
+
+export async function createStep(pathCourse, pathTheme, pathLesson){
+    const url = `${COURSE_URL_API}/creating/${pathCourse}/theme/${pathTheme}/lesson/${pathLesson}/create/step/`
+    return await request('POST', url)
+}
 
 // PUBLISH | DEVELOPMENT
 export async function publishCourse(path){
