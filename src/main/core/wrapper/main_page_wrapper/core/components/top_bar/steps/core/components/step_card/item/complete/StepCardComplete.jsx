@@ -1,11 +1,11 @@
 import React from 'react';
-import StepCardCompleteActive from "./core/components/active/StepCardCompleteActive";
-import StepCardCompleteDefault from "./core/components/default/StepCardCompleteDefault";
+import cl from './_StepCardComplete.module.scss';
+import StepCard from "../core/components/card/StepCard";
 
-const StepCardComplete = ({active, ...props}) => {
-    if (active)
-        return <StepCardCompleteActive {...props} />
-    return <StepCardCompleteDefault {...props} />
+const StepCardComplete = ({className, ...props}) => {
+    return (
+        <StepCard className={[cl.card, className].join(" ")} {...props} />
+    )
 };
 
 

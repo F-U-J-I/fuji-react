@@ -1,14 +1,15 @@
 import React from 'react';
 import StepCardComplete from "../item/complete/StepCardComplete";
 import cl from "./_StepCardList.module.scss";
-import StepCardBase from "../item/base/StepCardBase";
+import StepCardDefault from "../item/base/StepCardDefault";
+import {withParams} from "../../../../../../../../../../../../core/service/params";
 
-const StepCardList = ({steps, className, ...props}) => {
+const StepCardList = ({steps, className, params, ...props}) => {
     const getStep = (step) => {
-        const to = `../${step.path}/`
+        const to = `/courses/${params.path}/create/${params.pathTheme}/${params.pathLesson}/${step.path}/`
         if (step.is_complete)
-            return <StepCardComplete to={to} active={step.is_active} className={cl.listItem} />
-        return <StepCardBase to={to} active={step.is_active} className={cl.listItem} />
+            return <StepCardComplete key={step.path} to={to} active={step.is_active} className={cl.listItem} />
+        return <StepCardDefault key={step.path} to={to} active={step.is_active} className={cl.listItem} />
     }
 
     return (
@@ -18,4 +19,4 @@ const StepCardList = ({steps, className, ...props}) => {
     );
 };
 
-export default StepCardList;
+export default withParams(StepCardList);

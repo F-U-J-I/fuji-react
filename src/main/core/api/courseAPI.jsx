@@ -43,7 +43,7 @@ export async function popCourseInCollection(path, collectionPath, params){
 }
 
 export async function getPageCourse(path){
-    const url = `${COURSE_URL_API}/creating/${path}/get/page/`
+    const url = `${COURSE_URL_API}/page/${path}/`
     return await request('GET', url)
 }
 
@@ -153,6 +153,19 @@ export async function createStep(pathCourse, pathTheme, pathLesson){
     const url = `${COURSE_URL_API}/creating/${pathCourse}/theme/${pathTheme}/lesson/${pathLesson}/create/step/`
     return await request('POST', url)
 }
+
+export async function getStepList(pathCourse, pathTheme, pathLesson, pathStep){
+    const url = `${COURSE_URL_API}/learn/${pathCourse}/themes/${pathTheme}/lessons/${pathLesson}/steps/${pathStep}/list/`
+    return await request('GET', url)
+}
+
+export async function getStep(pathCourse, pathTheme, pathLesson, pathStep){
+    const url = `${COURSE_URL_API}/learn/${pathCourse}/themes/${pathTheme}/lessons/${pathLesson}/steps/${pathStep}/`
+    return await request('GET', url)
+}
+
+
+
 
 // PUBLISH | DEVELOPMENT
 export async function publishCourse(path){

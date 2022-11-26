@@ -6,7 +6,7 @@ import UserNav from "../core/components/UserNav";
 
 const TopBarSteps = ({steps, className, ...props}) => {
     return (
-        <div className={className} {...props}>
+        <div className={[cl.topBar, className].join(" ")} {...props}>
             <div className={cl.line} />
             <StepCardList steps={steps} className={cl.steps} />
             <ButtonPublishCourse className={cl.button} />

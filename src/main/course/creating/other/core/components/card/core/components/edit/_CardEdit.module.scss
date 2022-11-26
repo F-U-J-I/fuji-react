@@ -1,0 +1,54 @@
+@import "../../../../../../../../../../core/scss/vars";
+
+
+.block {
+  position: relative;
+  min-height: 300px;
+  max-width: 350px;
+}
+
+.card {
+  padding: 18px;
+
+  .image {
+    width: 100%;
+    height: 222px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin: 0 auto;
+  }
+
+  .title {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    overflow-wrap: break-word
+  }
+
+  .description {
+    margin-top: auto;
+    color: $gray-2;
+  }
+
+  &:hover {
+    .kebab {
+      opacity: 1;
+    }
+  }
+}
+
+.kebab {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  transition: all .2s;
+}
+
+.modal {
+  opacity: 0;
+  z-index: -1;
+}
+
+.visible {
+  opacity: 1;
+  z-index: 1;
+}

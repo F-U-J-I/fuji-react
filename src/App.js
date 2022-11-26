@@ -31,10 +31,21 @@ import SearchCollectionPage from "./main/search/collections/SearchCollectionPage
 import SearchUserPage from "./main/search/users/SearchUserPage";
 import CoursePage from "./main/course_page/CoursePage";
 import TeachingPage from "./main/teaching/TeachingPage";
-import {CreateCourseWrapper} from "./main/create_course/core/wrapper/CreateCourseWrapper";
-import {CreateCourseWrapperContext} from "./main/create_course/core/wrapper/core/context/CreateCourseWrapperContext";
-import ThemesPage from "./main/create_course/other/themes/ThemesPage";
-import LessonsPage from "./main/create_course/other/lessons/LessonsPage";
+import {CourseWrapper} from "./main/course/core/wrapper/CourseWrapper";
+import {CourseWrapperContext} from "./main/course/core/wrapper/core/context/CourseWrapperContext";
+import {OtherCreateCourseWrapper} from "./main/course/creating/other/core/wrapper/OtherCreateCourseWrapper";
+import {CreateCourseWrapper} from "./main/course/creating/core/wrapper/CreateCourseWrapper";
+import {CreateCourseWrapperContext} from "./main/course/creating/core/wrapper/core/context/CreateCourseWrapperContext";
+import ThemesPage from "./main/course/creating/other/themes/ThemesPage";
+import {StepCreateCourseWrapper} from "./main/course/creating/step_detail/core/wrapper/StepCreateCourseWrapper";
+import {
+    StepCreateCourseWrapperContext
+} from "./main/course/creating/step_detail/core/wrapper/core/context/StepCreateCourseWrapperContext";
+import LessonsPage from "./main/course/creating/other/lessons/LessonsPage";
+import StepDetailPage from "./main/course/creating/step_detail/StepDetailPage";
+import {
+    OtherCreateCourseWrapperContext
+} from "./main/course/creating/other/core/wrapper/core/context/OtherCreateCourseWrapperContext";
 
 function App() {
     return (
@@ -99,15 +110,38 @@ function App() {
                         <Route path="/users/:path/learn/complete/" element={<LearnCompleteCollection/>}/>
                     </Route>
 
-                    {/*  СОЗДАНИЕ КУРСА  */}
+                    {/* КУРС */}
                     <Route element={
-                        <CreateCourseWrapper CreateCourseWrapperContext={CreateCourseWrapperContext}>
+                        <CourseWrapper CourseWrapperContext={CourseWrapperContext}>
                             <Outlet />
-                        </CreateCourseWrapper>
+                        </CourseWrapper>
                     }>
-                        <Route path="/courses/:path/create/" element={<ThemesPage />} />
-                        <Route path="/courses/:path/create/:pathTheme/" element={<LessonsPage />} />
-                        <Route path="/courses/:path/create/:pathTheme/:pathLesson/:pathStep/" element={<LessonsPage />} />
+                        {/*  СОЗДАНИЕ КУРСА  */}
+                        <Route element={
+                            <CreateCourseWrapper CreateCourseWrapperContext={CreateCourseWrapperContext}>
+                                <Outlet />
+                            </CreateCourseWrapper>
+                        }>
+                            {/*  ТЕМЫ И УРОКИ  */}
+                            <Route element={
+                                <OtherCreateCourseWrapper OtherCreateCourseWrapperContext={OtherCreateCourseWrapperContext}>
+                                    <Outlet />
+                                </OtherCreateCourseWrapper>
+                            }>
+                                <Route path="/courses/:path/create/" element={<ThemesPage />} />
+                                <Route path="/courses/:path/create/:pathTheme/" element={<LessonsPage />} />
+                            </Route>
+
+                            {/*  ШАГИ  */}
+                            <Route element={
+                                <StepCreateCourseWrapper StepCreateCourseWrapperContext={StepCreateCourseWrapperContext}>
+                                    <Outlet />
+                                </StepCreateCourseWrapper>
+                            }>
+                                <Route path="/courses/:path/create/:pathTheme/:pathLesson/:pathStep/" element={<StepDetailPage />} />
+                            </Route>
+                        </Route>
+
                     </Route>
 
                 </Route>
