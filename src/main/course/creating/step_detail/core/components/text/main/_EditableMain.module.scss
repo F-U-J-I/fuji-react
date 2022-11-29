@@ -1,0 +1,61 @@
+@import "../../../../../../../../core/scss/vars";
+
+
+.block {
+  color: $white;
+  outline: none;
+  font-family: $f-book;
+  font-size: $fs-20;
+  //max-width: 1000px;
+  white-space: pre-wrap;
+  word-break: break-word;
+
+  &:empty:before{
+    content: attr(placeholder);
+    color: $gray-2;
+  }
+
+  h1, h2, h3, strong {
+    font-family: $f-bold;
+  }
+
+  h1 {
+    font-size: $fs-40;
+    margin-top: 32px;
+    margin-bottom: 4px;
+  }
+
+  h2 {
+    font-size: $fs-32;
+    margin-top: 28px;
+    margin-bottom: 2px;
+  }
+
+  h3 {
+    font-size: $fs-24;
+    margin-top: 28px;
+    margin-bottom: 2px;
+  }
+
+
+  p {
+    margin-top: 20px;
+    font-size: $fs-20;
+    font-family: $f-book;
+
+    &:empty:before{
+      content: attr(placeholder);
+      color: $gray-2;
+    }
+  }
+
+  img {
+    //width: 1100px !important;
+    //width: 1100px !important;
+    width: 100% !important;
+    height: fit-content !important;
+    border-radius: 20px;
+    margin-top: 40px;
+    margin-bottom: 8px;
+  }
+}

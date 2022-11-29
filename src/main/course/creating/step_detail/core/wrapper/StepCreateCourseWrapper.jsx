@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import cl from './_StepCreateCourseWrapper.module.scss'
 import {CreateCourseWrapperContext} from "../../../core/wrapper/core/context/CreateCourseWrapperContext";
 import {workshopId} from "../../../../../archive/core/service/menuID";
 import {
@@ -8,6 +9,7 @@ import {getStepList} from "../../../../../core/api/courseAPI";
 import {getError} from "../../../../../../core/service/error";
 import {withParams} from "../../../../../../core/service/params";
 import {StepCreateCourseWrapperContext} from "./core/context/StepCreateCourseWrapperContext";
+import TitleEditable from "../components/text/title/editable/TitleEditable";
 
 class StepCreateCourseWrapperLocal extends Component {
     static contextType = CreateCourseWrapperContext;
@@ -15,23 +17,33 @@ class StepCreateCourseWrapperLocal extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            title: '',
+
             isLoadStepList: false,
             error: null,
         }
     }
 
     componentDidMount() {
-        console.log(this.props.params)
+        this.context.setTopMenu(TOP_MENU_CREATE_STEP_COURSE)
+        this.context.setMenuId(workshopId)
         this._setData()
     }
 
-    _setData() {
-        this.context.setTopMenu(TOP_MENU_CREATE_STEP_COURSE)
-        this.context.setMenuId(workshopId)
-        this.setStepList()
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.params.pathStep !== this.props.params.pathStep) {
+            this._setData()
+        }
     }
 
-    setStepList() {
+    _setData() {
+        const {path, pathTheme, pathLesson, pathStep} = this.props.params;
+
+        this.context.setTo(`/courses/${path}/create/${pathTheme}/${pathLesson}/${pathStep}/`)
+        this._setStepList()
+    }
+
+    _setStepList() {
         const {path, pathTheme, pathLesson, pathStep} = this.props.params;
         getStepList(path, pathTheme, pathLesson, pathStep).then(
             r => {this.context.setSteps(r)},
@@ -41,9 +53,13 @@ class StepCreateCourseWrapperLocal extends Component {
         })
     }
 
+    setTitle = (newTitle) => {
+        this.setState({title: newTitle})
+    }
+
     render() {
         const {children, ...props} = this.props;
-        const {isLoadStepList, error} = this.state;
+        const {title, isLoadStepList, error} = this.state;
         const {setTo, setSteps} = this.context;
 
         if (error)
@@ -57,13 +73,22 @@ class StepCreateCourseWrapperLocal extends Component {
                 <StepCreateCourseWrapperContext.Provider value={{
                     setTo: setTo,
                     setSteps: setSteps,
+                    setTitle: this.setTitle,
                     ...props
                 }}>
+                    <div className={cl.titleWrapper}>
+                        <TitleEditable title={title} setTitle={this.setTitle} className={cl.title} />
+                        <div className={cl.line} />
+                    </div>
                     {children}
                 </StepCreateCourseWrapperContext.Provider>
             )
 
-        return content;
+        return (
+            <>
+                {content}
+            </>
+        );
     }
 }
 

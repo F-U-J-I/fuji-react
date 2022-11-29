@@ -16,7 +16,7 @@ class CourseWrapper extends Component {
 
     render() {
         const {children, ...props} = this.props;
-        const {setTitle, setDescription, setTopMenu, setSteps} = this.context;
+        const {setTitle, setDescription, setTopMenu, setSteps, setTo} = this.context;
 
         return (
             <CourseWrapperContext.Provider value={{
@@ -24,9 +24,10 @@ class CourseWrapper extends Component {
                 setDescription: setDescription,
                 setTopMenu: setTopMenu,
                 setSteps: setSteps,
+                setTo: setTo,
                 ...props
             }}>
-
+                {children}
             </CourseWrapperContext.Provider>
         );
     }

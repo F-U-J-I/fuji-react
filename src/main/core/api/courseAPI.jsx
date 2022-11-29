@@ -164,7 +164,10 @@ export async function getStep(pathCourse, pathTheme, pathLesson, pathStep){
     return await request('GET', url)
 }
 
-
+export async function getStepJSON(pathCourse, pathTheme, pathLesson, pathStep){
+    const url = `${COURSE_URL_API}/learn/${pathCourse}/themes/${pathTheme}/lessons/${pathLesson}/steps-json/${pathStep}/`
+    return await request('GET', url)
+}
 
 
 // PUBLISH | DEVELOPMENT

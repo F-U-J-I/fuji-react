@@ -1,6 +1,6 @@
 import React from 'react';
 import cl from './_ThemeCreate.module.scss'
-import createSVG from "../../../../../../../../core/static/img/add-fill-blue.svg";
+import createSVG from "../../../../../../../../../core/static/img/add-fill-blue.svg";
 import CardCreate from "../../core/components/create/CardCreate";
 import {createTheme} from "../../../../../../../../core/api/courseAPI";
 

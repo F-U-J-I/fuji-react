@@ -1,6 +1,6 @@
 import React from 'react';
 import cl from './_ButtonKebab.module.scss'
-import kebabSVG from "../../../../../../../../../../../../core/static/img/kebab-fill-white.svg";
+import kebabSVG from "../../../../../../../../../../../../../core/static/img/kebab-fill-white.svg";
 import List from "../../../../../../../../../../../../../core/components/list/list/List";
 import ListItem from "../../../../../../../../../../../../../core/components/list/list_item/default/ListItem";
 

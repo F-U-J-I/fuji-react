@@ -1,0 +1,12 @@
+@import "../../../../../../../../core/scss/vars";
+
+.text {
+  margin-top: 20px;
+  font-size: $fs-20;
+  font-family: $f-book;
+  margin-bottom: 1px;
+
+  b, strong {
+    font-family: $f-bold;
+  }
+}
