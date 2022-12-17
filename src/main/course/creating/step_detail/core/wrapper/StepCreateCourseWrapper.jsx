@@ -10,6 +10,7 @@ import {getError} from "../../../../../../core/service/error";
 import {withParams} from "../../../../../../core/service/params";
 import {StepCreateCourseWrapperContext} from "./core/context/StepCreateCourseWrapperContext";
 import TitleEditable from "../components/text/title/editable/TitleEditable";
+import BottomBarCreatingCourse from "../../../core/wrapper/core/core/components/bottom-bar/BottomBarCreatingCourse";
 
 class StepCreateCourseWrapperLocal extends Component {
     static contextType = CreateCourseWrapperContext;
@@ -18,6 +19,8 @@ class StepCreateCourseWrapperLocal extends Component {
         super(props);
         this.state = {
             title: '',
+            content: '',
+            isContentUpdated: false,
 
             isLoadStepList: false,
             error: null,
@@ -56,24 +59,37 @@ class StepCreateCourseWrapperLocal extends Component {
     setTitle = (newTitle) => {
         this.setState({title: newTitle})
     }
+    setContent = (state) => {
+        this.setState({content: state})
+    }
+    setSaveContent = (state: Boolean) => {
+        this.setState({saveContent: state})
+    }
+
+    setIsContentUpdated = (state: Boolean) => {
+        this.setState({isContentUpdated: state})
+    }
 
     render() {
-        const {children, ...props} = this.props;
-        const {title, isLoadStepList, error} = this.state;
+        const {children, setClassName, ...props} = this.props;
+        const {title, content, isLoadStepList, isContentUpdated, error} = this.state;
         const {setTo, setSteps} = this.context;
 
         if (error)
             return getError(error);
 
-        let content = null;
+        let contentHTML = null;
 
         if (isLoadStepList)
-            content = (
+            contentHTML = (
                 // eslint-disable-next-line react/jsx-no-undef
                 <StepCreateCourseWrapperContext.Provider value={{
                     setTo: setTo,
                     setSteps: setSteps,
                     setTitle: this.setTitle,
+                    setContent: this.setContent,
+                    isContentUpdated: isContentUpdated,
+                    setIsContentUpdated: this.setIsContentUpdated,
                     ...props
                 }}>
                     <div className={cl.titleWrapper}>
@@ -81,12 +97,17 @@ class StepCreateCourseWrapperLocal extends Component {
                         <div className={cl.line} />
                     </div>
                     {children}
+                    <div className={[cl.bottomBar, isContentUpdated ? cl.active : ''].join(" ")}>
+                        <BottomBarCreatingCourse title={title}
+                                                 content={content}
+                                                 className={cl.bottomBarThis} />
+                    </div>
                 </StepCreateCourseWrapperContext.Provider>
             )
 
         return (
             <>
-                {content}
+                {contentHTML}
             </>
         );
     }

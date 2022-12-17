@@ -10,7 +10,7 @@ import TopBarCoursePage from "./core/components/top_bar/course_page/TopBarCourse
 import {
     TOP_MENU_COURSE_PAGE,
     TOP_MENU_CREATE_COURSE, TOP_MENU_CREATE_STEP_COURSE,
-    TOP_MENU_DEFAULT
+    TOP_MENU_DEFAULT, TOP_MENU_LEARN_STEP_COURSE
 } from "./core/components/top_bar/core/services/topMenuService";
 import TopBarCreateCourse from "./core/components/top_bar/create_course/TopBarCreateCourse";
 import TopBarSteps from "./core/components/top_bar/steps/TopBarSteps";
@@ -119,6 +119,9 @@ class MainPageWrapper extends Component {
                 return <TopBarCreateCourse title={title} description={description} to={to}/>
 
             if (topMenu === TOP_MENU_CREATE_STEP_COURSE)
+                return <TopBarSteps existsCreateStep={true} steps={steps}/>
+
+            if (topMenu === TOP_MENU_LEARN_STEP_COURSE)
                 return <TopBarSteps steps={steps}/>
             return <TopBarCoursePage />
         }

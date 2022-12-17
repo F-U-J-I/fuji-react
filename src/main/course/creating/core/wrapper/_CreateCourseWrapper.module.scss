@@ -4,5 +4,8 @@
 }
 
 .content {
+  display: flex;
+  flex-direction: column;
   margin: 0 100px 100px;
+  height: 100%;
 }

@@ -1,0 +1,47 @@
+@import "../../../../../../../../../../core/scss/vars";
+
+.block {
+  top: 40px;
+  position: absolute;
+  width: 300px;
+  height: 400px;
+  overflow-y: hidden;
+  background-color: $black-light-3;
+  border-radius: 20px;
+  //padding: 5px;
+  //padding-right: 0;
+
+  .list {
+    height: 100%;
+    overflow-y: auto;
+    padding: 5px;
+  }
+
+  .item {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background-color: $black-light-3;
+    border-radius: 18px;
+    padding: 5px;
+    transition: all .2s;
+    color: $white;
+    font-family: $f-medium;
+    font-size: $fs-20;
+
+    &:hover {
+      background-color: $black-light-4;
+    }
+
+    .image {
+      width: 60px;
+      height: 60px;
+      border-radius: 15px;
+      border: 2px solid $purple;
+    }
+
+    .title {
+      margin-left: 10px;
+    }
+  }
+}

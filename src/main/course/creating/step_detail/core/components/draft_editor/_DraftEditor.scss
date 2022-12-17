@@ -1,0 +1,38 @@
+@import "../../../../../../../core/scss/vars";
+
+
+.public-DraftEditorPlaceholder-root {
+  position: absolute;
+  color: $gray-2;
+
+  webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.public-DraftEditor-content div {
+  div:has(div span) {
+    margin-top: 20px;
+    font-size: $fs-20;
+    font-family: $f-book;
+    margin-bottom: 1px;
+  }
+  div:has(div img) {
+    margin-top: 40px;
+    margin-bottom: 3px;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently */
+  }
+}
+
+.RichEditor-hidePlaceholder .public-DraftEditorPlaceholder-root {
+  display: none;
+}

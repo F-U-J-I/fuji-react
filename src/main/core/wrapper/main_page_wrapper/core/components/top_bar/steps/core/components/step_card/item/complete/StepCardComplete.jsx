@@ -1,10 +1,10 @@
 import React from 'react';
 import cl from './_StepCardComplete.module.scss';
-import StepCard from "../core/components/card/StepCard";
+import LinkStepCard from "../core/components/card/link/LinkStepCard";
 
 const StepCardComplete = ({className, ...props}) => {
     return (
-        <StepCard className={[cl.card, className].join(" ")} {...props} />
+        <LinkStepCard className={[cl.card, className].join(" ")} {...props} />
     )
 };
 

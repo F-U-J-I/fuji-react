@@ -12,6 +12,7 @@ class CreateCourseWrapper extends Component {
         this.state = {
             menuId: null,
             to: '#',
+            fromChildClassName: '',
         }
     }
 
@@ -24,8 +25,12 @@ class CreateCourseWrapper extends Component {
         this.context.setTo(newTo)
     }
 
+    setFromChildClassName = (newClassName) => {
+        this.setState({fromChildClassName: newClassName})
+    }
+
     render() {
-        const {menuId, to} = this.state;
+        const {menuId, to, fromChildClassName} = this.state;
         const {children, ...props} = this.props;
         const {setTitle, setDescription, setTopMenu, setSteps} = this.context;
 
@@ -42,6 +47,7 @@ class CreateCourseWrapper extends Component {
                     setMenuId: this.setMenuId,
                     setTo: this.setTo,
                     setSteps: setSteps,
+                    setClassName: this.setFromChildClassName,
                     ...props
                 }}>
                     {children}
@@ -51,7 +57,7 @@ class CreateCourseWrapper extends Component {
         return (
             <>
                 <TopMenu menu={menu} activeID={menuId} className={cl.menu} />
-                <div className={cl.content}>
+                <div className={[cl.content, fromChildClassName].join(" ")}>
                     {content}
                 </div>
             </>

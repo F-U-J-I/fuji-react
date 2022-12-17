@@ -1,0 +1,38 @@
+@import "../../../../../../../../../core/scss/vars";
+
+.bar {
+  background-color: $black-light-1;
+  display: flex;
+  justify-content: center;
+  //padding: 30px 10px;
+  padding: 30px;
+  border-radius: 30px;
+}
+
+.button {
+  padding: 12px 32px;
+  transition: all .2s;
+  border-width: 2px;
+
+  &:nth-child(n+2) {
+    margin-left: 30px;
+  }
+}
+
+.delete {
+  background-color: $red;
+  border-color: $red;
+
+  &:hover {
+    background-color: $red_20;
+  }
+}
+
+.save {
+  background-color: $green;
+  border-color: $green;
+
+  &:hover {
+    background-color: $green_20;
+  }
+}

@@ -154,6 +154,13 @@ export async function createStep(pathCourse, pathTheme, pathLesson){
     return await request('POST', url)
 }
 
+export async function updateStep(pathCourse, pathTheme, pathLesson, pathStep, body){
+    const url = `${COURSE_URL_API}/creating/${pathCourse}/theme/${pathTheme}/lesson/${pathLesson}/update/step/${pathStep}/`
+    const bodyJSON = JSON.stringify(body)
+    console.log(bodyJSON)
+    return await request('PUT', url, bodyJSON)
+}
+
 export async function getStepList(pathCourse, pathTheme, pathLesson, pathStep){
     const url = `${COURSE_URL_API}/learn/${pathCourse}/themes/${pathTheme}/lessons/${pathLesson}/steps/${pathStep}/list/`
     return await request('GET', url)

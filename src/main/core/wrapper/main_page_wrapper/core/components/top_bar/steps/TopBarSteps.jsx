@@ -4,11 +4,11 @@ import StepCardList from "./core/components/step_card/list/StepCardList";
 import ButtonPublishCourse from "../create_course/core/components/publish_course/ButtonPublishCourse";
 import UserNav from "../core/components/UserNav";
 
-const TopBarSteps = ({steps, className, ...props}) => {
+const TopBarSteps = ({existsCreateStep, steps, className, ...props}) => {
     return (
         <div className={[cl.topBar, className].join(" ")} {...props}>
             <div className={cl.line} />
-            <StepCardList steps={steps} className={cl.steps} />
+            <StepCardList existsCreateStep={existsCreateStep} steps={steps} className={cl.steps} />
             <ButtonPublishCourse className={cl.button} />
             <UserNav className={cl.userNav}/>
         </div>
