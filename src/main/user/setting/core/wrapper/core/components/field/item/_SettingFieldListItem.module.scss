@@ -37,5 +37,28 @@
         border-color: $purple;
       }
     }
+
+    &Error {
+      border-color: $red !important;
+    }
+  }
+
+  .description {
+    margin-left: 5px;
+
+    .text {
+      color: $gray-2 !important;
+      margin-top: 5px;
+    }
+
+    .error {
+      display: flex;
+      margin-top: 5px;
+
+      &Text {
+        color: $red !important;
+        margin-left: 5px;
+      }
+    }
   }
 }

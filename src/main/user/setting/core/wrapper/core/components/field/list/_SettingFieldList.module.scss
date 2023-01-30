@@ -8,17 +8,4 @@
   .item:nth-child(n+2) {
     margin-top: 25px;
   }
-
-  .line {
-    display: flex;
-
-    .item {
-      margin-top: 0;
-      &:nth-child(n+2) {
-        margin-left: 20px;
-      }
-    }
-
-  }
-
 }

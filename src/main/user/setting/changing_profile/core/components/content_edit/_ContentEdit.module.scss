@@ -2,13 +2,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .content {
   display: flex;
+  justify-content: center;
+  width: 100%;
 
   .fields {
     margin-left: 50px;
+    width: 100%;
   }
 }
 

@@ -9,9 +9,6 @@ const SettingFieldList = ({username, setUsername,
                               email, setEmail,
                               path, setPath,
                               className, ...props}) => {
-    // const linkOnChange = (path) => {
-    //     setPath(`fuji.com/${path}`)
-    // }
 
     return (
         <div className={[cl.block, className].join(" ")} {...props}>
@@ -29,22 +26,14 @@ const SettingFieldList = ({username, setUsername,
                                   image={emailSVG}
                                   required={true}
                                   className={cl.item}/>
-            <div className={[cl.item, cl.line].join(' ')}>
-                <SettingFieldListItem title="Ваш id"
-                                      value={path}
-                                      onChange={(e) => setPath(e.target.value)}
-                                      placeholder="path"
-                                      image={cardSVG}
-                                      required={true}
-                                      className={cl.item}/>
-                <SettingFieldListItem title="Адрес вашей страницы"
-                                      value={`fuji.com/${path}`}
-                                      onChange={(e) => setPath(e.target.value)}
-                                      placeholder="https://fuji.com/path"
-                                      image={cardSVG}
-                                      required={true}
-                                      className={cl.item}/>
-            </div>
+            <SettingFieldListItem title="Ваш id"
+                                  value={path}
+                                  onChange={(e) => setPath(e.target.value)}
+                                  placeholder="path"
+                                  image={cardSVG}
+                                  required={true}
+                                  description={`fuji.com/${path}`}
+                                  className={cl.item}/>
         </div>
     );
 };

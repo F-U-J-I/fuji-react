@@ -1,8 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import cl from './_SettingFieldListItem.module.scss'
 import Text18B from "../../../../../../../../../core/ui/text/18/bold/Text18B";
+import Text14M from "../../../../../../../../../core/ui/text/14/medium/Text14M";
+import warningSVG from "../../../../../../../../../core/static/img/warning-fill-red.svg";
 
-const SettingFieldListItem = ({title, id, type, value, required, placeholder, image, className, onChange, ...props}) => {
+const SettingFieldListItem = ({title, id, type, value, required, placeholder, image, description, className, onChange, ...props}) => {
+    const [error, setError] = useState(false)
+    if (required) {
+        if (value === '' && !error)
+            setError(true)
+        else if (value.trim() !== '' && error)
+            setError(false)
+    }
+
     return (
         <div className={[cl.block, className].join(" ")} {...props}>
             <label htmlFor={id}><Text18B>{title}</Text18B></label>
@@ -14,8 +24,19 @@ const SettingFieldListItem = ({title, id, type, value, required, placeholder, im
                        required={required}
                        placeholder={placeholder}
                        onChange={onChange}
-                       className={cl.input}/>
+                       className={[cl.input, required && error ? cl.fieldError : ''].join(" ")}/>
             </span>
+            <div className={cl.description}>
+                {description && !(required && error) &&
+                    <Text14M className={cl.text}>{description}</Text14M>
+                }
+                {required && error &&
+                    <span className={cl.error}>
+                    <img src={warningSVG} alt="warning" />
+                    <Text14M className={cl.errorText}>Введите значение для этого поля</Text14M>
+                </span>
+                }
+            </div>
         </div>
     );
 };
