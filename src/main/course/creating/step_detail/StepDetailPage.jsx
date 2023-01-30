@@ -27,6 +27,7 @@ class StepDetailPage extends Component {
         this._setData()
     }
 
+
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps.params.pathStep !== this.props.params.pathStep){
             this._setData()

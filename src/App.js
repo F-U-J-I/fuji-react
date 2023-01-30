@@ -11,7 +11,7 @@ import {UserWrapper} from "./main/user/core/wrapper/UserWrapper";
 import {UserWrapperContext} from "./main/user/core/wrapper/core/context/UserWrapperContext";
 import UserCoursePage from "./main/user/course/UserCoursePage";
 import UserCollectionPage from "./main/user/collection/UserCollectionPage";
-import UserSettingPage from "./main/user/setting/UserSettingPage";
+import UserSettingPage from "./main/user/setting/changing_profile/UserSettingChangingProfilePage";
 import LearnProcessCollection from "./main/learn_collection/process/LearnProcessCollection";
 import LearnCompleteCollection from "./main/learn_collection/complete/LearnCompleteCollection";
 import Page404 from "./error/Page404";
@@ -46,6 +46,8 @@ import StepDetailPage from "./main/course/creating/step_detail/StepDetailPage";
 import {
     OtherCreateCourseWrapperContext
 } from "./main/course/creating/other/core/wrapper/core/context/OtherCreateCourseWrapperContext";
+import {UserSettingWrapper} from "./main/user/setting/core/wrapper/UserSettingWrapper";
+import {UserSettingWrapperContext} from "./main/user/setting/core/wrapper/core/context/UserSettingWrapperContext";
 
 function App() {
     return (
@@ -104,7 +106,15 @@ function App() {
                         <Route path="/users/:path" element={<UserLearnPage/>}/>
                         <Route path="/users/:path/collections" element={<UserCollectionPage/>}/>
                         <Route path="/users/:path/courses" element={<UserCoursePage/>}/>
-                        <Route path="/settings" element={<UserSettingPage/>}/>
+
+                        {/* НАСТРОЙКИ ПОЛЬЗОВАТЕЛЯ */}
+                        <Route element={
+                            <UserSettingWrapper UserSettingWrapperContext={UserSettingWrapperContext}>
+                                <Outlet />
+                            </UserSettingWrapper>
+                        }>
+                            <Route path="/settings" element={<UserSettingPage/>}/>
+                        </Route>
 
                         <Route path="/users/:path/learn/process/" element={<LearnProcessCollection/>}/>
                         <Route path="/users/:path/learn/complete/" element={<LearnCompleteCollection/>}/>

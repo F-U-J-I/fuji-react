@@ -35,11 +35,13 @@ const ModalEdit = ({path, titleModal, title, description, image_url, wallpaper, 
     }
 
     const onWallpaperSelected = (e) => {
+        console.log(e.currentTarget.files[0])
         setWallpaperFile(e.currentTarget.files[0])
         setWallpaperCollection(URL.createObjectURL(e.currentTarget.files[0]))
     }
 
     const onPreviewSelected = (e) => {
+        console.log(e.currentTarget.files[0])
         setPreviewFile(e.currentTarget.files[0])
         setPreviewCollection(URL.createObjectURL(e.currentTarget.files[0]))
     }

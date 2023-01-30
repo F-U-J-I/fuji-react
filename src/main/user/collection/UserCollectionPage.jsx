@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import cl from './_UserCollectionPage.module.scss'
 import {UserWrapperContext} from "../core/wrapper/core/context/UserWrapperContext";
 import {COLLECTION_ID} from "../core/wrapper/core/wallpaper/core/menu/core/service/UserMenuService";
 import {withParams} from "../../../core/service/params";
@@ -24,9 +25,9 @@ class UserCollectionPage extends Component {
     }
 
     render() {
-        const {params, ...props} = this.props;
+        const {params, className, ...props} = this.props;
 
-        return <Collections path={params.path} {...props}/>
+        return <Collections className={[cl.main, className].join(" ")} path={params.path} {...props}/>
     }
 }
 

@@ -47,3 +47,16 @@ export async function unsubscribeUser(path){
     let url = `${USER_URL_API}/${path}/delete/subscription/`
     return await request('DELETE', url)
 }
+
+
+// SETTINGS
+export async function getProfileInfo(){
+    let url = `${USER_URL_API}/get/info/`
+    return await request('GET', url)
+}
+
+export async function updateProfileInfo(body){
+    let url = `${USER_URL_API}/update/info/`
+    const bodyJSON = JSON.stringify(body)
+    return await request('PUT', url, bodyJSON)
+}

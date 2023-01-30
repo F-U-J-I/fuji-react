@@ -143,6 +143,7 @@ class DraftEditor extends Component {
         // console.log('keyBindingFn', e)
         if (e.key === '/') {
 
+
             this.showBlockTypeWindow(e)
         } else if (this.state.blockToolbar.show) {
             this.setState({blockToolbar: {show: false}});

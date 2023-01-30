@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import cl from './_UserCoursePage.module.scss'
 import {COURSE_ID} from "../core/wrapper/core/wallpaper/core/menu/core/service/UserMenuService";
 import {UserWrapperContext} from "../core/wrapper/core/context/UserWrapperContext";
 import {withParams} from "../../../core/service/params";
@@ -23,9 +24,9 @@ class UserCoursePage extends Component {
     }
 
     render() {
-        const {params, ...props} = this.props;
+        const {params, className, ...props} = this.props;
 
-        return <Courses path={params.path} {...props} />
+        return <Courses className={[cl.main, className].join(" ")} path={params.path} {...props} />
     }
 }
 
