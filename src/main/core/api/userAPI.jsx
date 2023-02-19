@@ -57,6 +57,9 @@ export async function getProfileInfo(){
 
 export async function updateProfileInfo(body){
     let url = `${USER_URL_API}/update/info/`
-    const bodyJSON = JSON.stringify(body)
-    return await request('PUT', url, bodyJSON)
+    const headers = {
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${sessionStorage.getItem('access')}`
+    }
+    return await request('PUT', url, body, headers)
 }

@@ -7,6 +7,7 @@ import warningSVG from "../../../../../../../../../core/static/img/warning-fill-
 const SettingFieldListItem = ({title, id, type, value, required, placeholder, image, description, className, onChange, ...props}) => {
     const [error, setError] = useState(false)
     if (required) {
+        console.log(value)
         if (value === '' && !error)
             setError(true)
         else if (value.trim() !== '' && error)
@@ -14,7 +15,7 @@ const SettingFieldListItem = ({title, id, type, value, required, placeholder, im
     }
 
     return (
-        <div className={[cl.block, className].join(" ")} {...props}>
+        <div className={[cl.block, className].join(" ")}>
             <label htmlFor={id}><Text18B>{title}</Text18B></label>
             <span className={cl.field}>
                 <img alt="icon" className={cl.image} src={image}/>
@@ -24,7 +25,8 @@ const SettingFieldListItem = ({title, id, type, value, required, placeholder, im
                        required={required}
                        placeholder={placeholder}
                        onChange={onChange}
-                       className={[cl.input, required && error ? cl.fieldError : ''].join(" ")}/>
+                       className={[cl.input, required && error ? cl.fieldError : ''].join(" ")}
+                       {...props}/>
             </span>
             <div className={cl.description}>
                 {description && !(required && error) &&

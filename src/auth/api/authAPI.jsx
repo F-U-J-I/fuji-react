@@ -11,7 +11,7 @@ function saveToken(tokenData) {
     save('refresh', tokenData['refresh'])
 }
 
-function saveUser(user) {
+export function saveUser(user) {
     save('username', user.username);
     save('path', user.path);
     save('avatarUrl', user.avatar_url);
