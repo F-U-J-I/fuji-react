@@ -1,7 +1,7 @@
 import React from 'react';
 import cl from './_TopBarDefault.module.scss'
 import SearchFilter from "../../../../../../ui/search/search_filter/SearchFilter";
-import UserNav from "../core/components/UserNav";
+import UserNav from "../core/components/user/UserNav";
 
 const TopBarDefault = ({menu, search, setSearch, filter, setFilter, className, ...props}) => {
 

@@ -1,0 +1,10 @@
+@import "../../../../../../../../../core/scss/vars";
+
+.card:hover {
+  background-color: $yellow-dark;
+  border-color: $yellow;
+}
+
+.progressBar {
+  background-color: $yellow !important;
+}

@@ -1,0 +1,9 @@
+@import "../../../../../../../../../../../../../core/scss/vars";
+
+.card {
+  background-color: $green;
+
+  &:hover {
+    background-color: $green-3;
+  }
+}

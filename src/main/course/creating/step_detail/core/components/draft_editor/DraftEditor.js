@@ -97,6 +97,8 @@ class DraftEditor extends Component {
     }
 
     componentDidUpdate(prevProps: Readonly<P>, prevState: Readonly<S>, snapshot: SS) {
+        // console.log(this.props.value, this.getEditable())
+        // console.log(prevState.value, this.state.editorState.getCurrentContent())
         if (prevProps.value !== this.props.value) {
             this.setState({
                 editorState: this.getEditable()
@@ -133,10 +135,13 @@ class DraftEditor extends Component {
         // Показываем плашку с навигацией, если
         if (!this.props.isContentUpdated &&
             (editorState.getCurrentContent() !== this.state.editorState.getCurrentContent())) {
+            // console.log(editorState.getCurrentContent())
+            // console.log(this.state.editorState.getCurrentContent())
             this.props.setIsContentUpdated(true)
         }
 
         this.setState({editorState});
+        this.props.setContent(editorState.getCurrentContent().getPlainText())
     }
 
     keyBindingFn = (e) => {
@@ -217,6 +222,7 @@ class DraftEditor extends Component {
 
     logMarkup() {
         const markup = converter(this.state.editorState.getCurrentContent());
+        // console.log(markup)
         this.props.setContent(markup)
 
         // document.getElementById('js-markup-container').innerHTML = markup;
@@ -305,6 +311,8 @@ class DraftEditor extends Component {
 
         let classNameList = [cl.editor, className];
         let contentState = editorState.getCurrentContent();
+        // console.log(contentState.get())
+        // console.log(convertFromHTML(contentState.getPlainText()))
         if (!contentState.hasText()) {
             if (contentState.getBlockMap().first().getType() !== 'unstyled') {
                 classNameList.push('RichEditor-hidePlaceholder');

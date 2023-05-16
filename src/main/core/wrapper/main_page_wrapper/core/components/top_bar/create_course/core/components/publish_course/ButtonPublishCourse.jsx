@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
-import cl from './_ButtonPublishCourse.module.scss'
-import Button from "../../../../../../../../../../../core/ui/button/core/components/button/Button";
-import Title16B from "../title/16/Title16B";
 import {developCourse, getPublishStatusCourse, publishCourse} from "../../../../../../../../../api/courseAPI";
 import {withParams} from "../../../../../../../../../../../core/service/params";
+import ButtonMenu from "../../../../core/components/button_menu/ButtonMenu";
 
 class ButtonPublishCourse extends Component {
     constructor(props) {
@@ -66,14 +64,21 @@ class ButtonPublishCourse extends Component {
         const {className, ...props} = this.props;
         const {isLoad, title} = this.state;
 
-        let titleHTML = null
+
+        let contentHTML = null
         if (isLoad) {
-            titleHTML = <Title16B className={cl.title}>{title}</Title16B>
+            contentHTML = (
+                <ButtonMenu title={title}
+                            onClick={this.handleOnClick}
+                            className={className}
+                            {...props}/>
+            )
         }
+
         return (
-            <Button onClick={this.handleOnClick} className={[cl.button, className].join(" ")} {...props}>
-                {titleHTML}
-            </Button>
+            <>
+                {contentHTML}
+            </>
         );
     }
 }

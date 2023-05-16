@@ -2,7 +2,7 @@ import React from 'react';
 import cl from './_TopBarCreateCourse.module.scss'
 import H6 from "../../../../../../../../core/ui/title/H6/H6";
 import Title12B from "./core/components/title/12/Title12B";
-import UserNav from "../core/components/UserNav";
+import UserNav from "../core/components/user/UserNav";
 import ButtonPublishCourse from "./core/components/publish_course/ButtonPublishCourse";
 import {Link} from "react-router-dom";
 

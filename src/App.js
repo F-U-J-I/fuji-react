@@ -48,13 +48,25 @@ import {
 } from "./main/course/creating/other/core/wrapper/core/context/OtherCreateCourseWrapperContext";
 import {UserSettingWrapper} from "./main/user/setting/core/wrapper/UserSettingWrapper";
 import {UserSettingWrapperContext} from "./main/user/setting/core/wrapper/core/context/UserSettingWrapperContext";
+import {LearnCourseWrapper} from "./main/course/learning/core/wrapper/LearnCourseWrapper";
+import {LearnCourseWrapperContext} from "./main/course/learning/core/wrapper/core/context/LearnCourseWrapperContext";
+import {OtherLearnCourseWrapper} from "./main/course/learning/other/core/wrapper/OtherLearnCourseWrapper";
+import {
+    OtherLearnCourseWrapperContext
+} from "./main/course/learning/other/core/wrapper/core/context/OtherLearnCourseWrapperContext";
+import LearnThemesPage from "./main/course/learning/other/themes/LearnThemesPage";
+import LearnLessonsPage from "./main/course/learning/other/lessons/LearnLessonsPage";
+import StepLearnPage from "./main/course/learning/step_detail/StepLearnPage";
+import {StepLearnCourseWrapper} from "./main/course/learning/step_detail/core/wrapper/StepLearnCourseWrapper";
+import {
+    StepLearnCourseWrapperContext
+} from "./main/course/learning/step_detail/core/wrapper/core/context/StepLearnCourseWrapperContext";
 
 function App() {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="*" element={<Page404/>}/>
-                <Route path="/404" element={<Page404/>}/>
                 <Route path="/signin" element={<SignInPage/>}/>
                 <Route path="/signup" element={<SignUpPage/>}/>
                 <Route element={
@@ -126,6 +138,31 @@ function App() {
                             <Outlet />
                         </CourseWrapper>
                     }>
+
+                        {/*  ПРОХОЖДЕНИЕ КУРСА  */}
+                        <Route element={
+                            <LearnCourseWrapper LearnCourseWrapperContext={LearnCourseWrapperContext}>
+                                <Outlet />
+                            </LearnCourseWrapper>
+                        }>
+                            <Route element={
+                                <OtherLearnCourseWrapper OtherCreateCourseWrapperContext={OtherLearnCourseWrapperContext}>
+                                    <Outlet />
+                                </OtherLearnCourseWrapper>
+                            }>
+                                <Route path="/courses/:path/learn/" element={<LearnThemesPage />} />
+                                <Route path="/courses/:path/learn/:pathTheme/" element={<LearnLessonsPage />} />
+                            </Route>
+                            {/*  ШАГИ  */}
+                            <Route element={
+                                <StepLearnCourseWrapper StepLearnCourseWrapperContext={StepLearnCourseWrapperContext}>
+                                    <Outlet />
+                                </StepLearnCourseWrapper>
+                            }>
+                                <Route path="/courses/:path/learn/:pathTheme/:pathLesson/:pathStep/" element={<StepLearnPage />} />
+                            </Route>
+                        </Route>
+
                         {/*  СОЗДАНИЕ КУРСА  */}
                         <Route element={
                             <CreateCourseWrapper CreateCourseWrapperContext={CreateCourseWrapperContext}>

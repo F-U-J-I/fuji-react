@@ -1,0 +1,17 @@
+@import "../../../../../../../../../../core/scss/vars";
+
+.button {
+  border-radius: 500px;
+  border: 1px solid $purple !important;
+  background-color: $empty;
+  transition: all .2s;
+
+  .title {
+    padding: 18px 40px;
+  }
+
+  &:hover {
+    background-color: $purple;
+    box-shadow: 0 0 20px $purple;
+  }
+}

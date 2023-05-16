@@ -1,0 +1,15 @@
+@import "../../../../../../../../../../core/scss/vars";
+
+
+.block {
+  color: $white;
+  outline: none;
+  //max-width: 1000px;
+  white-space: pre-wrap;
+  word-break: break-word;
+
+  &:empty:before {
+    content: attr(placeholder);
+    color: $gray-2;
+  }
+}

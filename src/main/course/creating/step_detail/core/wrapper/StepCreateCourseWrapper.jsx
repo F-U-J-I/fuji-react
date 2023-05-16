@@ -90,6 +90,7 @@ class StepCreateCourseWrapperLocal extends Component {
                     setContent: this.setContent,
                     isContentUpdated: isContentUpdated,
                     setIsContentUpdated: this.setIsContentUpdated,
+                    content: content,
                     ...props
                 }}>
                     <div className={cl.titleWrapper}>
@@ -100,6 +101,7 @@ class StepCreateCourseWrapperLocal extends Component {
                     <div className={[cl.bottomBar, isContentUpdated ? cl.active : ''].join(" ")}>
                         <BottomBarCreatingCourse title={title}
                                                  content={content}
+                                                 setIsContentUpdated={this.setIsContentUpdated}
                                                  className={cl.bottomBarThis} />
                     </div>
                 </StepCreateCourseWrapperContext.Provider>

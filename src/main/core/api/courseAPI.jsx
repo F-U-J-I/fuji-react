@@ -161,6 +161,11 @@ export async function updateStep(pathCourse, pathTheme, pathLesson, pathStep, bo
     return await request('PUT', url, bodyJSON)
 }
 
+export async function deleteStep(pathCourse, pathTheme, pathLesson, pathStep){
+    const url = `${COURSE_URL_API}/creating/${pathCourse}/theme/${pathTheme}/lesson/${pathLesson}/delete/step/${pathStep}/`
+    return await request('DELETE', url)
+}
+
 export async function getStepList(pathCourse, pathTheme, pathLesson, pathStep){
     const url = `${COURSE_URL_API}/learn/${pathCourse}/themes/${pathTheme}/lessons/${pathLesson}/steps/${pathStep}/list/`
     return await request('GET', url)
@@ -175,6 +180,12 @@ export async function getStepJSON(pathCourse, pathTheme, pathLesson, pathStep){
     const url = `${COURSE_URL_API}/learn/${pathCourse}/themes/${pathTheme}/lessons/${pathLesson}/steps-json/${pathStep}/`
     return await request('GET', url)
 }
+
+export async function completeStep(pathCourse, pathTheme, pathLesson, pathStep){
+    const url = `${COURSE_URL_API}/learn/${pathCourse}/themes/${pathTheme}/lessons/${pathLesson}/steps/${pathStep}/complete/`
+    return await request('PUT', url)
+}
+
 
 
 // PUBLISH | DEVELOPMENT
@@ -193,8 +204,18 @@ export async function getPublishStatusCourse(path){
     return await request('GET', url)
 }
 
-// LEARN
+// START LEARN | COMPLETE LEARN
 export async function startLearnCourse(path){
     const url = `${COURSE_URL_API}/start-learn/${path}/`
     return await request('POST', url)
+}
+
+export async function completeLearnCourse(path){
+    const url = `${COURSE_URL_API}/complete-learn/${path}/`
+    return await request('POST', url)
+}
+
+export async function getLearnStatusCourse(path){
+    const url = `${COURSE_URL_API}/learn-status/${path}/`
+    return await request('GET', url)
 }

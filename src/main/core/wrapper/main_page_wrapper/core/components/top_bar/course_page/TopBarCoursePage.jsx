@@ -1,6 +1,6 @@
 import React from 'react';
 import cl from './_TopBarCoursePage.module.scss'
-import UserNav from "../core/components/UserNav";
+import UserNav from "../core/components/user/UserNav";
 
 const TopBarCoursePage = ({...props}) => {
 

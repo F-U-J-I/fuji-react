@@ -6,6 +6,7 @@ import {withParams} from "../../../../core/service/params";
 import {getError} from "../../../../core/service/error";
 import {getImage} from "../../../../core/api/mainAPI";
 import DraftEditor from "./core/components/draft_editor/DraftEditor";
+import {parseContent} from "../../../core/wrapper/main_page_wrapper/core/components/top_bar/core/services/parse";
 
 class StepDetailPage extends Component {
     static contextType = StepCreateCourseWrapperContext;
@@ -15,7 +16,7 @@ class StepDetailPage extends Component {
         this.state = {
             imageTheme: null,
             toBack: `./../`,
-            content: '',
+            // content: '',
             step: null,
 
             isLoad: false,
@@ -41,7 +42,7 @@ class StepDetailPage extends Component {
         const {path, pathTheme, pathLesson, pathStep} = this.props.params;
         getStep(path, pathTheme, pathLesson, pathStep).then(
             r => {
-                const content = this._parseContent(r.content);
+                const content = parseContent(r.content);
                 this.setState({
                     step: r,
                     content: content,
@@ -54,40 +55,6 @@ class StepDetailPage extends Component {
             // console.log(this.state.content)
             this.setState({isLoad: true})
         })
-    }
-
-    _parseContent(content) {
-        let s = content;
-        let inTag = false
-        let inSrc = false
-        let linkImage = ''
-
-        let i = 0
-        for (; i !== s.length; i++){
-            if (s[i] === '<' && s.substr(i+1, 3) === 'img') {
-                inTag = true
-            }
-            if (inTag) {
-                if (s[i] === '"' && s.substr(i-4, 3) === 'src') {
-                    inSrc = true
-                    continue
-                }
-                if (s[i] === '>' && s.substr(i-1, 2) === '/>') {
-                    inTag = false
-                }
-            }
-
-            if (inSrc) {
-                if (s[i] === '"') {
-                    inSrc = false
-                    s = s.replace(linkImage, getImage(linkImage))
-                }
-                else
-                    linkImage += s[i]
-            }
-        }
-        // console.log(s)
-        return s
     }
 
     render() {

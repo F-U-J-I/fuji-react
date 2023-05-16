@@ -9,13 +9,22 @@ import {getCourseText} from "../../../../../core/service/declension";
 const StudiedPercent = ({studyingQuantity, studiedQuantity, percent, toProcess, toComplete, className, ...props}) => {
     const ONE_PERCENT = 3.6;
     const deg = 90 + ONE_PERCENT * (percent - 50)
+    const getPercent = () => {
+        if (percent)
+            return percent.toFixed(2)
+        return 0
+    }
 
     const getStyle = () => {
         if (percent > 50)
-            return {backgroundImage: `linear-gradient(${deg}deg, transparent 50%, #7B61FF 50%),` +
-                    "linear-gradient(90deg, #FFF 50%, #7B61FF 50%)"}
-        return {backgroundImage: `linear-gradient(${deg}deg, #FFF 50%, transparent 50%),` +
-                "linear-gradient(90deg, #FFF 50%, #7B61FF 50%)"}
+            return {
+                backgroundImage: `linear-gradient(${deg}deg, transparent 50%, #7B61FF 50%),` +
+                    "linear-gradient(90deg, #FFF 50%, #7B61FF 50%)"
+            }
+        return {
+            backgroundImage: `linear-gradient(${deg}deg, #FFF 50%, transparent 50%),` +
+                "linear-gradient(90deg, #FFF 50%, #7B61FF 50%)"
+        }
     }
 
     return (
@@ -32,7 +41,9 @@ const StudiedPercent = ({studyingQuantity, studiedQuantity, percent, toProcess, 
             <div className={cl.studied}>
                 <H6 className={cl.studiedTitle}>Процент прохождения курсов</H6>
                 <pre>
-                    <Text16M className={cl.studiedDescription}>(Завершено <LinkPurple to={toComplete}>{studiedQuantity} {getCourseText(studiedQuantity)}</LinkPurple>)</Text16M>
+                    <Text16M className={cl.studiedDescription}>(Завершено <LinkPurple
+                        to={toComplete}>{studiedQuantity} {getCourseText(studiedQuantity)}
+                    </LinkPurple>)</Text16M>
                 </pre>
             </div>
         </div>

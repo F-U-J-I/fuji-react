@@ -7,6 +7,7 @@ import Text16M from "../../../ui/text/16/medium/Text16M";
 
 const Author = ({image, name, className, path, ...props}) => {
     const to = `${USER_URL}/${path}`
+    console.log(getImage(image))
     return (
         <Link to={to} className={[cl.author, className].join(" ")} {...props}>
             <span className={cl.wrapper}>

@@ -1,0 +1,17 @@
+@import "../../../../../../../../../../core/scss/vars";
+
+
+.line {
+  margin-top: auto;
+  display: flex;
+
+  .description {
+    color: $gray-2;
+  }
+
+  .check {
+    margin-left: auto;
+    width: 15px;
+    height: 15px;
+  }
+}

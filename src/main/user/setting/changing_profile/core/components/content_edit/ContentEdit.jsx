@@ -9,6 +9,7 @@ import {updateProfileInfo} from "../../../../../../core/api/userAPI";
 import {saveUser} from "../../../../../../../auth/api/authAPI";
 
 const ContentEdit = ({image, username, email, path, ...props}) => {
+    console.log(image)
     const [imageState, setImageState] = useState(getImage(image))
     const [imageFile, setImageFile] = useState(null)
 

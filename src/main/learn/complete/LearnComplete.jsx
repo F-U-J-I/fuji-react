@@ -5,8 +5,12 @@ import SystemDetailCollection from "../../../core/components/collection/big/syst
 import {
     TOP_MENU_DEFAULT
 } from "../../core/wrapper/main_page_wrapper/core/components/top_bar/core/services/topMenuService";
+import {MainPageWrapperContext} from "../../core/context/Context";
+import {learnId} from "../../core/wrapper/main_page_wrapper/core/service/activeIdService";
 
 class LearnComplete extends Component {
+    static contextType = MainPageWrapperContext;
+
     constructor(props) {
         super(props);
         this.state = {
@@ -23,6 +27,7 @@ class LearnComplete extends Component {
     _setData = () => {
         this.context.setMin(false)
         this.context.setTopMenu(TOP_MENU_DEFAULT)
+        this.context.setActiveId(learnId)
         this._setCoursesLearning()
         this.setState({isLoad: true})
     }
